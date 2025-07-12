@@ -1,2 +1,58 @@
-node_modules
-.next
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log
+
+# Next.js build output
+.next/
+out/
+
+# Production build
+build/
+
+# Vercel deployment
+.vercel/
+
+# Local environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE settings
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Test coverage
+coverage/
+
+# Optional: Ignore TypeScript build output if using tsc outside of Next.js
+dist/
+
+# Optional: Ignore turbo cache (if using Turborepo)
+turbo/
+
+# Optional: Ignore Playwright (if using for testing)
+test-results/
+.playwright/
+
+# Optional: Ignore Storybook build
+storybook-static/

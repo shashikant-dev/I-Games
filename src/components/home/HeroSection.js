@@ -21,7 +21,7 @@ const HeroSection = () => {
                 Sports App Development
               </h2>
             </div>
-            <p className="text-gray-300 text-lg">
+            <p className="text-gray-100 text-lg font-medium">
               Elevate Your Digital Presence with our Cutting-Edge Sports Solutions.
             </p>
 
@@ -31,14 +31,14 @@ const HeroSection = () => {
                 {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
-                    className="w-10 h-10 rounded-full bg-gray-500 border-2 border-black"
+                    className="w-10 h-10 rounded-full bg-gray-400 border-2 border-black"
                   />
                 ))}
               </div>
               <div>
                 <div className="flex items-center">
-                  <span className="text-secondary font-semibold">4.9/5</span>
-                  <span className="text-gray-400 ml-2">(1200+ Reviews)</span>
+                  <span className="text-secondary font-bold text-lg">4.9/5</span>
+                  <span className="text-gray-100 ml-2 font-medium">(1200+ Reviews)</span>
                 </div>
                 <div className="flex text-secondary">
                   {[1, 2, 3, 4, 5].map((i) => (
@@ -66,7 +66,7 @@ const HeroSection = () => {
           {/* Right Content - Phone Mockup */}
           <div className="relative h-[600px] hidden lg:block">
             <Image
-              src="/fantasy-about.png" // Replace with actual phone mockup
+              src="/fantasy-about.png"
               alt="Sports App Mockup"
               fill
               className="object-contain"
@@ -77,7 +77,7 @@ const HeroSection = () => {
       </div>
 
       {/* Background Gradient Effect */}
-      <div className="absolute inset-0 bg-gradient-to-b from-primary/20 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/30 via-transparent to-transparent pointer-events-none" />
     </section>
   );
 };

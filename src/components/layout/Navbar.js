@@ -31,14 +31,14 @@ const Navbar = () => {
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-gray-300 hover:text-white transition-colors"
+                className="text-gray-100 hover:text-white font-medium transition-colors"
               >
                 {item.label}
               </Link>
             ))}
             <Link
               href="#contact"
-              className="bg-primary hover:bg-primary-light text-white px-6 py-2 rounded-full transition-colors"
+              className="bg-primary hover:bg-primary-light text-white px-6 py-2 rounded-full transition-colors font-medium"
             >
               Contact us
             </Link>
@@ -48,7 +48,7 @@ const Navbar = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-gray-300 hover:text-white p-2"
+              className="text-gray-100 hover:text-white p-2"
             >
               <svg
                 className="h-6 w-6"
@@ -84,7 +84,7 @@ const Navbar = () => {
                 <Link
                   key={item.label}
                   href={item.href}
-                  className="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base"
+                  className="text-gray-100 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
@@ -92,7 +92,7 @@ const Navbar = () => {
               ))}
               <Link
                 href="#contact"
-                className="bg-primary hover:bg-primary-light text-white block px-3 py-2 rounded-md text-base"
+                className="bg-primary hover:bg-primary-light text-white block px-3 py-2 rounded-md text-base font-medium"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact us

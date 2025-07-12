@@ -9,14 +9,14 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#6B21A8',
-          light: '#7C3ABA',
-          dark: '#581C8C'
+          DEFAULT: '#8B2CD9', // Brightened for better contrast
+          light: '#9D47E5',   // Adjusted light variant
+          dark: '#6B21A8'     // Original color as dark variant
         },
         secondary: {
-          DEFAULT: '#FFB800',
-          light: '#FFCC33',
-          dark: '#CC9200'
+          DEFAULT: '#FFD000', // Brightened yellow for better contrast
+          light: '#FFE14D',   // Lighter yellow
+          dark: '#E6BB00'     // Darker yellow
         }
       },
       fontFamily: {
