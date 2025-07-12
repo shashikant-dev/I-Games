@@ -66,7 +66,7 @@ const HeroSection = () => {
           {/* Right Content - Phone Mockup */}
           <div className="relative h-[600px] hidden lg:block">
             <Image
-              src="/vercel.svg" // Replace with actual phone mockup
+              src="/fantasy-about.png" // Replace with actual phone mockup
               alt="Sports App Mockup"
               fill
               className="object-contain"
