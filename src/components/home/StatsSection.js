@@ -81,7 +81,7 @@ const StatCard = ({ number, label, suffix }) => {
       <div className="relative bg-black/80 backdrop-blur-sm border border-primary/30 rounded-xl p-8 transform transition-all duration-300 group-hover:scale-[1.02] group-hover:border-primary/50">
         <div className="flex items-baseline">
           <div className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-            {count}
+          {count}
           </div>
           <div className="text-4xl font-bold text-secondary ml-1">
             {suffix}
