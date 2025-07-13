@@ -21,15 +21,18 @@ const ServicesSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-20 bg-theme-bg-primary relative">
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-brand-primary/5 via-theme-bg-primary to-theme-bg-primary" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-theme-text-primary mb-4">
             Our offerings that make you stand out in the
-            <span className="text-primary"> Gaming Industry</span>
+            <span className="text-brand-primary"> Gaming Industry</span>
           </h2>
-          <p className="text-gray-300 max-w-3xl mx-auto">
+          <p className="text-theme-text-secondary text-lg max-w-3xl mx-auto">
             We stand tall in the gaming app development industry for delivering remarkable gaming solutions.
             Our seasoned developers craft top-quality gaming experiences that engage and delight users.
           </p>
@@ -49,23 +52,24 @@ const ServicesSection = () => {
 const ServiceCard = ({ title, description, icon }) => {
   return (
     <div className="group relative">
-      <div className="bg-black border border-primary/20 rounded-xl p-8 h-full transform transition-transform duration-300 group-hover:-translate-y-2">
+      {/* Glowing background effect */}
+      <div className="absolute -inset-1 bg-gradient-to-r from-brand-primary via-brand-primary to-brand-secondary rounded-2xl opacity-0 group-hover:opacity-20 blur-lg transition-all duration-500" />
+
+      <div className="relative bg-theme-bg-secondary/80 backdrop-blur-sm border border-theme-border rounded-xl p-8 h-full transform transition-all duration-300 group-hover:scale-[1.02] group-hover:border-brand-primary/50">
         {/* Icon */}
         <div className="w-16 h-16 mb-6 relative">
+          <div className="absolute -inset-2 bg-gradient-to-r from-brand-primary to-brand-secondary rounded-full opacity-20 blur-sm" />
           <Image
             src={icon}
             alt={title}
             fill
-            className="object-contain"
+            className="object-contain relative z-10 transition-transform duration-300 group-hover:scale-110"
           />
         </div>
 
         {/* Content */}
-        <h3 className="text-xl font-semibold text-white mb-4">{title}</h3>
-        <p className="text-gray-300">{description}</p>
-
-        {/* Hover Effect */}
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />
+        <h3 className="text-xl font-semibold text-theme-text-primary mb-4">{title}</h3>
+        <p className="text-theme-text-secondary">{description}</p>
       </div>
     </div>
   );

@@ -5,18 +5,53 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: '#8B2CD9', // Brightened for better contrast
-          light: '#9D47E5',   // Adjusted light variant
-          dark: '#6B21A8'     // Original color as dark variant
+        // Brand colors remain consistent across themes
+        brand: {
+          primary: {
+            DEFAULT: '#8B2CD9',
+            light: '#9D47E5',
+            dark: '#6B21A8'
+          },
+          secondary: {
+            DEFAULT: '#FFD000',
+            light: '#FFE14D',
+            dark: '#E6BB00'
+          }
         },
-        secondary: {
-          DEFAULT: '#FFD000', // Brightened yellow for better contrast
-          light: '#FFE14D',   // Lighter yellow
-          dark: '#E6BB00'     // Darker yellow
+        // Theme-specific colors
+        theme: {
+          // Backgrounds
+          bg: {
+            primary: {
+              DEFAULT: 'var(--bg-primary)',
+              hover: 'var(--bg-primary-hover)'
+            },
+            secondary: {
+              DEFAULT: 'var(--bg-secondary)',
+              hover: 'var(--bg-secondary-hover)'
+            }
+          },
+          // Text colors
+          text: {
+            primary: 'var(--text-primary)',
+            secondary: 'var(--text-secondary)',
+            tertiary: 'var(--text-tertiary)'
+          },
+          // Border colors
+          border: {
+            DEFAULT: 'var(--border-default)',
+            hover: 'var(--border-hover)'
+          },
+          // Action colors
+          action: {
+            primary: 'var(--action-primary)',
+            hover: 'var(--action-hover)',
+            disabled: 'var(--action-disabled)'
+          }
         }
       },
       fontFamily: {
