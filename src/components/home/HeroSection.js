@@ -156,56 +156,85 @@ export default function HeroSection() {
     : services.filter(service => service.category === selectedCategory);
 
   return (
-    <div className="relative bg-white pt-24 pb-12 lg:pt-32 lg:pb-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Heading Section */}
-        <div className="text-center mb-12">
-          <h1>
-            <div className="text-[2.5rem] leading-[1.2] font-bold text-[#0F172A] mb-2">
-              Transform Your Vision
-            </div>
-            <div className="text-[2.5rem] leading-[1.2] font-bold text-[#3B82F6]">
-              Into Game-Changing<br />Sports Apps
-            </div>
-          </h1>
-        </div>
+    <div className="relative bg-white dark:bg-gray-900 transition-colors">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-[0.03]" />
+      </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {categories.map(category => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors
-                ${selectedCategory === category
-                  ? 'bg-[#3B82F6] text-white'
-                  : 'bg-[#F8FAFC] text-[#64748B] hover:text-[#0F172A]'
-                }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-
-        {/* Services Grid - Now Full Width */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4
-                      max-h-[600px] overflow-y-auto pr-4
-                      scrollbar-thin scrollbar-thumb-gray-200 scrollbar-track-transparent">
-          {filteredServices.map(service => (
-            <div
-              key={service.id}
-              className="flex items-center gap-3 p-4 rounded-lg
-                       bg-[#F8FAFC] hover:bg-[#F1F5F9]
-                       transition-all cursor-pointer group"
-            >
-              <div className="text-[#3B82F6] flex-shrink-0">
-                {service.icon}
+      <div className="relative pt-16 pb-8 lg:pt-20 lg:pb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Heading Section */}
+          <div className="text-center mb-8">
+            <h1>
+              <div className="text-[2.5rem] md:text-[3.5rem] leading-[1.1] font-bold text-gray-900 dark:text-white mb-2">
+                Transform Your Vision
               </div>
-              <span className="text-sm font-medium text-[#0F172A] line-clamp-2">
-                {service.name}
-              </span>
+              <div className="text-[2.5rem] md:text-[3.5rem] leading-[1.1] font-bold text-[#3B82F6]">
+                Into Game-Changing<br />Sports Apps
+              </div>
+            </h1>
+
+            {/* Description Text */}
+            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+              Elevate your sports business with our cutting-edge development solutions.
+              From fantasy leagues to live-streaming platforms, we bring your ideas to life.
+            </p>
+
+            {/* Stats Section */}
+            <div className="flex justify-center gap-8 md:gap-12 mt-8 mb-10">
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-[#3B82F6]">1200+</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Success Stories</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-[#3B82F6]">4.9/5</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Client Rating</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-[#3B82F6]">24/7</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Support</div>
+              </div>
             </div>
-          ))}
+          </div>
+
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-2 mb-6">
+            {categories.map(category => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors
+                  ${selectedCategory === category
+                    ? 'bg-[#3B82F6] text-white shadow-md'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-gray-700'
+                  }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3
+                        max-h-[500px] overflow-y-auto pr-3
+                        scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent">
+            {filteredServices.map(service => (
+              <div
+                key={service.id}
+                className="flex items-center gap-3 p-3 rounded-lg
+                         bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700
+                         shadow-sm transition-all cursor-pointer group"
+              >
+                <div className="text-[#3B82F6] flex-shrink-0">
+                  {service.icon}
+                </div>
+                <span className="text-sm font-medium text-gray-900 dark:text-white line-clamp-2">
+                  {service.name}
+                </span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
