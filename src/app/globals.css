@@ -9,6 +9,7 @@
     --bg-primary-hover: #F8FAFC;
     --bg-secondary: #F1F5F9;
     --bg-secondary-hover: #E2E8F0;
+    --bg-header: #FFFFFF;      /* Added header background */
 
     --text-primary: #0F172A;
     --text-secondary: #334155;
@@ -28,6 +29,7 @@
     --bg-primary-hover: #111318;
     --bg-secondary: #1A1D24;
     --bg-secondary-hover: #22252D;
+    --bg-header: #0A0A0F;      /* Added header background */
 
     --text-primary: #F8FAFC;
     --text-secondary: #E2E8F0;
@@ -52,6 +54,35 @@
 
   body {
     @apply bg-theme-bg-primary text-theme-text-primary;
+  }
+}
+
+@layer components {
+  /* Header Styles */
+  .header {
+    @apply fixed top-0 left-0 right-0 z-50
+           bg-theme-bg-primary border-b border-theme-border
+           backdrop-blur-none; /* Removed blur effect */
+  }
+
+  .header-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
+           h-16 flex items-center justify-between;
+  }
+
+  .nav-link {
+    @apply text-theme-text-secondary hover:text-theme-text-primary
+           transition-colors duration-200 px-4 py-2
+           text-sm font-medium;
+  }
+
+  .nav-link-active {
+    @apply text-brand-primary font-semibold;
+  }
+
+  .mobile-menu-button {
+    @apply text-theme-text-primary p-2 rounded-md
+           hover:bg-theme-bg-secondary;
   }
 }
 
