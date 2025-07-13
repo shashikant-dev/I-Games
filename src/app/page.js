@@ -1,13 +1,11 @@
 import HeroSection from '@/components/home/HeroSection';
-import StatsSection from '@/components/home/StatsSection';
-import ServicesSection from '@/components/home/ServicesSection';
+import OfferingsSection from '@/components/home/OfferingsSection';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-black">
+    <main>
       <HeroSection />
-      <StatsSection />
-      <ServicesSection />
+      <OfferingsSection />
     </main>
   );
 }
