@@ -12,9 +12,9 @@ module.exports = {
         // Brand colors remain consistent across themes
         brand: {
           primary: {
-            DEFAULT: '#8B2CD9',
-            light: '#9D47E5',
-            dark: '#6B21A8'
+            DEFAULT: '#3B82F6',    // Changed from #8B2CD9
+            light: '#60A5FA',      // Lighter blue (changed from #9D47E5)
+            dark: '#2563EB'        // Darker blue (changed from #6B21A8)
           },
           secondary: {
             DEFAULT: '#FFD000',

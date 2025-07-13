@@ -17,8 +17,8 @@
     --border-default: #E2E8F0;
     --border-hover: #CBD5E1;
 
-    --action-primary: #8B2CD9;
-    --action-hover: #9D47E5;
+    --action-primary: #3B82F6;    /* Changed from #8B2CD9 */
+    --action-hover: #60A5FA;      /* Changed from #9D47E5 */
     --action-disabled: #E2E8F0;
   }
 
@@ -36,8 +36,8 @@
     --border-default: #2A2F3A;
     --border-hover: #3A4150;
 
-    --action-primary: #8B2CD9;
-    --action-hover: #9D47E5;
+    --action-primary: #3B82F6;    /* Changed from #8B2CD9 */
+    --action-hover: #60A5FA;      /* Changed from #9D47E5 */
     --action-disabled: #1F2937;
   }
 
