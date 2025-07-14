@@ -14,126 +14,131 @@ import {
   MdDeveloperMode, MdSportsScore, MdGames
 } from 'react-icons/md';
 import { FaDice } from 'react-icons/fa';
+import {
+  GiSoccerBall, GiBasketballBall, GiTennisRacket, GiPokerHand,
+  GiDiceEightFacesEight, GiCricketBat, GiGamepad, GiTrophy,
+  GiTv, GiChart
+} from 'react-icons/gi';
 
 const services = [
   {
     id: 1,
     name: 'Live Scores & Stats API',
-    icon: <IoStatsChart className="w-6 h-6" />,
+    icon: <GiChart className="w-12 h-12" />,
     category: 'Data'
   },
   {
     id: 2,
     name: 'Live Odds & Predictions API',
-    icon: <IoCash className="w-6 h-6" />,
+    icon: <IoCash className="w-12 h-12" />,
     category: 'Betting'
   },
   {
     id: 3,
     name: 'Player & Team Data API',
-    icon: <SiDatadog className="w-6 h-6" />,
+    icon: <SiDatadog className="w-12 h-12" />,
     category: 'Data'
   },
   {
     id: 4,
     name: 'Fancy Betting API',
-    icon: <IoCash className="w-6 h-6" />,
+    icon: <GiPokerHand className="w-12 h-12" />,
     category: 'Betting'
   },
   {
     id: 5,
     name: 'Bookmaker Odds API',
-    icon: <IoCash className="w-6 h-6" />,
+    icon: <IoCash className="w-12 h-12" />,
     category: 'Betting'
   },
   {
     id: 6,
     name: 'Casino Games API',
-    icon: <MdCasino className="w-6 h-6" />,
+    icon: <GiDiceEightFacesEight className="w-12 h-12" />,
     category: 'Casino'
   },
   {
     id: 7,
     name: 'Score API',
-    icon: <MdSportsScore className="w-6 h-6" />,
+    icon: <MdSportsScore className="w-12 h-12" />,
     category: 'Data'
   },
   {
     id: 8,
     name: 'TV Streaming API',
-    icon: <IoTv className="w-6 h-6" />,
+    icon: <GiTv className="w-12 h-12" />,
     category: 'Streaming'
   },
   {
     id: 9,
     name: 'Fantasy App Development',
-    icon: <IoTrophy className="w-6 h-6" />,
+    icon: <GiTrophy className="w-12 h-12" />,
     category: 'Development'
   },
   {
     id: 10,
     name: 'Betting Platform Development',
-    icon: <IoDesktop className="w-6 h-6" />,
+    icon: <IoDesktop className="w-12 h-12" />,
     category: 'Development'
   },
   {
     id: 11,
     name: 'Sports Coverage APIs',
-    icon: <MdSports className="w-6 h-6" />,
+    icon: <GiSoccerBall className="w-12 h-12" />,
     category: 'Data'
   },
   {
     id: 12,
     name: 'Virtual Sports Integration',
-    icon: <IoGameController className="w-6 h-6" />,
+    icon: <GiGamepad className="w-12 h-12" />,
     category: 'Gaming'
   },
   {
     id: 13,
     name: 'Sportsbook Development',
-    icon: <IoFootball className="w-6 h-6" />,
+    icon: <GiBasketballBall className="w-12 h-12" />,
     category: 'Development'
   },
   {
     id: 14,
     name: 'Whitelabel Betting Platform',
-    icon: <IoDesktop className="w-6 h-6" />,
+    icon: <IoDesktop className="w-12 h-12" />,
     category: 'Development'
   },
   {
     id: 15,
     name: 'Premium Odds API',
-    icon: <IoCash className="w-6 h-6" />,
+    icon: <IoCash className="w-12 h-12" />,
     category: 'Betting'
   },
   {
     id: 16,
     name: 'Casino App Development',
-    icon: <FaDice className="w-6 h-6" />,
+    icon: <FaDice className="w-12 h-12" />,
     category: 'Development'
   },
   {
     id: 17,
     name: 'Gambling App Development',
-    icon: <MdCasino className="w-6 h-6" />,
+    icon: <MdCasino className="w-12 h-12" />,
     category: 'Development'
   },
   {
     id: 18,
     name: 'Fantasy Points API',
-    icon: <IoTrophy className="w-6 h-6" />,
+    icon: <IoTrophy className="w-12 h-12" />,
     category: 'Data'
   },
   {
     id: 19,
     name: 'Worldwide Sports Coverage',
-    icon: <SiWorldhealthorganization className="w-6 h-6" />,
+    icon: <GiTennisRacket className="w-12 h-12" />,
     category: 'Data'
   },
   {
     id: 20,
     name: 'API Trial & Developer Tools',
-    icon: <MdDeveloperMode className="w-6 h-6" />,
+    icon: <MdDeveloperMode className="w-12 h-12" />,
     category: 'Development'
   }
 ];
@@ -218,7 +223,7 @@ export default function HeroSection() {
                       className="w-full h-full bg-cover bg-center relative"
                       style={{ backgroundImage: `url(${slide.image})` }}
                     >
-                      <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                      <div className="absolute inset-0 flex items-center justify-center">
                         <div className="text-center text-white">
                           <h3 className="text-xl sm:text-2xl font-bold mb-2 text-shadow-lg">
                             {slide.title}
@@ -234,15 +239,15 @@ export default function HeroSection() {
               </div>
 
               {/* Navigation Dots */}
-              <div className="flex justify-center mt-4 space-x-2">
+              <div className="flex justify-center mt-6 space-x-3">
                 {carouselSlides.map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentSlide(index)}
-                    className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+                    className={`w-4 h-4 rounded-full transition-all duration-300 border-2 ${
                       index === currentSlide
-                        ? 'bg-[#3B82F6]'
-                        : 'bg-white/50 hover:bg-white/70'
+                        ? 'bg-[#3B82F6] border-[#3B82F6] shadow-lg'
+                        : 'bg-white/80 border-gray-300 hover:bg-white hover:border-[#3B82F6] shadow-md'
                     }`}
                   />
                 ))}
@@ -268,20 +273,20 @@ export default function HeroSection() {
           </div>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4
                         max-h-[500px] overflow-y-auto pr-3
                         scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent">
             {filteredServices.map(service => (
               <div
                 key={service.id}
-                className="flex items-center gap-3 p-3 rounded-lg
+                className="flex items-center gap-4 p-4 rounded-lg
                          bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700
-                         shadow-sm transition-all cursor-pointer group"
+                         shadow-sm transition-all cursor-pointer group min-h-[80px]"
               >
                 <div className="text-[#3B82F6] flex-shrink-0">
                   {service.icon}
                 </div>
-                <span className="text-sm font-medium text-gray-900 dark:text-white line-clamp-2">
+                <span className="text-base font-semibold text-gray-900 dark:text-white line-clamp-2 leading-relaxed">
                   {service.name}
                 </span>
               </div>
