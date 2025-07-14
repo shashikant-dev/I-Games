@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
   IoStatsChart, IoGameController, IoTv, IoFootball,
@@ -148,8 +148,45 @@ const categories = [
   'Streaming'
 ];
 
+const carouselSlides = [
+  {
+    id: 1,
+    image: 'https://placehold.co/800x300/1e40af/ffffff?text=Sports+API+Solutions',
+    title: '',
+    description: ''
+  },
+  {
+    id: 2,
+    image: 'https://placehold.co/800x300/dc2626/ffffff?text=Betting+Platform+Development',
+    title: '',
+    description: ''
+  },
+  {
+    id: 3,
+    image: 'https://placehold.co/800x300/059669/ffffff?text=Fantasy+Sports+Apps',
+    title: '',
+    description: ''
+  },
+  {
+    id: 4,
+    image: 'https://placehold.co/800x300/7c2d12/ffffff?text=Casino+Game+Development',
+    title: '',
+    description: ''
+  }
+];
+
 export default function HeroSection() {
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Auto-slide functionality
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
+    }, 4000);
+
+    return () => clearInterval(timer);
+  }, []);
 
   const filteredServices = selectedCategory === 'All'
     ? services
@@ -165,59 +202,50 @@ export default function HeroSection() {
       <div className="relative pt-16 pb-8 lg:pt-20 lg:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Heading Section */}
-          <div className="text-center mb-8 relative">
-            {/* Background Image */}
-            <div
-              className="absolute inset-0 z-0 rounded-2xl overflow-hidden"
-              style={{
-                backgroundImage: 'url(https://www.laespanavacilada.com/indibet.webp)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                filter: 'brightness(0.5)'
-              }}
-            />
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 z-1 bg-black/30 rounded-2xl" />
-
-            {/* Content */}
-            <div className="relative z-2 px-4 sm:px-6 py-8 sm:py-12 rounded-2xl">
-              <h1 className="max-w-5xl mx-auto">
-                <div className="text-[1.5rem] sm:text-[1.8rem] md:text-[2.8rem] leading-[1.3] sm:leading-[1.2] font-bold text-white mb-3 sm:mb-4 tracking-wide text-shadow-lg">
-                  Power Your Sports Platform with Our Complete API & Development Suite
-                </div>
-                <div className="relative px-4 py-2">
-                  <div className="absolute inset-0 bg-black/50 blur-xl rounded-3xl transform scale-105"></div>
-                  <div className="absolute inset-0 bg-[#3B82F6]/10 blur-lg rounded-3xl"></div>
-                  <div className="text-[1.5rem] sm:text-[1.8rem] md:text-[2.8rem] leading-[1.3] sm:leading-[1.2] font-bold text-[#3B82F6] text-shadow-lg relative">
-                    Into Game-Changing<br className="hidden sm:inline" />Sports Apps
+          <div className="text-center mb-8">
+            {/* Carousel Banner */}
+            <div className="relative">
+              <div className="relative h-48 sm:h-64 overflow-hidden rounded-2xl">
+                {carouselSlides.map((slide, index) => (
+                  <div
+                    key={slide.id}
+                    className={`absolute inset-0 transition-transform duration-500 ease-in-out ${
+                      index === currentSlide ? 'translate-x-0' :
+                      index < currentSlide ? '-translate-x-full' : 'translate-x-full'
+                    }`}
+                  >
+                    <div
+                      className="w-full h-full bg-cover bg-center relative"
+                      style={{ backgroundImage: `url(${slide.image})` }}
+                    >
+                      <div className="absolute inset-0 bg-black/30 flex items-center justify-center">
+                        <div className="text-center text-white">
+                          <h3 className="text-xl sm:text-2xl font-bold mb-2 text-shadow-lg">
+                            {slide.title}
+                          </h3>
+                          <p className="text-sm sm:text-base text-shadow">
+                            {slide.description}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </h1>
-
-              {/* Description Text */}
-              <div className="relative px-4 py-2 mt-4 sm:mt-6">
-                <div className="absolute inset-0 bg-black/50 blur-xl rounded-3xl transform scale-105"></div>
-                <div className="absolute inset-0 bg-[#3B82F6]/5 blur-lg rounded-3xl"></div>
-                <p className="relative text-base sm:text-lg text-gray-100 max-w-3xl mx-auto px-4 sm:px-6 leading-relaxed tracking-wide text-shadow-lg">
-                  From live scores, odds, and predictions to fantasy games, casino apps, and streaming platforms — we deliver robust APIs and full-scale development solutions tailored for modern sports and betting businesses.
-                </p>
+                ))}
               </div>
 
-              {/* Stats Section */}
-              <div className="flex justify-center gap-6 sm:gap-8 md:gap-16 mt-8 sm:mt-10">
-                <div className="text-center bg-black/30 px-4 py-2 rounded-lg backdrop-blur-sm">
-                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#3B82F6] text-shadow-sm">1200+</div>
-                  <div className="text-xs sm:text-sm text-gray-100 mt-1 font-medium tracking-wide">Success Stories</div>
-                </div>
-                <div className="text-center bg-black/30 px-4 py-2 rounded-lg backdrop-blur-sm">
-                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#3B82F6] text-shadow-sm">4.9/5</div>
-                  <div className="text-xs sm:text-sm text-gray-100 mt-1 font-medium tracking-wide">Client Rating</div>
-                </div>
-                <div className="text-center bg-black/30 px-4 py-2 rounded-lg backdrop-blur-sm">
-                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#3B82F6] text-shadow-sm">24/7</div>
-                  <div className="text-xs sm:text-sm text-gray-100 mt-1 font-medium tracking-wide">Support</div>
-                </div>
+              {/* Navigation Dots */}
+              <div className="flex justify-center mt-4 space-x-2">
+                {carouselSlides.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCurrentSlide(index)}
+                    className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+                      index === currentSlide
+                        ? 'bg-[#3B82F6]'
+                        : 'bg-white/50 hover:bg-white/70'
+                    }`}
+                  />
+                ))}
               </div>
             </div>
           </div>
