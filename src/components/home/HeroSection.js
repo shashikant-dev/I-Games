@@ -165,35 +165,59 @@ export default function HeroSection() {
       <div className="relative pt-16 pb-8 lg:pt-20 lg:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Heading Section */}
-          <div className="text-center mb-8">
-            <h1>
-              <div className="text-[2.5rem] md:text-[3.5rem] leading-[1.1] font-bold text-gray-900 dark:text-white mb-2">
-                Transform Your Vision
-              </div>
-              <div className="text-[2.5rem] md:text-[3.5rem] leading-[1.1] font-bold text-[#3B82F6]">
-                Into Game-Changing<br />Sports Apps
-              </div>
-            </h1>
+          <div className="text-center mb-8 relative">
+            {/* Background Image */}
+            <div
+              className="absolute inset-0 z-0 rounded-2xl overflow-hidden"
+              style={{
+                backgroundImage: 'url(https://www.laespanavacilada.com/indibet.webp)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                filter: 'brightness(0.5)'
+              }}
+            />
+            {/* Dark Overlay */}
+            <div className="absolute inset-0 z-1 bg-black/30 rounded-2xl" />
 
-            {/* Description Text */}
-            <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Elevate your sports business with our cutting-edge development solutions.
-              From fantasy leagues to live-streaming platforms, we bring your ideas to life.
-            </p>
+            {/* Content */}
+            <div className="relative z-2 px-4 sm:px-6 py-8 sm:py-12 rounded-2xl">
+              <h1 className="max-w-5xl mx-auto">
+                <div className="text-[1.5rem] sm:text-[1.8rem] md:text-[2.8rem] leading-[1.3] sm:leading-[1.2] font-bold text-white mb-3 sm:mb-4 tracking-wide text-shadow-lg">
+                  Power Your Sports Platform with Our Complete API & Development Suite
+                </div>
+                <div className="relative px-4 py-2">
+                  <div className="absolute inset-0 bg-black/50 blur-xl rounded-3xl transform scale-105"></div>
+                  <div className="absolute inset-0 bg-[#3B82F6]/10 blur-lg rounded-3xl"></div>
+                  <div className="text-[1.5rem] sm:text-[1.8rem] md:text-[2.8rem] leading-[1.3] sm:leading-[1.2] font-bold text-[#3B82F6] text-shadow-lg relative">
+                    Into Game-Changing<br className="hidden sm:inline" />Sports Apps
+                  </div>
+                </div>
+              </h1>
 
-            {/* Stats Section */}
-            <div className="flex justify-center gap-8 md:gap-12 mt-8 mb-10">
-              <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-[#3B82F6]">1200+</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Success Stories</div>
+              {/* Description Text */}
+              <div className="relative px-4 py-2 mt-4 sm:mt-6">
+                <div className="absolute inset-0 bg-black/50 blur-xl rounded-3xl transform scale-105"></div>
+                <div className="absolute inset-0 bg-[#3B82F6]/5 blur-lg rounded-3xl"></div>
+                <p className="relative text-base sm:text-lg text-gray-100 max-w-3xl mx-auto px-4 sm:px-6 leading-relaxed tracking-wide text-shadow-lg">
+                  From live scores, odds, and predictions to fantasy games, casino apps, and streaming platforms — we deliver robust APIs and full-scale development solutions tailored for modern sports and betting businesses.
+                </p>
               </div>
-              <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-[#3B82F6]">4.9/5</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Client Rating</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-[#3B82F6]">24/7</div>
-                <div className="text-sm text-gray-600 dark:text-gray-400 mt-1">Support</div>
+
+              {/* Stats Section */}
+              <div className="flex justify-center gap-6 sm:gap-8 md:gap-16 mt-8 sm:mt-10">
+                <div className="text-center bg-black/30 px-4 py-2 rounded-lg backdrop-blur-sm">
+                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#3B82F6] text-shadow-sm">1200+</div>
+                  <div className="text-xs sm:text-sm text-gray-100 mt-1 font-medium tracking-wide">Success Stories</div>
+                </div>
+                <div className="text-center bg-black/30 px-4 py-2 rounded-lg backdrop-blur-sm">
+                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#3B82F6] text-shadow-sm">4.9/5</div>
+                  <div className="text-xs sm:text-sm text-gray-100 mt-1 font-medium tracking-wide">Client Rating</div>
+                </div>
+                <div className="text-center bg-black/30 px-4 py-2 rounded-lg backdrop-blur-sm">
+                  <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#3B82F6] text-shadow-sm">24/7</div>
+                  <div className="text-xs sm:text-sm text-gray-100 mt-1 font-medium tracking-wide">Support</div>
+                </div>
               </div>
             </div>
           </div>

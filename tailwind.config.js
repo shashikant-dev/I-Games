@@ -8,6 +8,16 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'grid-pattern': 'linear-gradient(to right, #E5E7EB 1px, transparent 1px), linear-gradient(to bottom, #E5E7EB 1px, transparent 1px)',
+      },
+      textShadow: {
+        'sm': '0 1px 2px rgba(0, 0, 0, 0.25)',
+        'DEFAULT': '0 2px 4px rgba(0, 0, 0, 0.25)',
+        'lg': '0 2px 6px rgba(0, 0, 0, 0.35)',
+      },
       colors: {
         // Brand colors remain consistent across themes
         brand: {
@@ -59,5 +69,23 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      const newUtilities = {
+        '.text-shadow': {
+          textShadow: '0 2px 4px rgba(0, 0, 0, 0.25)',
+        },
+        '.text-shadow-sm': {
+          textShadow: '0 1px 2px rgba(0, 0, 0, 0.25)',
+        },
+        '.text-shadow-lg': {
+          textShadow: '0 2px 6px rgba(0, 0, 0, 0.35)',
+        },
+        '.text-shadow-none': {
+          textShadow: 'none',
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 }
