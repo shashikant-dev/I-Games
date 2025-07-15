@@ -1,25 +1,28 @@
 'use client';
 import { useEffect, useState, useRef } from 'react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const StatsSection = () => {
+  const { t } = useLanguage();
+
   const stats = [
     {
       number: 19,
-      label: 'Years Delivering Games',
+      label: t('stats.items.years'),
       suffix: '',
       gradientFrom: 'from-purple-500',
       gradientTo: 'to-indigo-500'
     },
     {
       number: 120,
-      label: 'In-house Professionals',
+      label: t('stats.items.professionals'),
       suffix: '+',
       gradientFrom: 'from-brand-primary',
       gradientTo: 'to-brand-secondary'
     },
     {
       number: 200,
-      label: 'Games Delivered',
+      label: t('stats.items.games'),
       suffix: '+',
       gradientFrom: 'from-brand-secondary',
       gradientTo: 'to-orange-500'
@@ -34,11 +37,10 @@ const StatsSection = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-theme-text-primary mb-4">
-            Our offerings that make you stand out in the Gaming Industry
+            {t('stats.title')}
           </h2>
           <p className="text-theme-text-secondary text-lg max-w-3xl mx-auto">
-            We stand tall in the gaming app development industry for delivering remarkable gaming solutions.
-            Our seasoned developers craft top-quality gaming experiences that engage and delight users.
+            {t('stats.description')}
           </p>
         </div>
 

@@ -1,19 +1,33 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useTheme } from 'next-themes';
+import { HiSun, HiMoon } from 'react-icons/hi2';
+import { useLanguage } from '@/contexts/LanguageContext';
+import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { t } = useLanguage();
+  const pathname = usePathname();
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'Company', href: '/company' },
-    { name: 'Service', href: '/service' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Write us', href: '/contact' },
+    { name: t('nav.home'), href: '/' },
+    { name: t('nav.about'), href: '/about' },
+    { name: t('nav.services'), href: '/services' },
+    { name: t('nav.whyUs'), href: '/why-us' },
+    { name: t('nav.contact'), href: '/contact' },
   ];
+
+  const isActiveLink = (href) => {
+    if (href === '/') {
+      return pathname === '/';
+    }
+    return pathname.startsWith(href);
+  };
 
   return (
     <header className="header">
@@ -23,6 +37,7 @@ const Navbar = () => {
           <Link href="/" className="flex items-center">
             <span className="text-xl font-semibold text-theme-text-primary">
               iGames.cloud
+              {/* <Image src="/light-mode-logo.svg" alt="iGames.cloud" width={200} height={120} /> */}
             </span>
           </Link>
         </div>
@@ -33,32 +48,43 @@ const Navbar = () => {
             <Link
               key={item.name}
               href={item.href}
-              className="nav-link"
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                isActiveLink(item.href)
+                  ? 'bg-brand-primary text-white shadow-md'
+                  : 'text-theme-text-primary hover:bg-theme-bg-secondary hover:text-brand-primary'
+              }`}
             >
               {item.name}
             </Link>
           ))}
 
-          {/* Contact Us Button */}
-          <Link
-            href="/contact"
-            className="ml-4 px-4 py-2 rounded-lg bg-brand-primary text-white
-                     hover:bg-brand-primary-light transition-colors duration-200"
-          >
-            Contact us
-          </Link>
+          {/* Language Switcher */}
+          <div className="ml-4">
+            <LanguageSwitcher />
+          </div>
 
           {/* Theme Toggle */}
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="ml-4 p-2 rounded-lg hover:bg-theme-bg-secondary"
+            className="ml-4 p-2 rounded-lg hover:bg-theme-bg-secondary transition-colors duration-200"
           >
-            {theme === 'dark' ? '🌞' : '🌙'}
+            {theme === 'dark' ? <HiSun className="h-6 w-6" /> : <HiMoon className="h-6 w-6" />}
           </button>
         </nav>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center space-x-2">
+          {/* Language Switcher for Mobile */}
+          <LanguageSwitcher />
+
+          {/* Theme Toggle for Mobile */}
+          <button
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            className="p-2 rounded-lg hover:bg-theme-bg-secondary transition-colors duration-200"
+          >
+            {theme === 'dark' ? <HiSun className="h-6 w-6" /> : <HiMoon className="h-6 w-6" />}
+          </button>
+
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="mobile-menu-button"
@@ -90,7 +116,11 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className="nav-link block"
+                className={`block px-3 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                  isActiveLink(item.href)
+                    ? 'bg-brand-primary text-white shadow-md'
+                    : 'text-theme-text-primary hover:bg-theme-bg-secondary hover:text-brand-primary'
+                }`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
@@ -98,12 +128,14 @@ const Navbar = () => {
             ))}
             <Link
               href="/contact"
-              className="block w-full text-center mt-4 px-4 py-2 rounded-lg
-                       bg-brand-primary text-white hover:bg-brand-primary-light
-                       transition-colors duration-200"
+              className={`block w-full text-center mt-4 px-4 py-2 rounded-lg transition-colors duration-200 ${
+                isActiveLink('/contact')
+                  ? 'bg-brand-primary-dark text-white shadow-lg'
+                  : 'bg-brand-primary text-white hover:bg-brand-primary-light'
+              }`}
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Contact us
+              {t('nav.contact')}
             </Link>
           </div>
         </div>

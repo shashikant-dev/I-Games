@@ -1,7 +1,11 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import FloatingContactButtons from '@/components/ui/FloatingContactButtons';
 import ThemeProvider from '@/components/providers/ThemeProvider';
+import { LanguageProvider } from '@/contexts/LanguageContext';
+import LanguageMeta from '@/components/providers/LanguageMeta';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -15,8 +19,13 @@ export default function RootLayout({ children }) {
     <html lang="en" className={`${inter.variable}`} suppressHydrationWarning>
       <body>
         <ThemeProvider>
-          <Navbar />
-          {children}
+          <LanguageProvider>
+            <LanguageMeta />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <FloatingContactButtons />
+          </LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

@@ -1,21 +1,24 @@
 'use client';
 import Image from 'next/image';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const ServicesSection = () => {
+  const { t } = useLanguage();
+
   const services = [
     {
-      title: 'Best Gaming Web & App Development',
-      description: 'After accumulating years of expertise we take immense pride in delivering cutting-edge sports and gaming app development services.',
+      title: t('offerings.items.webApp.title'),
+      description: t('offerings.items.webApp.description'),
       icon: '/globe.svg'
     },
     {
-      title: 'Game App Development',
-      description: 'Our adept game developers craft winsome gaming software solutions to help you deliver a seamless gaming experience.',
+      title: t('offerings.items.gameApp.title'),
+      description: t('offerings.items.gameApp.description'),
       icon: '/window.svg'
     },
     {
-      title: 'Top Quality Fantasy Sports Development',
-      description: 'We offer cutting-edge fantasy sports solutions for various sports like cricket, football, tennis, kabaddi, and many other sports.',
+      title: t('offerings.items.fantasyApp.title'),
+      description: t('offerings.items.fantasyApp.description'),
       icon: '/file.svg'
     }
   ];
@@ -29,12 +32,11 @@ const ServicesSection = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-theme-text-primary mb-4">
-            Our offerings that make you stand out in the
-            <span className="text-brand-primary"> Gaming Industry</span>
+            {t('offerings.title')}
+            <span className="text-brand-primary"> {t('offerings.titleHighlight')}</span>
           </h2>
           <p className="text-theme-text-secondary text-lg max-w-3xl mx-auto">
-            We stand tall in the gaming app development industry for delivering remarkable gaming solutions.
-            Our seasoned developers craft top-quality gaming experiences that engage and delight users.
+            {t('offerings.description')}
           </p>
         </div>
 
