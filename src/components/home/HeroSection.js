@@ -3,154 +3,71 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import {
-  IoStatsChart, IoGameController, IoTv, IoFootball,
-  IoBasketball, IoCash, IoTrophy, IoDesktop
+  IoCash, IoTrophy, IoDesktop, IoAirplane
 } from 'react-icons/io5';
 import {
-  SiWebrtc, SiDatadog, SiWorldhealthorganization
+  SiDatadog
 } from 'react-icons/si';
 import {
-  MdSports, MdCasino, MdSportsCricket, MdApi,
-  MdDeveloperMode, MdSportsScore, MdGames
+  MdCasino,
+  MdDeveloperMode, MdSportsScore, MdGames, MdSportsMartialArts, MdOutlineCasino
 } from 'react-icons/md';
-import { FaDice } from 'react-icons/fa';
+import { FaDice, FaHeart, FaRunning, FaPlane } from 'react-icons/fa';
 import {
   GiSoccerBall, GiBasketballBall, GiTennisRacket, GiPokerHand,
   GiDiceEightFacesEight, GiCricketBat, GiGamepad, GiTrophy,
-  GiTv, GiChart
+  GiTv, GiChart, GiDiceSixFacesFive, GiJumpingDog
 } from 'react-icons/gi';
 
-const services = [
-  {
-    id: 1,
-    name: 'Live Scores & Stats API',
-    icon: <GiChart className="w-12 h-12" />,
-    category: 'Data'
-  },
-  {
-    id: 2,
-    name: 'Live Odds & Predictions API',
-    icon: <IoCash className="w-12 h-12" />,
-    category: 'Betting'
-  },
-  {
-    id: 3,
-    name: 'Player & Team Data API',
-    icon: <SiDatadog className="w-12 h-12" />,
-    category: 'Data'
-  },
-  {
-    id: 4,
-    name: 'Fancy Betting API',
-    icon: <GiPokerHand className="w-12 h-12" />,
-    category: 'Betting'
-  },
-  {
-    id: 5,
-    name: 'Bookmaker Odds API',
-    icon: <IoCash className="w-12 h-12" />,
-    category: 'Betting'
-  },
-  {
-    id: 6,
-    name: 'Casino Games API',
-    icon: <GiDiceEightFacesEight className="w-12 h-12" />,
-    category: 'Casino'
-  },
-  {
-    id: 7,
-    name: 'Score API',
-    icon: <MdSportsScore className="w-12 h-12" />,
-    category: 'Data'
-  },
-  {
-    id: 8,
-    name: 'TV Streaming API',
-    icon: <GiTv className="w-12 h-12" />,
-    category: 'Streaming'
-  },
-  {
-    id: 9,
-    name: 'Fantasy App Development',
-    icon: <GiTrophy className="w-12 h-12" />,
-    category: 'Development'
-  },
-  {
-    id: 10,
-    name: 'Betting Platform Development',
-    icon: <IoDesktop className="w-12 h-12" />,
-    category: 'Development'
-  },
-  {
-    id: 11,
-    name: 'Sports Coverage APIs',
-    icon: <GiSoccerBall className="w-12 h-12" />,
-    category: 'Data'
-  },
-  {
-    id: 12,
-    name: 'Virtual Sports Integration',
-    icon: <GiGamepad className="w-12 h-12" />,
-    category: 'Gaming'
-  },
-  {
-    id: 13,
-    name: 'Sportsbook Development',
-    icon: <GiBasketballBall className="w-12 h-12" />,
-    category: 'Development'
-  },
-  {
-    id: 14,
-    name: 'Whitelabel Betting Platform',
-    icon: <IoDesktop className="w-12 h-12" />,
-    category: 'Development'
-  },
-  {
-    id: 15,
-    name: 'Premium Odds API',
-    icon: <IoCash className="w-12 h-12" />,
-    category: 'Betting'
-  },
-  {
-    id: 16,
-    name: 'Casino App Development',
-    icon: <FaDice className="w-12 h-12" />,
-    category: 'Development'
-  },
-  {
-    id: 17,
-    name: 'Gambling App Development',
-    icon: <MdCasino className="w-12 h-12" />,
-    category: 'Development'
-  },
-  {
-    id: 18,
-    name: 'Fantasy Points API',
-    icon: <IoTrophy className="w-12 h-12" />,
-    category: 'Data'
-  },
-  {
-    id: 19,
-    name: 'Worldwide Sports Coverage',
-    icon: <GiTennisRacket className="w-12 h-12" />,
-    category: 'Data'
-  },
-  {
-    id: 20,
-    name: 'API Trial & Developer Tools',
-    icon: <MdDeveloperMode className="w-12 h-12" />,
-    category: 'Development'
-  }
-];
+import { GiBoxingGlove, GiCasinoChip, GiCardJoker, GiSittingDog, GiHorseHead } from "react-icons/gi";
+import { SiNba } from "react-icons/si";
+import { MdOutlineSportsKabaddi } from "react-icons/md";
+import { AiFillApi } from "react-icons/ai";
+
 
 const categories = [
   'All',
-  'Data',
-  'Betting',
+  'Sport',
   'Casino',
+  'API',
+  'Betting',
   'Development',
   'Gaming',
-  'Streaming'
+  'Streaming',
+];
+
+const services = [
+  { id: 14, name: 'White Label & Mother Panel', icon: <IoDesktop className="w-12 h-12" />, category: 'Development' },
+  { id: 16, name: 'Casino App Development', icon: <FaDice className="w-12 h-12" />, category: 'Development' },
+  { id: 19, name: 'Live Casino with Lowest GGR', icon: <MdOutlineCasino className="w-12 h-12" />, category: 'Betting' },
+  { id: 17, name: 'Gambling App Development', icon: <MdDeveloperMode className="w-12 h-12" />, category: 'Development' },
+  { id: 6, name: 'Casino Games API', icon: <GiDiceEightFacesEight className="w-12 h-12" />, category: 'API' },
+  { id: 18, name: 'Accurate Settlement API', icon: <IoCash className="w-12 h-12" />, category: 'API' },
+  { id: 1, name: 'Live Scores & Stats API', icon: <GiChart className="w-12 h-12" />, category: 'API' },
+  { id: 2, name: 'Live Odds & Predictions API', icon: <IoCash className="w-12 h-12" />, category: 'API' },
+  { id: 3, name: 'Player & Team Data API', icon: <SiDatadog className="w-12 h-12" />, category: 'API' },
+  { id: 4, name: 'Fancy Skilled Betting API', icon: <GiPokerHand className="w-12 h-12" />, category: 'API' },
+  { id: 5, name: 'Bookmaker Odds API', icon: <IoCash className="w-12 h-12" />, category: 'API' },
+  { id: 7, name: 'Score API', icon: <MdSportsScore className="w-12 h-12" />, category: 'API' },
+  { id: 8, name: 'TV Streaming API', icon: <GiTv className="w-12 h-12" />, category: 'Streaming' },
+  { id: 9, name: 'Fantasy App Development', icon: <GiTrophy className="w-12 h-12" />, category: 'Development' },
+  { id: 10, name: 'Skilled Betting Platform Development', icon: <IoDesktop className="w-12 h-12" />, category: 'Development' },
+  { id: 11, name: 'Sports Coverage APIs', icon: <GiSoccerBall className="w-12 h-12" />, category: 'API' },
+  { id: 12, name: 'Virtual Sports Integration', icon: <GiGamepad className="w-12 h-12" />, category: 'Gaming' },
+  { id: 13, name: 'Sportsbook Development', icon: <GiBasketballBall className="w-12 h-12" />, category: 'Development' },
+  { id: 15, name: 'Premium Odds API', icon: <IoCash className="w-12 h-12" />, category: 'API' },
+  { id: 21, name: 'Cricket', icon: <GiCricketBat className="w-12 h-12" />, category: 'Sport' },
+  { id: 22, name: 'Soccer', icon: <GiSoccerBall className="w-12 h-12" />, category: 'Sport' },
+  { id: 23, name: 'Tennis', icon: <GiTennisRacket className="w-12 h-12" />, category: 'Sport' },
+  { id: 24, name: 'Basketball', icon: <GiBasketballBall className="w-12 h-12" />, category: 'Sport' },
+  { id: 25, name: 'Racing', icon: <FaRunning className="w-12 h-12" />, category: 'Sport' },
+  { id: 26, name: 'Kabaddi', icon: <MdOutlineSportsKabaddi className="w-12 h-12" />, category: 'Sport' },
+  { id: 27, name: 'MMA', icon: <MdSportsMartialArts className="w-12 h-12" />, category: 'Sport' },
+  { id: 28, name: 'NBA API', icon: <SiNba className="w-12 h-12" />, category: 'API' },
+  { id: 30, name: 'Teenpatti', icon: <GiCardJoker className="w-12 h-12" />, category: 'Casino' },
+  { id: 31, name: 'Poker', icon: <GiPokerHand className="w-12 h-12" />, category: 'Casino' },
+  { id: 32, name: 'Greyhound', icon: <GiJumpingDog className="w-12 h-12" />, category: 'Sport' },
+  { id: 33, name: 'Horse', icon: <GiHorseHead className="w-12 h-12" />, category: 'Sport' },
 ];
 
 const carouselSlides = [
@@ -162,7 +79,7 @@ const carouselSlides = [
   },
   {
     id: 2,
-    image: 'https://placehold.co/800x300/dc2626/ffffff?text=Betting+Platform+Development',
+    image: 'https://placehold.co/800x300/dc2626/ffffff?text=Skilled Betting+Platform+Development',
     title: '',
     description: ''
   },
@@ -273,20 +190,22 @@ export default function HeroSection() {
           </div>
 
           {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4
-                        max-h-[500px] overflow-y-auto pr-3
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4
+                        max-h-[600px] overflow-y-auto pr-3
                         scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent">
             {filteredServices.map(service => (
               <div
                 key={service.id}
-                className="flex items-center gap-4 p-4 rounded-lg
-                         bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700
-                         shadow-sm transition-all cursor-pointer group min-h-[80px]"
+                className="flex flex-col items-center p-4 rounded-xl
+                         bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700
+                         shadow-md hover:shadow-lg transition-all cursor-pointer group border border-gray-100 dark:border-gray-700"
               >
-                <div className="text-[#3B82F6] flex-shrink-0">
-                  {service.icon}
+                <div className="w-16 h-16 rounded-full bg-[#3B82F6] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                  <div className="text-white">
+                    {service.icon}
+                  </div>
                 </div>
-                <span className="text-base font-semibold text-gray-900 dark:text-white line-clamp-2 leading-relaxed">
+                <span className="text-sm font-semibold text-gray-900 dark:text-white text-center leading-tight">
                   {service.name}
                 </span>
               </div>
