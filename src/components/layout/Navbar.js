@@ -6,6 +6,7 @@ import { useTheme } from 'next-themes';
 import { HiSun, HiMoon } from 'react-icons/hi2';
 import { useLanguage } from '@/contexts/LanguageContext';
 import LanguageSwitcher from '@/components/ui/LanguageSwitcher';
+import Image from 'next/image';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -36,6 +37,7 @@ const Navbar = () => {
           <Link href="/" className="flex items-center">
             <span className="text-xl font-semibold text-theme-text-primary">
               iGames.cloud
+              {/* <Image src="/light-mode-logo.svg" alt="iGames.cloud" width={200} height={120} /> */}
             </span>
           </Link>
         </div>

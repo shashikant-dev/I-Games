@@ -51,12 +51,12 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: 'Facebook', href: '#', icon: <FaFacebookF />, color: 'hover:text-blue-600 dark:hover:text-blue-400' },
-    { name: 'Twitter', href: '#', icon: <FaTwitter />, color: 'hover:text-blue-400 dark:hover:text-blue-300' },
-    { name: 'LinkedIn', href: '#', icon: <FaLinkedinIn />, color: 'hover:text-blue-700 dark:hover:text-blue-500' },
-    { name: 'Instagram', href: '#', icon: <FaInstagram />, color: 'hover:text-pink-600 dark:hover:text-pink-400' },
-    { name: 'Telegram', href: '#', icon: <FaTelegramPlane />, color: 'hover:text-blue-500 dark:hover:text-blue-300' },
-    { name: 'WhatsApp', href: '#', icon: <FaWhatsapp />, color: 'hover:text-green-500 dark:hover:text-green-400' }
+    { name: 'Facebook', href: 'https://www.facebook.com/igames.cloud', icon: <FaFacebookF />, color: 'hover:text-blue-600 dark:hover:text-blue-400' },
+    { name: 'Twitter', href: 'https://x.com/igamescloud', icon: <FaTwitter />, color: 'hover:text-blue-400 dark:hover:text-blue-300' },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/igamescloud', icon: <FaLinkedinIn />, color: 'hover:text-blue-700 dark:hover:text-blue-500' },
+    { name: 'Instagram', href: 'https://www.instagram.com/igames.cloud', icon: <FaInstagram />, color: 'hover:text-pink-600 dark:hover:text-pink-400' },
+    { name: 'Telegram', href: 'https://t.me/igamescloud', icon: <FaTelegramPlane />, color: 'hover:text-blue-500 dark:hover:text-blue-300' },
+    { name: 'WhatsApp', href: 'https://wa.me/919326000000', icon: <FaWhatsapp />, color: 'hover:text-green-500 dark:hover:text-green-400' }
   ];
 
   return (
@@ -172,6 +172,8 @@ const Footer = () => {
                 <Link
                   key={index}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className={`w-8 h-8 bg-gray-200 dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 transition-all duration-300 ${social.color} hover:scale-110`}
                   aria-label={social.name}
                 >
