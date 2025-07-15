@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useTheme } from 'next-themes';
+import { HiSun, HiMoon } from 'react-icons/hi2';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -9,10 +10,10 @@ const Navbar = () => {
 
   const navigation = [
     { name: 'Home', href: '/' },
-    { name: 'Company', href: '/company' },
-    { name: 'Service', href: '/service' },
-    { name: 'Blog', href: '/blog' },
-    { name: 'Write us', href: '/contact' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Our Services', href: '/services' },
+    { name: 'Why Us?', href: '/why-us' },
+    { name: 'Contact Us', href: '/contact' },
   ];
 
   return (
@@ -51,14 +52,22 @@ const Navbar = () => {
           {/* Theme Toggle */}
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="ml-4 p-2 rounded-lg hover:bg-theme-bg-secondary"
+            className="ml-4 p-2 rounded-lg hover:bg-theme-bg-secondary transition-colors duration-200"
           >
-            {theme === 'dark' ? '🌞' : '🌙'}
+            {theme === 'dark' ? <HiSun className="h-6 w-6" /> : <HiMoon className="h-6 w-6" />}
           </button>
         </nav>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center space-x-2">
+          {/* Theme Toggle for Mobile */}
+          <button
+            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            className="p-2 rounded-lg hover:bg-theme-bg-secondary transition-colors duration-200"
+          >
+            {theme === 'dark' ? <HiSun className="h-6 w-6" /> : <HiMoon className="h-6 w-6" />}
+          </button>
+
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             className="mobile-menu-button"

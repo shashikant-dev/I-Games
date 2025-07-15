@@ -1,6 +1,8 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
+import Footer from '@/components/layout/Footer';
+import FloatingContactButtons from '@/components/ui/FloatingContactButtons';
 import ThemeProvider from '@/components/providers/ThemeProvider';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
@@ -16,7 +18,9 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeProvider>
           <Navbar />
-          {children}
+          <main>{children}</main>
+          <Footer />
+          <FloatingContactButtons />
         </ThemeProvider>
       </body>
     </html>

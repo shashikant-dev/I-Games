@@ -79,7 +79,7 @@ const carouselSlides = [
   },
   {
     id: 2,
-    image: 'https://placehold.co/800x300/dc2626/ffffff?text=Skilled Betting+Platform+Development',
+    image: 'https://placehold.co/800x300/dc2626/ffffff?text=Skilled+Betting+Platform+Development',
     title: '',
     description: ''
   },
