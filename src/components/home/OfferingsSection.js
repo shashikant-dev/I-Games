@@ -3,59 +3,61 @@
 import { HiGlobeAlt } from 'react-icons/hi';
 import { IoGameController } from 'react-icons/io5';
 import { MdSports } from 'react-icons/md';
-
-const stats = [
-  {
-    number: '19',
-    label: 'Years Delivering Games',
-    gradient: 'from-purple-400/20 to-purple-600/20',
-    textColor: 'text-purple-600'
-  },
-  {
-    number: '120+',
-    label: 'In-house Professionals',
-    gradient: 'from-blue-400/20 to-green-400/20',
-    textColor: 'text-blue-500'
-  },
-  {
-    number: '200+',
-    label: 'Games Delivered',
-    gradient: 'from-orange-400/20 to-red-400/20',
-    textColor: 'text-orange-500'
-  }
-];
-
-const offerings = [
-  {
-    icon: <HiGlobeAlt className="w-12 h-12" />,
-    title: 'Best Gaming Web & App',
-    description: 'Develop cutting-edge gaming platforms with modern technology stack'
-  },
-  {
-    icon: <IoGameController className="w-12 h-12" />,
-    title: 'Game App Development',
-    description: 'Create engaging and immersive gaming experiences for all platforms'
-  },
-  {
-    icon: <MdSports className="w-12 h-12" />,
-    title: 'Top Quality Fantasy Sports',
-    description: 'Build feature-rich fantasy sports platforms with advanced analytics'
-  }
-];
+import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function OfferingsSection() {
+  const { t } = useLanguage();
+
+  const stats = [
+    {
+      number: '19',
+      label: t('stats.items.years'),
+      gradient: 'from-purple-400/20 to-purple-600/20',
+      textColor: 'text-purple-600'
+    },
+    {
+      number: '120+',
+      label: t('stats.items.professionals'),
+      gradient: 'from-blue-400/20 to-green-400/20',
+      textColor: 'text-blue-500'
+    },
+    {
+      number: '200+',
+      label: t('stats.items.games'),
+      gradient: 'from-orange-400/20 to-red-400/20',
+      textColor: 'text-orange-500'
+    }
+  ];
+
+  const offerings = [
+    {
+      icon: <HiGlobeAlt className="w-12 h-12" />,
+      title: t('offerings.items.webAppShort.title'),
+      description: t('offerings.items.webAppShort.description')
+    },
+    {
+      icon: <IoGameController className="w-12 h-12" />,
+      title: t('offerings.items.gameAppShort.title'),
+      description: t('offerings.items.gameAppShort.description')
+    },
+    {
+      icon: <MdSports className="w-12 h-12" />,
+      title: t('offerings.items.fantasyAppShort.title'),
+      description: t('offerings.items.fantasyAppShort.description')
+    }
+  ];
+
   return (
     <div className="relative bg-white dark:bg-gray-900 py-16 sm:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
-            Our offerings that make you stand out in the{' '}
-            <span className="text-[#3B82F6]">Gaming Industry</span>
+            {t('offerings.title')}{' '}
+            <span className="text-[#3B82F6]">{t('offerings.titleHighlight')}</span>
           </h2>
           <p className="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            We stand tall in the gaming app development industry for delivering remarkable gaming solutions.
-            Our seasoned developers craft top-quality gaming experiences that engage and delight users.
+            {t('offerings.description')}
           </p>
         </div>
 

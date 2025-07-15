@@ -1,0 +1,151 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Our Services",
+    "whyUs": "Why Us?",
+    "contact": "Contact Us"
+  },
+  "hero": {
+    "title": "Power Your Sports Platform with Our Complete API & Development Suite",
+    "subtitle": "Into Game-Changing Sports Apps",
+    "description": "From live scores, odds, and predictions to fantasy games, casino apps, and streaming platforms — we deliver robust APIs and full-scale development solutions tailored for modern sports and betting businesses.",
+    "categories": {
+      "all": "All",
+      "api": "API",
+      "betting": "Betting",
+      "casino": "Casino",
+      "development": "Development",
+      "gaming": "Gaming",
+      "streaming": "Streaming",
+      "sport": "Sport"
+    },
+    "carousel": {
+      "sportsApi": "Sports API Solutions",
+      "bettingPlatform": "Skilled Betting Platform Development",
+      "fantasyGames": "Fantasy Sports Apps",
+      "casinoGames": "Casino Game Development"
+    }
+  },
+  "services": {
+    "whiteLabel": "White Label & Mother Panel",
+    "casinoAppDev": "Casino App Development",
+    "liveCasino": "Live Casino with Lowest GGR",
+    "gamblingAppDev": "Gambling App Development",
+    "casinoGamesApi": "Casino Games API",
+    "accurateSettlement": "Accurate Settlement API",
+    "liveScores": "Live Scores & Stats API",
+    "liveOdds": "Live Odds & Predictions API",
+    "playerTeamData": "Player & Team Data API",
+    "fancyBetting": "Fancy Skilled Betting API",
+    "bookmakerOdds": "Bookmaker Odds API",
+    "scoreApi": "Score API",
+    "tvStreaming": "TV Streaming API",
+    "fantasyAppDev": "Fantasy App Development",
+    "skilledBetting": "Skilled Betting Platform Development",
+    "sportsCoverage": "Sports Coverage APIs",
+    "virtualSports": "Virtual Sports Integration",
+    "sportsbookDev": "Sportsbook Development",
+    "premiumOdds": "Premium Odds API",
+    "cricket": "Cricket",
+    "soccer": "Soccer",
+    "tennis": "Tennis",
+    "basketball": "Basketball",
+    "racing": "Racing",
+    "kabaddi": "Kabaddi",
+    "mma": "MMA",
+    "nbaApi": "NBA API",
+    "teenpatti": "Teenpatti",
+    "poker": "Poker",
+    "greyhound": "Greyhound",
+    "horse": "Horse"
+  },
+  "offerings": {
+    "title": "Our offerings that make you stand out in the",
+    "titleHighlight": "Gaming Industry",
+    "description": "We stand tall in the gaming app development industry for delivering remarkable gaming solutions. Our seasoned developers craft top-quality gaming experiences that engage and delight users.",
+    "items": {
+      "webApp": {
+        "title": "Best Gaming Web & App Development",
+        "description": "After accumulating years of expertise we take immense pride in delivering cutting-edge sports and gaming app development services."
+      },
+      "gameApp": {
+        "title": "Game App Development",
+        "description": "Our adept game developers craft winsome gaming software solutions to help you deliver a seamless gaming experience."
+      },
+      "fantasyApp": {
+        "title": "Top Quality Fantasy Sports Development",
+        "description": "We offer cutting-edge fantasy sports solutions for various sports like cricket, football, tennis, kabaddi, and many other sports."
+      },
+      "webAppShort": {
+        "title": "Best Gaming Web & App",
+        "description": "Develop cutting-edge gaming platforms with modern technology stack"
+      },
+      "gameAppShort": {
+        "title": "Game App Development",
+        "description": "Create engaging and immersive gaming experiences for all platforms"
+      },
+      "fantasyAppShort": {
+        "title": "Top Quality Fantasy Sports",
+        "description": "Build feature-rich fantasy sports platforms with advanced analytics"
+      }
+    }
+  },
+  "stats": {
+    "title": "Our offerings that make you stand out in the Gaming Industry",
+    "description": "We stand tall in the gaming app development industry for delivering remarkable gaming solutions. Our seasoned developers craft top-quality gaming experiences that engage and delight users.",
+    "items": {
+      "years": "Years Delivering Games",
+      "professionals": "In-house Professionals",
+      "games": "Games Delivered"
+    }
+  },
+  "footer": {
+    "description": "Leading provider of sports APIs and gaming solutions for modern businesses.",
+    "contact": {
+      "getInTouch": "Get in Touch",
+      "email": "info@igames.cloud",
+      "phone": "+1 (555) 123-4567"
+    },
+    "sections": {
+      "services": "Services",
+      "company": "Company",
+      "support": "Support",
+      "legal": "Legal"
+    },
+    "links": {
+      "liveScoresApi": "Live Scores API",
+      "bettingPlatform": "Betting Platform",
+      "casinoGames": "Casino Games",
+      "whiteLabelSolutions": "White Label Solutions",
+      "aboutUs": "About Us",
+      "whyChooseUs": "Why Choose Us?",
+      "contact": "Contact",
+      "careers": "Careers",
+      "helpCenter": "Help Center",
+      "apiDocs": "API Docs",
+      "support": "Support",
+      "faq": "FAQ",
+      "privacyPolicy": "Privacy Policy",
+      "termsOfService": "Terms of Service",
+      "security": "Security",
+      "compliance": "Compliance"
+    },
+    "social": {
+      "followUs": "Follow Us:",
+      "newsletter": {
+        "placeholder": "Your email",
+        "subscribe": "Subscribe"
+      }
+    },
+    "copyright": "All rights reserved.",
+    "badges": {
+      "licensed": "Licensed & Regulated",
+      "certified": "ISO Certified"
+    }
+  },
+  "contact": {
+    "whatsapp": "Contact us on WhatsApp",
+    "telegram": "Contact us on Telegram"
+  }
+}

@@ -1,8 +1,11 @@
 'use client';
 import Link from 'next/link';
 import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const FloatingContactButtons = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col space-y-3">
       {/* WhatsApp Button */}
@@ -11,7 +14,7 @@ const FloatingContactButtons = () => {
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 bg-green-500 hover:bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 group"
-        aria-label="Contact us on WhatsApp"
+        aria-label={t('contact.whatsapp')}
       >
         <FaWhatsapp className="w-7 h-7" />
       </Link>
@@ -22,7 +25,7 @@ const FloatingContactButtons = () => {
         target="_blank"
         rel="noopener noreferrer"
         className="w-14 h-14 bg-blue-500 hover:bg-blue-600 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 group"
-        aria-label="Contact us on Telegram"
+        aria-label={t('contact.telegram')}
       >
         <FaTelegramPlane className="w-7 h-7" />
       </Link>
