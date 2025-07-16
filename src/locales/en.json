@@ -105,7 +105,8 @@
     "contact": {
       "getInTouch": "Get in Touch",
       "email": "info@igames.cloud",
-      "phone": "+1 (555) 123-4567"
+      "phone": "+1 (555) 123-4567",
+      "address": "123 Business Park, Tech Valley, CA 94043, USA"
     },
     "sections": {
       "services": "Services",

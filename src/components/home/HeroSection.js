@@ -128,7 +128,7 @@ export default function HeroSection() {
           <div className="text-center mb-8">
             {/* Carousel Banner */}
             <div className="relative">
-              <div className="relative h-48 sm:h-64 overflow-hidden rounded-2xl">
+              <div className="mt-2 sm:mt-0 relative h-48 sm:h-64 overflow-hidden rounded-2xl">
                 {carouselSlides.map((slide, index) => (
                   <div
                     key={slide.id}

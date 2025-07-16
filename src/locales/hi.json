@@ -105,7 +105,8 @@
     "contact": {
       "getInTouch": "संपर्क में रहें",
       "email": "info@igames.cloud",
-      "phone": "+1 (555) 123-4567"
+      "phone": "+1 (555) 123-4567",
+      "address": "123 बिजनेस पार्क, टेक वैली, CA 94043, USA"
     },
     "sections": {
       "services": "सेवाएं",

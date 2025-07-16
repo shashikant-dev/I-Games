@@ -73,7 +73,7 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <div className="md:hidden flex items-center space-x-2">
+        <div className=" border-[#dedede] md:hidden flex items-center space-x-2">
           {/* Language Switcher for Mobile */}
           <LanguageSwitcher />
 
@@ -126,17 +126,7 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-            <Link
-              href="/contact"
-              className={`block w-full text-center mt-4 px-4 py-2 rounded-lg transition-colors duration-200 ${
-                isActiveLink('/contact')
-                  ? 'bg-brand-primary-dark text-white shadow-lg'
-                  : 'bg-brand-primary text-white hover:bg-brand-primary-light'
-              }`}
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              {t('nav.contact')}
-            </Link>
+
           </div>
         </div>
       )}
