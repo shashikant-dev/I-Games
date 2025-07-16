@@ -63,45 +63,89 @@ const Footer = () => {
     <footer className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        {/* Top Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-6 gap-8 mb-8">
-          {/* Company Info */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="flex items-center mb-3">
-              <span className="text-xl sm:text-2xl font-bold text-[#3B82F6] dark:text-[#60A5FA]">
+        {/* Top Section - Company Info & Newsletter */}
+        <div className="mb-8">
+          {/* Company Branding */}
+          <div className="text-center md:text-left mb-6">
+            <Link href="/" className="inline-flex items-center justify-center md:justify-start mb-4">
+              <span className="text-2xl sm:text-3xl font-bold text-[#3B82F6] dark:text-[#60A5FA]">
                 iGames.cloud
               </span>
             </Link>
-            <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
+            <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed max-w-md mx-auto md:mx-0">
               {t('footer.description')}
             </p>
+          </div>
 
-            {/* Contact Info */}
-            <div className="space-y-2 text-sm">
-              <div className="flex items-center space-x-2">
-                <FaEnvelope className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA]" />
-                <Link href={`mailto:${t('footer.contact.email')}`} className="text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA]">
-                  {t('footer.contact.email')}
-                </Link>
-              </div>
-              <div className="flex items-center space-x-2">
-                <FaPhone className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA]" />
-                <Link href={`tel:${t('footer.contact.phone')}`} className="text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA]">
-                  {t('footer.contact.phone')}
-                </Link>
-              </div>
+          {/* Newsletter Section - Mobile Optimized */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700 mb-6">
+            <div className="text-center mb-4">
+              <h3 className="font-semibold text-lg text-[#3B82F6] dark:text-[#60A5FA] mb-2">
+                Stay Updated
+              </h3>
+              <p className="text-sm text-gray-600 dark:text-gray-300">
+                Get the latest updates on our APIs and gaming solutions
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder={t('footer.social.newsletter.placeholder')}
+                className="flex-1 px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6] dark:focus:ring-[#60A5FA] focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-sm"
+              />
+              <button className="px-6 py-3 bg-[#3B82F6] dark:bg-[#60A5FA] text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors text-sm font-medium whitespace-nowrap">
+                {t('footer.social.newsletter.subscribe')}
+              </button>
             </div>
           </div>
 
+                     {/* Contact Information - Mobile Optimized */}
+           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-600">
+             <h3 className="font-semibold text-lg text-[#3B82F6] dark:text-[#60A5FA] mb-4 text-center sm:text-left">
+               {t('footer.contact.getInTouch')}
+             </h3>
+             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+               <div className="flex items-center justify-center sm:justify-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg">
+                 <FaEnvelope className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA] flex-shrink-0" />
+                 <Link
+                   href={`mailto:${t('footer.contact.email')}`}
+                   className="text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] text-sm font-medium"
+                 >
+                   {t('footer.contact.email')}
+                 </Link>
+               </div>
+               <div className="flex items-center justify-center sm:justify-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg">
+                 <FaPhone className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA] flex-shrink-0" />
+                 <Link
+                   href={`tel:${t('footer.contact.phone')}`}
+                   className="text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] text-sm font-medium"
+                 >
+                   {t('footer.contact.phone')}
+                 </Link>
+               </div>
+               <div className="flex items-start justify-center sm:justify-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg sm:col-span-2 lg:col-span-1">
+                 <FaMapMarkerAlt className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA] flex-shrink-0 mt-0.5" />
+                 <span className="text-gray-600 dark:text-gray-300 text-sm font-medium text-center sm:text-left">
+                   {t('footer.contact.address')}
+                 </span>
+               </div>
+             </div>
+           </div>
+        </div>
+
+        {/* Links Section - Mobile Optimized Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-8">
           {/* Services */}
-          <div>
-            <h3 className="font-semibold mb-3 text-[#3B82F6] dark:text-[#60A5FA]">{t('footer.sections.services')}</h3>
+          <div className="space-y-3">
+            <h3 className="font-semibold text-base sm:text-lg text-[#3B82F6] dark:text-[#60A5FA] mb-3">
+              {t('footer.sections.services')}
+            </h3>
             <ul className="space-y-2">
               {footerSections.services.map((item, index) => (
                 <li key={index}>
                   <Link
                     href={item.href}
-                    className="text-sm text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] transition-colors"
+                    className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] transition-colors block py-1"
                   >
                     {item.name}
                   </Link>
@@ -111,14 +155,16 @@ const Footer = () => {
           </div>
 
           {/* Company */}
-          <div>
-            <h3 className="font-semibold mb-3 text-[#3B82F6] dark:text-[#60A5FA]">{t('footer.sections.company')}</h3>
+          <div className="space-y-3">
+            <h3 className="font-semibold text-base sm:text-lg text-[#3B82F6] dark:text-[#60A5FA] mb-3">
+              {t('footer.sections.company')}
+            </h3>
             <ul className="space-y-2">
               {footerSections.company.map((item, index) => (
                 <li key={index}>
                   <Link
                     href={item.href}
-                    className="text-sm text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] transition-colors"
+                    className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] transition-colors block py-1"
                   >
                     {item.name}
                   </Link>
@@ -128,14 +174,16 @@ const Footer = () => {
           </div>
 
           {/* Support */}
-          <div>
-            <h3 className="font-semibold mb-3 text-[#3B82F6] dark:text-[#60A5FA]">{t('footer.sections.support')}</h3>
+          <div className="space-y-3">
+            <h3 className="font-semibold text-base sm:text-lg text-[#3B82F6] dark:text-[#60A5FA] mb-3">
+              {t('footer.sections.support')}
+            </h3>
             <ul className="space-y-2">
               {footerSections.support.map((item, index) => (
                 <li key={index}>
                   <Link
                     href={item.href}
-                    className="text-sm text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] transition-colors"
+                    className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] transition-colors block py-1"
                   >
                     {item.name}
                   </Link>
@@ -145,14 +193,16 @@ const Footer = () => {
           </div>
 
           {/* Legal */}
-          <div>
-            <h3 className="font-semibold mb-3 text-[#3B82F6] dark:text-[#60A5FA]">{t('footer.sections.legal')}</h3>
+          <div className="space-y-3">
+            <h3 className="font-semibold text-base sm:text-lg text-[#3B82F6] dark:text-[#60A5FA] mb-3">
+              {t('footer.sections.legal')}
+            </h3>
             <ul className="space-y-2">
               {footerSections.legal.map((item, index) => (
                 <li key={index}>
                   <Link
                     href={item.href}
-                    className="text-sm text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] transition-colors"
+                    className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] transition-colors block py-1"
                   >
                     {item.name}
                   </Link>
@@ -162,46 +212,47 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
-          <div className="flex flex-col md:flex-row md:justify-between md:items-center space-y-4 md:space-y-0">
-            {/* Social Links */}
-            <div className="flex items-center space-x-4">
-              <span className="text-sm font-medium text-gray-900 dark:text-white">{t('footer.social.followUs')}</span>
+        {/* Social Media Section - Mobile Optimized */}
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-6 mb-6">
+          <div className="text-center">
+            <h3 className="font-semibold text-base sm:text-lg text-[#3B82F6] dark:text-[#60A5FA] mb-4">
+              {t('footer.social.followUs')}
+            </h3>
+            <div className="flex justify-center space-x-3 sm:space-x-4">
               {socialLinks.map((social, index) => (
                 <Link
                   key={index}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`w-8 h-8 bg-gray-200 dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 transition-all duration-300 ${social.color} hover:scale-110`}
+                  className={`w-10 h-10 sm:w-12 sm:h-12 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center text-gray-600 dark:text-gray-300 transition-all duration-300 ${social.color} hover:scale-110 shadow-md hover:shadow-lg border border-gray-200 dark:border-gray-600`}
                   aria-label={social.name}
                 >
-                  {social.icon}
+                  <span className="text-sm sm:text-base">
+                    {social.icon}
+                  </span>
                 </Link>
               ))}
             </div>
-
-            {/* Newsletter */}
-            <div className="flex items-center space-x-2">
-              <input
-                type="email"
-                placeholder={t('footer.social.newsletter.placeholder')}
-                className="px-3 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6] dark:focus:ring-[#60A5FA] focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-sm w-48"
-              />
-              <button className="px-4 py-2 bg-[#3B82F6] dark:bg-[#60A5FA] text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors text-sm font-medium">
-                {t('footer.social.newsletter.subscribe')}
-              </button>
-            </div>
           </div>
+        </div>
 
-          {/* Copyright */}
-          <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center text-xs text-gray-500 dark:text-gray-400 space-y-2 sm:space-y-0">
-              <p>&copy; {currentYear} iGames.cloud. {t('footer.copyright')}</p>
-              <div className="flex space-x-4">
+        {/* Bottom Copyright Section */}
+        <div className="border-t border-gray-200 dark:border-gray-700 pt-6">
+          <div className="text-center space-y-3">
+            {/* Copyright */}
+            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">
+              &copy; {currentYear} iGames.cloud. {t('footer.copyright')}
+            </p>
+
+            {/* Badges */}
+            <div className="flex flex-col sm:flex-row justify-center items-center space-y-2 sm:space-y-0 sm:space-x-6 text-xs text-gray-500 dark:text-gray-400">
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                 <span>{t('footer.badges.licensed')}</span>
-                <span>•</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
                 <span>{t('footer.badges.certified')}</span>
               </div>
             </div>

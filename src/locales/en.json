@@ -105,7 +105,8 @@
     "contact": {
       "getInTouch": "Get in Touch",
       "email": "info@igames.cloud",
-      "phone": "+1 (555) 123-4567"
+      "phone": "+1 (555) 123-4567",
+      "address": "123 Business Park, Tech Valley, CA 94043, USA"
     },
     "sections": {
       "services": "Services",
@@ -142,6 +143,114 @@
     "badges": {
       "licensed": "Licensed & Regulated",
       "certified": "ISO Certified"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About",
+      "titleHighlight": "iGames.cloud",
+      "subtitle": "Pioneering the Future of Sports Technology",
+      "description": "We are a leading provider of innovative sports APIs, gaming solutions, and development services, empowering businesses to create exceptional digital experiences in the sports and entertainment industry."
+    },
+    "company": {
+      "title": "Our Company",
+      "description": "Founded with a vision to revolutionize the sports technology landscape, iGames.cloud has grown from a small startup to a globally recognized leader in sports APIs and gaming solutions. We combine cutting-edge technology with deep industry expertise to deliver solutions that drive success for our clients worldwide.",
+      "foundedYear": "2005",
+      "foundedLabel": "Founded"
+    },
+    "mission": {
+      "title": "Mission & Vision",
+      "mission": {
+        "title": "Our Mission",
+        "description": "To empower businesses with innovative sports technology solutions that enhance user engagement, drive growth, and create meaningful connections between fans and their favorite sports."
+      },
+      "vision": {
+        "title": "Our Vision",
+        "description": "To be the global leader in sports technology, setting new standards for innovation, reliability, and customer success in the digital sports ecosystem."
+      }
+    },
+    "values": {
+      "title": "Our Core Values",
+      "innovation": {
+        "title": "Innovation",
+        "description": "We continuously push boundaries to deliver cutting-edge solutions that stay ahead of industry trends."
+      },
+      "reliability": {
+        "title": "Reliability",
+        "description": "Our robust infrastructure ensures 99.9% uptime and consistent performance for mission-critical applications."
+      },
+      "partnership": {
+        "title": "Partnership",
+        "description": "We build long-term relationships with our clients, working together to achieve mutual success and growth."
+      },
+      "excellence": {
+        "title": "Excellence",
+        "description": "We maintain the highest standards in everything we do, from code quality to customer service."
+      }
+    },
+    "technology": {
+      "title": "Technology & Innovation",
+      "description": "Our technology stack is built on modern, scalable architectures that handle millions of requests per day. We leverage artificial intelligence, machine learning, and real-time data processing to deliver unparalleled performance and accuracy.",
+      "features": {
+        "realtime": {
+          "title": "Real-time Data",
+          "description": "Lightning-fast data delivery with sub-second latency"
+        },
+        "scalable": {
+          "title": "Scalable Infrastructure",
+          "description": "Cloud-native architecture that scales with your needs"
+        },
+        "ai": {
+          "title": "AI-Powered Analytics",
+          "description": "Advanced predictions and insights using machine learning"
+        },
+        "secure": {
+          "title": "Enterprise Security",
+          "description": "Bank-grade security with end-to-end encryption"
+        }
+      }
+    },
+    "team": {
+      "title": "Leadership Team",
+      "description": "Our diverse team of experts brings together decades of experience in sports technology, software development, and business strategy.",
+      "ceo": {
+        "name": "John Smith",
+        "title": "Chief Executive Officer",
+        "description": "20+ years in sports technology and business development"
+      },
+      "cto": {
+        "name": "Sarah Johnson",
+        "title": "Chief Technology Officer",
+        "description": "Expert in scalable systems and real-time data processing"
+      },
+      "coo": {
+        "name": "Michael Chen",
+        "title": "Chief Operating Officer",
+        "description": "Specializes in operations and strategic partnerships"
+      }
+    },
+    "stats": {
+      "clients": {
+        "number": "500+",
+        "label": "Global Clients"
+      },
+      "apis": {
+        "number": "50+",
+        "label": "API Endpoints"
+      },
+      "uptime": {
+        "number": "99.9%",
+        "label": "Uptime Guarantee"
+      },
+      "requests": {
+        "number": "1B+",
+        "label": "Daily Requests"
+      }
+    },
+    "cta": {
+      "title": "Ready to Get Started?",
+      "description": "Join hundreds of companies that trust iGames.cloud for their sports technology needs.",
+      "button": "Contact Us Today"
     }
   },
   "contact": {
