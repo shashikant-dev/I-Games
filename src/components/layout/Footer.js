@@ -34,7 +34,7 @@ const Footer = () => {
       { name: t('footer.links.aboutUs'), href: '/about' },
       { name: t('footer.links.whyChooseUs'), href: '/why-us' },
       { name: t('footer.links.contact'), href: '/contact' },
-      { name: t('footer.links.careers'), href: '/careers' }
+      { name: 'Our Services', href: '/services' }
     ],
     support: [
       { name: t('footer.links.helpCenter'), href: '/help' },
@@ -65,17 +65,6 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Top Section - Company Info & Newsletter */}
         <div className="mb-8">
-          {/* Company Branding */}
-          <div className="text-center md:text-left mb-6">
-            <Link href="/" className="inline-flex items-center justify-center md:justify-start mb-4">
-              <span className="text-2xl sm:text-3xl font-bold text-[#3B82F6] dark:text-[#60A5FA]">
-                iGames.cloud
-              </span>
-            </Link>
-            <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed max-w-md mx-auto md:mx-0">
-              {t('footer.description')}
-            </p>
-          </div>
 
           {/* Newsletter Section - Mobile Optimized */}
           <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700 mb-6">
