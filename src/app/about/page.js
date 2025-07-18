@@ -134,7 +134,7 @@ export default function About() {
         </div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
+        <div className="text-center">
             <div className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-[#3B82F6]/10 to-[#60A5FA]/10 text-[#3B82F6] dark:text-[#60A5FA] text-xs sm:text-sm font-medium mb-6 sm:mb-8 border border-[#3B82F6]/20 backdrop-blur-sm">
               <HiSparkles className="w-4 h-4 sm:w-5 sm:h-5 mr-2 animate-pulse" />
               <span className="font-semibold">Established 2005</span>
@@ -149,7 +149,7 @@ export default function About() {
                 </span>
                 <div className="absolute -bottom-1 sm:-bottom-2 left-0 right-0 h-0.5 sm:h-1 bg-gradient-to-r from-[#3B82F6] to-[#60A5FA] rounded-full opacity-30"></div>
               </span>
-            </h1>
+          </h1>
 
             <p className="text-lg sm:text-xl lg:text-2xl text-[#3B82F6] dark:text-[#60A5FA] font-semibold mb-4 sm:mb-6 lg:mb-8 leading-relaxed px-2 sm:px-0">
               {t('about.hero.subtitle')}
@@ -429,8 +429,8 @@ export default function About() {
               <FaRocket className="w-4 h-4 sm:w-5 sm:h-5 mr-3 group-hover:-rotate-12 transition-transform duration-300" />
               Explore Services
             </Link>
-          </div>
         </div>
+      </div>
       </section>
     </main>
   );
