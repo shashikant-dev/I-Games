@@ -32,10 +32,19 @@ const Navbar = () => {
   return (
     <header className="header">
       <div className="header-container">
-        {/* Logo */}
-        <div className="flex-shrink-0">
-          <Link href="/" className="flex items-center">
-              <Image src="/light-mode-logo.svg" alt="iGames.cloud" width={190} height={400} />
+        {/* Logo - Fixed Alignment */}
+        <div className="flex-shrink-0 flex items-center">
+          <Link href="/" className="flex items-center h-12">
+            <div className="relative h-10 w-auto">
+              <Image
+                src="/light-mode-logo.svg"
+                alt="iGames.cloud"
+                width={160}
+                height={40}
+                className="h-10 w-auto object-contain"
+                priority
+              />
+            </div>
           </Link>
         </div>
 
@@ -70,7 +79,7 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile Menu Button */}
-        <div className=" border-[#dedede] md:hidden flex items-center space-x-2">
+        <div className="md:hidden flex items-center space-x-2">
           {/* Language Switcher for Mobile */}
           <LanguageSwitcher />
 
@@ -123,7 +132,6 @@ const Navbar = () => {
                 {item.name}
               </Link>
             ))}
-
           </div>
         </div>
       )}

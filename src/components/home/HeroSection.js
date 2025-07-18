@@ -27,8 +27,13 @@ import { AiFillApi } from "react-icons/ai";
 
 export default function HeroSection() {
   const { t } = useLanguage();
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [currentSlide, setCurrentSlide] = useState(0);
+
+  // Update selectedCategory when language changes
+  useEffect(() => {
+    setSelectedCategory(t('hero.categories.all'));
+  }, [t]);
 
   const categories = [
     t('hero.categories.all'),
@@ -109,9 +114,9 @@ export default function HeroSection() {
     }, 4000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [carouselSlides.length]);
 
-  const filteredServices = selectedCategory === t('hero.categories.all')
+  const filteredServices = (selectedCategory === t('hero.categories.all') || selectedCategory === '')
     ? services
     : services.filter(service => service.category === selectedCategory);
 
