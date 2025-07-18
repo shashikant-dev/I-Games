@@ -35,10 +35,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex-shrink-0">
           <Link href="/" className="flex items-center">
-            <span className="text-xl font-semibold text-theme-text-primary">
-              iGames.cloud
-              {/* <Image src="/light-mode-logo.svg" alt="iGames.cloud" width={200} height={120} /> */}
-            </span>
+              <Image src="/light-mode-logo.svg" alt="iGames.cloud" width={190} height={400} />
           </Link>
         </div>
 
