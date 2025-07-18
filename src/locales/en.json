@@ -255,6 +255,351 @@
   },
   "contact": {
     "whatsapp": "Contact us on WhatsApp",
-    "telegram": "Contact us on Telegram"
+    "telegram": "Contact us on Telegram",
+    "page": {
+      "title": "Get in Touch",
+      "titleHighlight": "with Us",
+      "subtitle": "Let's Build Something Amazing Together",
+      "description": "Ready to revolutionize your sports or gaming platform? Our team of experts is here to help you every step of the way. Contact us today to discuss your project requirements.",
+      "form": {
+        "title": "Send us a Message",
+        "name": "Full Name",
+        "email": "Email Address",
+        "phone": "Phone Number",
+        "company": "Company Name",
+        "service": "Service Interested In",
+        "message": "Tell us about your project",
+        "submit": "Send Message",
+        "sending": "Sending...",
+        "success": "Message sent successfully!",
+        "error": "Failed to send message. Please try again."
+      },
+      "info": {
+        "title": "Contact Information",
+        "email": {
+          "title": "Email Us",
+          "subtitle": "Send us an email anytime"
+        },
+        "phone": {
+          "title": "Call Us",
+          "subtitle": "Mon-Fri from 8am to 6pm"
+        },
+        "whatsapp": {
+          "title": "WhatsApp",
+          "subtitle": "Chat with us instantly"
+        },
+        "address": {
+          "title": "Visit Us",
+          "subtitle": "Come and visit our office"
+        }
+      },
+      "services": {
+        "title": "What We Can Help You With",
+        "api": "API Development & Integration",
+        "platform": "Platform Development",
+        "consulting": "Technical Consulting",
+        "support": "24/7 Support & Maintenance"
+      },
+      "whyChoose": {
+        "title": "Why Choose iGames.cloud?",
+        "experience": {
+          "title": "19+ Years Experience",
+          "description": "Industry-leading expertise in sports and gaming technology"
+        },
+        "support": {
+          "title": "24/7 Support",
+          "description": "Round-the-clock support for all your technical needs"
+        },
+        "clients": {
+          "title": "500+ Happy Clients",
+          "description": "Trusted by companies worldwide for reliable solutions"
+        },
+        "uptime": {
+          "title": "99.9% Uptime",
+          "description": "Enterprise-grade infrastructure with guaranteed reliability"
+        }
+      },
+      "cta": {
+        "title": "Ready to Start Your Project?",
+        "description": "Join hundreds of successful companies using our platform",
+        "button": "Get Started Now"
+      }
+    }
+  },
+  "whyUs": {
+    "page": {
+      "title": "Why Choose",
+      "titleHighlight": "iGames.cloud",
+      "subtitle": "Your Trusted Partner in Sports & Gaming Technology",
+      "description": "With 19+ years of excellence and 500+ successful projects, we deliver cutting-edge solutions that drive results.",
+      "hero": {
+        "badge": "Industry Leaders",
+        "stats": {
+          "experience": "19+ Years",
+          "projects": "500+ Projects",
+          "clients": "200+ Clients",
+          "uptime": "99.9% Uptime"
+        }
+      },
+      "advantages": {
+        "title": "Our Competitive Advantages",
+        "subtitle": "What Sets Us Apart in the Industry",
+        "items": {
+          "experience": {
+            "title": "Proven Industry Experience",
+            "description": "19+ years of deep expertise in sports and gaming technology with a track record of successful implementations."
+          },
+          "technology": {
+            "title": "Cutting-Edge Technology",
+            "description": "Latest technologies, AI-powered solutions, and scalable architecture designed for high-performance applications."
+          },
+          "team": {
+            "title": "Expert Development Team",
+            "description": "120+ in-house professionals including developers, designers, and sports data specialists."
+          },
+          "support": {
+            "title": "24/7 Premium Support",
+            "description": "Round-the-clock technical support with dedicated account managers for enterprise clients."
+          },
+          "security": {
+            "title": "Enterprise-Grade Security",
+            "description": "Bank-level security protocols, data encryption, and compliance with international standards."
+          },
+          "scalability": {
+            "title": "Infinite Scalability",
+            "description": "Cloud-native architecture that grows with your business, handling millions of concurrent users."
+          }
+        }
+      },
+      "achievements": {
+        "title": "Our Achievements",
+        "subtitle": "Numbers That Speak for Themselves",
+        "stats": {
+          "projects": {
+            "number": "500+",
+            "label": "Successful Projects",
+            "description": "Delivered across 50+ countries"
+          },
+          "clients": {
+            "number": "200+",
+            "label": "Happy Clients",
+            "description": "Ranging from startups to enterprises"
+          },
+          "uptime": {
+            "number": "99.9%",
+            "label": "System Uptime",
+            "description": "Guaranteed high availability"
+          },
+          "support": {
+            "number": "24/7",
+            "label": "Customer Support",
+            "description": "Always here when you need us"
+          },
+          "apis": {
+            "number": "100+",
+            "label": "API Endpoints",
+            "description": "Comprehensive sports data coverage"
+          },
+          "response": {
+            "number": "<100ms",
+            "label": "API Response Time",
+            "description": "Lightning-fast data delivery"
+          }
+        }
+      },
+      "testimonials": {
+        "title": "What Our Clients Say",
+        "subtitle": "Real feedback from real clients",
+        "items": {
+          "client1": {
+            "name": "Rajesh Kumar",
+            "company": "SportsTech Solutions",
+            "position": "CEO",
+            "rating": 5,
+            "text": "iGames.cloud transformed our business with their exceptional API solutions. The reliability and speed of their services is unmatched in the industry."
+          },
+          "client2": {
+            "name": "Sarah Johnson",
+            "company": "GameZone Entertainment",
+            "position": "CTO",
+            "rating": 5,
+            "text": "Working with iGames.cloud has been a game-changer. Their technical expertise and 24/7 support have been invaluable to our success."
+          },
+          "client3": {
+            "name": "Mohammed Al-Rashid",
+            "company": "Desert Gaming",
+            "position": "Founder",
+            "rating": 5,
+            "text": "The scalability and performance of iGames.cloud's platform allowed us to handle massive traffic during major sporting events without any issues."
+          }
+        }
+      },
+      "technology": {
+        "title": "Technology Excellence",
+        "subtitle": "Built with the Latest Technologies",
+        "features": {
+          "ai": {
+            "title": "AI-Powered Analytics",
+            "description": "Machine learning algorithms for predictive analytics and real-time insights"
+          },
+          "cloud": {
+            "title": "Cloud-Native Architecture",
+            "description": "Scalable, resilient infrastructure built for global deployment"
+          },
+          "realtime": {
+            "title": "Real-Time Processing",
+            "description": "Instant data updates with sub-second latency for live events"
+          },
+          "security": {
+            "title": "Advanced Security",
+            "description": "End-to-end encryption and compliance with global security standards"
+          }
+        }
+      },
+      "process": {
+        "title": "Our Proven Process",
+        "subtitle": "How We Deliver Excellence",
+        "steps": {
+          "consultation": {
+            "title": "Consultation",
+            "description": "We understand your requirements and business goals"
+          },
+          "planning": {
+            "title": "Strategic Planning",
+            "description": "Custom solution design tailored to your needs"
+          },
+          "development": {
+            "title": "Development",
+            "description": "Agile development with regular updates and feedback"
+          },
+          "deployment": {
+            "title": "Deployment",
+            "description": "Seamless go-live with comprehensive testing"
+          },
+          "support": {
+            "title": "Ongoing Support",
+            "description": "Continuous monitoring and optimization"
+          }
+        }
+      },
+      "cta": {
+        "title": "Ready to Experience the Difference?",
+        "description": "Join 200+ successful companies who trust iGames.cloud for their sports and gaming technology needs.",
+        "primaryButton": "Start Your Project",
+        "secondaryButton": "View Our Work"
+      }
+    }
+  },
+  "servicesPage": {
+    "hero": {
+      "title": "Our",
+      "titleHighlight": "Services",
+      "subtitle": "Comprehensive Gaming & Sports Technology Solutions",
+      "description": "From API development to complete platform creation, we deliver cutting-edge solutions that power successful gaming businesses worldwide.",
+      "badge": "Full-Stack Solutions"
+    },
+    "categories": {
+      "all": "All Services",
+      "api": "APIs & Integration",
+      "development": "Platform Development",
+      "casino": "Casino & Gaming",
+      "sports": "Sports Solutions",
+      "consulting": "Consulting & Support"
+    },
+    "featured": {
+      "title": "Featured Services",
+      "subtitle": "Our most popular and in-demand solutions"
+    },
+    "allServices": {
+      "title": "Complete Service Portfolio",
+      "subtitle": "Everything you need to build and scale your gaming business"
+    },
+    "serviceDetails": {
+      "whiteLabel": {
+        "description": "Complete white-label gaming platform with full customization and branding options",
+        "features": ["Custom Branding", "Multi-Platform", "Admin Panel", "24/7 Support"]
+      },
+      "casinoAppDev": {
+        "description": "End-to-end casino application development with cutting-edge gaming features",
+        "features": ["Cross-Platform", "Real Money Games", "Live Dealers", "Secure Payments"]
+      },
+      "liveCasino": {
+        "description": "Live casino solutions with industry's lowest GGR and highest player retention",
+        "features": ["Live Dealers", "HD Streaming", "Multiple Tables", "Low GGR"]
+      },
+      "liveScores": {
+        "description": "Real-time sports data with lightning-fast updates and comprehensive coverage",
+        "features": ["Real-Time Data", "Global Coverage", "Sub-Second Updates", "99.9% Uptime"]
+      },
+      "liveOdds": {
+        "description": "Advanced odds and predictions API with AI-powered analytics",
+        "features": ["AI Predictions", "Live Updates", "Multiple Markets", "High Accuracy"]
+      },
+      "fantasyAppDev": {
+        "description": "Complete fantasy sports platform development with advanced features",
+        "features": ["Multi-Sport", "Real-Time Scoring", "Social Features", "Prize Management"]
+      },
+      "sportsbookDev": {
+        "description": "Full-featured sportsbook platform with comprehensive betting options",
+        "features": ["Live Betting", "Multiple Sports", "Risk Management", "Player Analytics"]
+      },
+      "casinoGamesApi": {
+        "description": "Comprehensive casino games API with hundreds of popular games",
+        "features": ["500+ Games", "Instant Play", "Mobile Optimized", "Fair Gaming"]
+      }
+    },
+    "processSection": {
+      "title": "Our Development Process",
+      "subtitle": "How we turn your vision into reality",
+      "steps": {
+        "consultation": {
+          "title": "Discovery & Planning",
+          "description": "Understanding your requirements and creating detailed project roadmap"
+        },
+        "design": {
+          "title": "Design & Architecture",
+          "description": "Creating user-centric designs and scalable system architecture"
+        },
+        "development": {
+          "title": "Development & Testing",
+          "description": "Agile development with continuous testing and quality assurance"
+        },
+        "deployment": {
+          "title": "Launch & Optimization",
+          "description": "Smooth deployment with performance monitoring and optimization"
+        },
+        "support": {
+          "title": "Ongoing Support",
+          "description": "24/7 maintenance, updates, and dedicated customer support"
+        }
+      }
+    },
+    "whyChoose": {
+      "title": "Why Choose Our Services",
+      "items": {
+        "expertise": {
+          "title": "19+ Years Expertise",
+          "description": "Deep industry knowledge and proven track record"
+        },
+        "technology": {
+          "title": "Latest Technology",
+          "description": "Cutting-edge tools and frameworks for optimal performance"
+        },
+        "support": {
+          "title": "24/7 Support",
+          "description": "Round-the-clock technical assistance and maintenance"
+        },
+        "customization": {
+          "title": "Full Customization",
+          "description": "Tailored solutions to match your specific business needs"
+        }
+      }
+    },
+    "cta": {
+      "title": "Ready to Build Your Gaming Platform?",
+      "description": "Let's discuss your project and create a solution that drives success",
+      "primaryButton": "Start Your Project",
+      "secondaryButton": "Schedule Consultation"
+    }
   }
 }

@@ -1,36 +1,56 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
+
+// Optimized icon imports - only import what's needed
 import {
-  IoCash, IoTrophy, IoDesktop, IoAirplane
+  IoCash,
+  IoDesktop,
+  IoGameController
 } from 'react-icons/io5';
 import {
-  SiDatadog
-} from 'react-icons/si';
-import {
-  MdCasino,
-  MdDeveloperMode, MdSportsScore, MdGames, MdSportsMartialArts, MdOutlineCasino
+  MdSportsScore,
+  MdDeveloperMode,
+  MdOutlineCasino,
+  MdSportsMartialArts,
+  MdOutlineSportsKabaddi
 } from 'react-icons/md';
-import { FaDice, FaHeart, FaRunning, FaPlane } from 'react-icons/fa';
 import {
-  GiSoccerBall, GiBasketballBall, GiTennisRacket, GiPokerHand,
-  GiDiceEightFacesEight, GiCricketBat, GiGamepad, GiTrophy,
-  GiTv, GiChart, GiDiceSixFacesFive, GiJumpingDog
+  FaDice,
+  FaRunning
+} from 'react-icons/fa';
+import {
+  GiSoccerBall,
+  GiBasketballBall,
+  GiTennisRacket,
+  GiPokerHand,
+  GiDiceEightFacesEight,
+  GiCricketBat,
+  GiTrophy,
+  GiTv,
+  GiChart,
+  GiJumpingDog,
+  GiCardJoker,
+  GiHorseHead
 } from 'react-icons/gi';
-
-import { GiBoxingGlove, GiCasinoChip, GiCardJoker, GiSittingDog, GiHorseHead } from "react-icons/gi";
-import { SiNba } from "react-icons/si";
-import { MdOutlineSportsKabaddi } from "react-icons/md";
-import { AiFillApi } from "react-icons/ai";
+import { SiNba, SiDatadog } from 'react-icons/si';
+import { AiFillApi } from 'react-icons/ai';
 
 export default function HeroSection() {
   const { t } = useLanguage();
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [currentSlide, setCurrentSlide] = useState(0);
 
-  const categories = [
+  // Update selectedCategory when language changes
+  useEffect(() => {
+    setSelectedCategory(t('hero.categories.all'));
+  }, [t]);
+
+  // Memoize categories to prevent recreation on each render
+  const categories = useMemo(() => [
     t('hero.categories.all'),
     t('hero.categories.sport'),
     t('hero.categories.casino'),
@@ -39,181 +59,244 @@ export default function HeroSection() {
     t('hero.categories.development'),
     t('hero.categories.gaming'),
     t('hero.categories.streaming'),
-  ];
+  ], [t]);
 
-  const services = [
-    { id: 14, name: t('services.whiteLabel'), icon: <IoDesktop className="w-12 h-12" />, category: t('hero.categories.development') },
-    { id: 16, name: t('services.casinoAppDev'), icon: <FaDice className="w-12 h-12" />, category: t('hero.categories.development') },
-    { id: 19, name: t('services.liveCasino'), icon: <MdOutlineCasino className="w-12 h-12" />, category: t('hero.categories.betting') },
-    { id: 17, name: t('services.gamblingAppDev'), icon: <MdDeveloperMode className="w-12 h-12" />, category: t('hero.categories.development') },
-    { id: 6, name: t('services.casinoGamesApi'), icon: <GiDiceEightFacesEight className="w-12 h-12" />, category: t('hero.categories.api') },
-    { id: 18, name: t('services.accurateSettlement'), icon: <IoCash className="w-12 h-12" />, category: t('hero.categories.api') },
-    { id: 1, name: t('services.liveScores'), icon: <GiChart className="w-12 h-12" />, category: t('hero.categories.api') },
-    { id: 2, name: t('services.liveOdds'), icon: <IoCash className="w-12 h-12" />, category: t('hero.categories.api') },
-    { id: 3, name: t('services.playerTeamData'), icon: <SiDatadog className="w-12 h-12" />, category: t('hero.categories.api') },
-    { id: 4, name: t('services.fancyBetting'), icon: <GiPokerHand className="w-12 h-12" />, category: t('hero.categories.api') },
-    { id: 5, name: t('services.bookmakerOdds'), icon: <IoCash className="w-12 h-12" />, category: t('hero.categories.api') },
-    { id: 7, name: t('services.scoreApi'), icon: <MdSportsScore className="w-12 h-12" />, category: t('hero.categories.api') },
-    { id: 8, name: t('services.tvStreaming'), icon: <GiTv className="w-12 h-12" />, category: t('hero.categories.streaming') },
-    { id: 9, name: t('services.fantasyAppDev'), icon: <GiTrophy className="w-12 h-12" />, category: t('hero.categories.development') },
-    { id: 10, name: t('services.skilledBetting'), icon: <IoDesktop className="w-12 h-12" />, category: t('hero.categories.development') },
-    { id: 11, name: t('services.sportsCoverage'), icon: <GiSoccerBall className="w-12 h-12" />, category: t('hero.categories.api') },
-    { id: 12, name: t('services.virtualSports'), icon: <GiGamepad className="w-12 h-12" />, category: t('hero.categories.gaming') },
-    { id: 13, name: t('services.sportsbookDev'), icon: <GiBasketballBall className="w-12 h-12" />, category: t('hero.categories.development') },
-    { id: 15, name: t('services.premiumOdds'), icon: <IoCash className="w-12 h-12" />, category: t('hero.categories.api') },
-    { id: 21, name: t('services.cricket'), icon: <GiCricketBat className="w-12 h-12" />, category: t('hero.categories.sport') },
-    { id: 22, name: t('services.soccer'), icon: <GiSoccerBall className="w-12 h-12" />, category: t('hero.categories.sport') },
-    { id: 23, name: t('services.tennis'), icon: <GiTennisRacket className="w-12 h-12" />, category: t('hero.categories.sport') },
-    { id: 24, name: t('services.basketball'), icon: <GiBasketballBall className="w-12 h-12" />, category: t('hero.categories.sport') },
-    { id: 25, name: t('services.racing'), icon: <FaRunning className="w-12 h-12" />, category: t('hero.categories.sport') },
-    { id: 26, name: t('services.kabaddi'), icon: <MdOutlineSportsKabaddi className="w-12 h-12" />, category: t('hero.categories.sport') },
-    { id: 27, name: t('services.mma'), icon: <MdSportsMartialArts className="w-12 h-12" />, category: t('hero.categories.sport') },
-    { id: 28, name: t('services.nbaApi'), icon: <SiNba className="w-12 h-12" />, category: t('hero.categories.api') },
-    { id: 30, name: t('services.teenpatti'), icon: <GiCardJoker className="w-12 h-12" />, category: t('hero.categories.casino') },
-    { id: 31, name: t('services.poker'), icon: <GiPokerHand className="w-12 h-12" />, category: t('hero.categories.casino') },
-    { id: 32, name: t('services.greyhound'), icon: <GiJumpingDog className="w-12 h-12" />, category: t('hero.categories.sport') },
-    { id: 33, name: t('services.horse'), icon: <GiHorseHead className="w-12 h-12" />, category: t('hero.categories.sport') },
-  ];
+  // Memoize services to prevent recreation on each render
+  const services = useMemo(() => [
+    { id: 14, name: t('services.whiteLabel'), icon: IoDesktop, category: t('hero.categories.development') },
+    { id: 16, name: t('services.casinoAppDev'), icon: FaDice, category: t('hero.categories.development') },
+    { id: 19, name: t('services.liveCasino'), icon: MdOutlineCasino, category: t('hero.categories.betting') },
+    { id: 17, name: t('services.gamblingAppDev'), icon: MdDeveloperMode, category: t('hero.categories.development') },
+    { id: 6, name: t('services.casinoGamesApi'), icon: GiDiceEightFacesEight, category: t('hero.categories.api') },
+    { id: 18, name: t('services.accurateSettlement'), icon: IoCash, category: t('hero.categories.api') },
+    { id: 1, name: t('services.liveScores'), icon: GiChart, category: t('hero.categories.api') },
+    { id: 2, name: t('services.liveOdds'), icon: IoCash, category: t('hero.categories.api') },
+    { id: 3, name: t('services.playerTeamData'), icon: SiDatadog, category: t('hero.categories.api') },
+    { id: 4, name: t('services.fancyBetting'), icon: GiPokerHand, category: t('hero.categories.api') },
+    { id: 5, name: t('services.bookmakerOdds'), icon: IoCash, category: t('hero.categories.api') },
+    { id: 7, name: t('services.scoreApi'), icon: MdSportsScore, category: t('hero.categories.api') },
+    { id: 8, name: t('services.tvStreaming'), icon: GiTv, category: t('hero.categories.streaming') },
+    { id: 9, name: t('services.fantasyAppDev'), icon: GiTrophy, category: t('hero.categories.development') },
+    { id: 10, name: t('services.skilledBetting'), icon: IoDesktop, category: t('hero.categories.development') },
+    { id: 11, name: t('services.sportsCoverage'), icon: GiSoccerBall, category: t('hero.categories.api') },
+    { id: 12, name: t('services.virtualSports'), icon: IoGameController, category: t('hero.categories.gaming') },
+    { id: 13, name: t('services.sportsbookDev'), icon: GiBasketballBall, category: t('hero.categories.development') },
+    { id: 15, name: t('services.premiumOdds'), icon: IoCash, category: t('hero.categories.api') },
+    { id: 21, name: t('services.cricket'), icon: GiCricketBat, category: t('hero.categories.sport') },
+    { id: 22, name: t('services.soccer'), icon: GiSoccerBall, category: t('hero.categories.sport') },
+    { id: 23, name: t('services.tennis'), icon: GiTennisRacket, category: t('hero.categories.sport') },
+    { id: 24, name: t('services.basketball'), icon: GiBasketballBall, category: t('hero.categories.sport') },
+    { id: 25, name: t('services.racing'), icon: FaRunning, category: t('hero.categories.sport') },
+    { id: 26, name: t('services.kabaddi'), icon: MdOutlineSportsKabaddi, category: t('hero.categories.sport') },
+    { id: 27, name: t('services.mma'), icon: MdSportsMartialArts, category: t('hero.categories.sport') },
+    { id: 28, name: t('services.nbaApi'), icon: SiNba, category: t('hero.categories.api') },
+    { id: 30, name: t('services.teenpatti'), icon: GiCardJoker, category: t('hero.categories.casino') },
+    { id: 31, name: t('services.poker'), icon: GiPokerHand, category: t('hero.categories.casino') },
+    { id: 32, name: t('services.greyhound'), icon: GiJumpingDog, category: t('hero.categories.sport') },
+    { id: 33, name: t('services.horse'), icon: GiHorseHead, category: t('hero.categories.sport') },
+  ], [t]);
 
-  const carouselSlides = [
+  // Optimized carousel slides with proper images
+  const carouselSlides = useMemo(() => [
     {
       id: 1,
-      image: 'https://placehold.co/800x300/1e40af/ffffff?text=Sports+API+Solutions',
-      title: '',
-      description: ''
+      alt: 'Sports API Solutions - Comprehensive sports data integration',
+      title: 'Sports API Solutions',
+      description: 'Comprehensive sports data integration for your platform'
     },
     {
       id: 2,
-      image: 'https://placehold.co/800x300/dc2626/ffffff?text=Skilled+Betting+Platform+Development',
-      title: '',
-      description: ''
+      alt: 'Skilled Betting Platform Development - Advanced betting solutions',
+      title: 'Betting Platform Development',
+      description: 'Advanced betting solutions with real-time data'
     },
     {
       id: 3,
-      image: 'https://placehold.co/800x300/059669/ffffff?text=Fantasy+Sports+Apps',
-      title: '',
-      description: ''
+      alt: 'Fantasy Sports Apps - Engaging fantasy gaming platforms',
+      title: 'Fantasy Sports Apps',
+      description: 'Engaging fantasy gaming platforms for all sports'
     },
     {
       id: 4,
-      image: 'https://placehold.co/800x300/7c2d12/ffffff?text=Casino+Game+Development',
-      title: '',
-      description: ''
+      alt: 'Casino Game Development - Premium casino gaming experience',
+      title: 'Casino Game Development',
+      description: 'Premium casino gaming experience with live features'
     }
-  ];
+  ], []);
 
-  // Auto-slide functionality
+  // Optimized auto-slide with useCallback to prevent recreation
+  const nextSlide = useCallback(() => {
+    setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
+  }, [carouselSlides.length]);
+
+  // Auto-slide functionality - optimized
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
-    }, 4000);
-
+    const timer = setInterval(nextSlide, 5000); // Increased to 5s for better UX
     return () => clearInterval(timer);
+  }, [nextSlide]);
+
+  // Memoize filtered services to prevent recalculation
+  const filteredServices = useMemo(() => {
+    return (selectedCategory === t('hero.categories.all') || selectedCategory === '')
+      ? services
+      : services.filter(service => service.category === selectedCategory);
+  }, [selectedCategory, services, t]);
+
+  // Handle keyboard navigation for carousel
+  const handleKeyDown = useCallback((event, slideIndex) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setCurrentSlide(slideIndex);
+    }
   }, []);
 
-  const filteredServices = selectedCategory === t('hero.categories.all')
-    ? services
-    : services.filter(service => service.category === selectedCategory);
+  // Handle keyboard navigation for category filters
+  const handleCategoryKeyDown = useCallback((event, category) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      setSelectedCategory(category);
+    }
+  }, []);
 
   return (
-    <div className="relative bg-white dark:bg-gray-900 transition-colors">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-[0.03]" />
+    <section
+      className="relative bg-white dark:bg-gray-900 transition-colors"
+      aria-label="Gaming and sports services showcase"
+    >
+      {/* Skip link for accessibility */}
+      <a
+        href="#services-grid"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+      >
+        Skip to services
+      </a>
+
+      {/* Background Pattern - Reduced opacity for better performance */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-[0.02]" />
       </div>
 
       <div className="relative pt-16 pb-8 lg:pt-20 lg:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Heading Section */}
-          <div className="text-center mb-8">
-            {/* Carousel Banner */}
-            <div className="relative">
-              <div className="mt-2 sm:mt-0 relative h-48 sm:h-64 overflow-hidden rounded-2xl">
-                {carouselSlides.map((slide, index) => (
-                  <div
-                    key={slide.id}
-                    className={`absolute inset-0 transition-transform duration-500 ease-in-out ${
-                      index === currentSlide ? 'translate-x-0' :
-                      index < currentSlide ? '-translate-x-full' : 'translate-x-full'
-                    }`}
-                  >
+          {/* Carousel Section */}
+          <header className="text-center mb-8">
+            <div
+              className="relative"
+              role="region"
+              aria-label="Service showcase carousel"
+              aria-live="polite"
+            >
+              <div className="mt-2 sm:mt-0 relative h-48 sm:h-64 overflow-hidden rounded-2xl shadow-lg">
+                {carouselSlides.map((slide, index) => {
+                  const gradients = [
+                    'from-blue-600 to-blue-700',
+                    'from-red-600 to-red-700',
+                    'from-green-600 to-green-700',
+                    'from-amber-600 to-amber-700'
+                  ];
+
+                  return (
                     <div
-                      className="w-full h-full bg-cover bg-center relative"
-                      style={{ backgroundImage: `url(${slide.image})` }}
+                      key={slide.id}
+                      className={`absolute inset-0 transition-transform duration-500 ease-in-out ${
+                        index === currentSlide ? 'translate-x-0' :
+                        index < currentSlide ? '-translate-x-full' : 'translate-x-full'
+                      }`}
+                      aria-hidden={index !== currentSlide}
                     >
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="text-center text-white">
-                          <h3 className="text-xl sm:text-2xl font-bold mb-2 text-shadow-lg">
-                            {slide.title}
-                          </h3>
-                          <p className="text-sm sm:text-base text-shadow">
-                            {slide.description}
-                          </p>
+                      <div className={`w-full h-full bg-gradient-to-r ${gradients[index]} relative flex items-center justify-center`}>
+                        <div className="text-center text-white px-4">
+                          <h2 className="text-xl sm:text-2xl font-bold mb-2">{slide.title}</h2>
+                          <p className="text-sm sm:text-base opacity-90">{slide.description}</p>
                         </div>
                       </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
 
-              {/* Navigation Dots */}
-              <div className="flex justify-center mt-6 space-x-3">
-                {carouselSlides.map((_, index) => (
+              {/* Navigation Dots - Enhanced for accessibility */}
+              <nav className="flex justify-center mt-6 space-x-3" aria-label="Carousel navigation">
+                {carouselSlides.map((slide, index) => (
                   <button
                     key={index}
                     onClick={() => setCurrentSlide(index)}
-                    className={`w-4 h-4 rounded-full transition-all duration-300 border-2 ${
+                    onKeyDown={(e) => handleKeyDown(e, index)}
+                    className={`w-4 h-4 rounded-full transition-all duration-300 border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
                       index === currentSlide
-                        ? 'bg-[#3B82F6] border-[#3B82F6] shadow-lg'
-                        : 'bg-white/80 border-gray-300 hover:bg-white hover:border-[#3B82F6] shadow-md'
+                        ? 'bg-[#3B82F6] border-[#3B82F6] shadow-lg scale-110'
+                        : 'bg-white/80 border-gray-300 hover:bg-white hover:border-[#3B82F6] shadow-md hover:scale-105'
                     }`}
+                    aria-label={`Go to slide ${index + 1}: ${slide.title}`}
+                    aria-pressed={index === currentSlide}
                   />
                 ))}
-              </div>
+              </nav>
             </div>
-          </div>
+          </header>
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-2 mb-6">
+          {/* Category Filter - Enhanced for accessibility */}
+          <nav
+            className="flex flex-wrap justify-center gap-2 mb-6"
+            role="tablist"
+            aria-label="Service category filters"
+          >
             {categories.map(category => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors
-                  ${selectedCategory === category
-                    ? 'bg-[#3B82F6] text-white shadow-md'
-                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
-                  }`}
+                onKeyDown={(e) => handleCategoryKeyDown(e, category)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                  selectedCategory === category
+                    ? 'bg-[#3B82F6] text-white shadow-md scale-105'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700 hover:scale-105'
+                }`}
+                role="tab"
+                aria-selected={selectedCategory === category}
+                aria-controls="services-grid"
               >
                 {category}
               </button>
             ))}
-          </div>
+          </nav>
 
-          {/* Services Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4
-                        max-h-[600px] overflow-y-auto pr-3
-                        scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent">
-            {filteredServices.map(service => (
-              <div
-                key={service.id}
-                className="flex flex-col items-center p-4 rounded-xl
-                         bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700
-                         shadow-md hover:shadow-lg transition-all cursor-pointer group border border-gray-100 dark:border-gray-700"
-              >
-                <div className="w-16 h-16 rounded-full bg-[#3B82F6] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
-                  <div className="text-white">
-                    {service.icon}
+          {/* Services Grid - Enhanced semantics */}
+          <section
+            id="services-grid"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 max-h-[600px] overflow-y-auto pr-3 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-gray-700 scrollbar-track-transparent"
+            role="tabpanel"
+            aria-label={`${selectedCategory} services`}
+          >
+            {filteredServices.map(service => {
+              const IconComponent = service.icon;
+              return (
+                <article
+                  key={service.id}
+                  className="flex flex-col items-center p-4 rounded-xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer group border border-gray-100 dark:border-gray-700 focus-within:ring-2 focus-within:ring-blue-500"
+                  tabIndex="0"
+                  role="button"
+                  aria-label={`${service.name} service`}
+                >
+                  <div
+                    className="w-16 h-16 rounded-full bg-[#3B82F6] flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-200"
+                    aria-hidden="true"
+                  >
+                    <IconComponent className="w-8 h-8 text-white" />
                   </div>
-                </div>
-                <span className="text-sm font-semibold text-gray-900 dark:text-white text-center leading-tight">
-                  {service.name}
-                </span>
-              </div>
-            ))}
+                  <h3 className="text-sm font-medium text-gray-900 dark:text-white text-center leading-tight">
+                    {service.name}
+                  </h3>
+                </article>
+              );
+            })}
+          </section>
+
+          {/* Screen reader announcement for filtered services */}
+          <div className="sr-only" aria-live="polite" aria-atomic="true">
+            {filteredServices.length} services available in {selectedCategory} category
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

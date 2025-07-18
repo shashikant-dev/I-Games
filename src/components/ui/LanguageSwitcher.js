@@ -39,7 +39,7 @@ const LanguageSwitcher = () => {
   };
 
   return (
-    <div className="relative" ref={dropdownRef}>
+    <div className="relative border border-[#eaeaea] rounded-[8px]" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center space-x-2 px-2 sm:px-3 py-2 rounded-lg hover:bg-theme-bg-secondary transition-colors duration-200 text-theme-text-primary min-w-[80px] sm:min-w-[120px]"

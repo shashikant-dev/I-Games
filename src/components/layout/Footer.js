@@ -1,4 +1,5 @@
 'use client';
+
 import Link from 'next/link';
 import {
   FaFacebookF,
@@ -34,7 +35,7 @@ const Footer = () => {
       { name: t('footer.links.aboutUs'), href: '/about' },
       { name: t('footer.links.whyChooseUs'), href: '/why-us' },
       { name: t('footer.links.contact'), href: '/contact' },
-      { name: t('footer.links.careers'), href: '/careers' }
+      { name: 'Our Services', href: '/services' }
     ],
     support: [
       { name: t('footer.links.helpCenter'), href: '/help' },
@@ -65,17 +66,6 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Top Section - Company Info & Newsletter */}
         <div className="mb-8">
-          {/* Company Branding */}
-          <div className="text-center md:text-left mb-6">
-            <Link href="/" className="inline-flex items-center justify-center md:justify-start mb-4">
-              <span className="text-2xl sm:text-3xl font-bold text-[#3B82F6] dark:text-[#60A5FA]">
-                iGames.cloud
-              </span>
-            </Link>
-            <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base leading-relaxed max-w-md mx-auto md:mx-0">
-              {t('footer.description')}
-            </p>
-          </div>
 
           {/* Newsletter Section - Mobile Optimized */}
           <div className="bg-white dark:bg-gray-800 rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-700 mb-6">
@@ -99,38 +89,38 @@ const Footer = () => {
             </div>
           </div>
 
-                     {/* Contact Information - Mobile Optimized */}
-           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-600">
-             <h3 className="font-semibold text-lg text-[#3B82F6] dark:text-[#60A5FA] mb-4 text-center sm:text-left">
-               {t('footer.contact.getInTouch')}
-             </h3>
-             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-               <div className="flex items-center justify-center sm:justify-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg">
-                 <FaEnvelope className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA] flex-shrink-0" />
-                 <Link
-                   href={`mailto:${t('footer.contact.email')}`}
-                   className="text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] text-sm font-medium"
-                 >
-                   {t('footer.contact.email')}
-                 </Link>
-               </div>
-               <div className="flex items-center justify-center sm:justify-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg">
-                 <FaPhone className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA] flex-shrink-0" />
-                 <Link
-                   href={`tel:${t('footer.contact.phone')}`}
-                   className="text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] text-sm font-medium"
-                 >
-                   {t('footer.contact.phone')}
-                 </Link>
-               </div>
-               <div className="flex items-start justify-center sm:justify-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg sm:col-span-2 lg:col-span-1">
-                 <FaMapMarkerAlt className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA] flex-shrink-0 mt-0.5" />
-                 <span className="text-gray-600 dark:text-gray-300 text-sm font-medium text-center sm:text-left">
-                   {t('footer.contact.address')}
-                 </span>
-               </div>
-             </div>
-           </div>
+          {/* Contact Information - Mobile Optimized */}
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-700 rounded-xl p-4 sm:p-6 border border-gray-200 dark:border-gray-600">
+            <h3 className="font-semibold text-lg text-[#3B82F6] dark:text-[#60A5FA] mb-4 text-center sm:text-left">
+              {t('footer.contact.getInTouch')}
+            </h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              <div className="flex items-center justify-center sm:justify-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg">
+                <FaEnvelope className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA] flex-shrink-0" />
+                <Link
+                  href={`mailto:${t('footer.contact.email')}`}
+                  className="text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] text-sm font-medium"
+                >
+                  {t('footer.contact.email')}
+                </Link>
+              </div>
+              <div className="flex items-center justify-center sm:justify-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg">
+                <FaPhone className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA] flex-shrink-0" />
+                <Link
+                  href={`tel:${t('footer.contact.phone')}`}
+                  className="text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] text-sm font-medium"
+                >
+                  {t('footer.contact.phone')}
+                </Link>
+              </div>
+              <div className="flex items-start justify-center sm:justify-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg sm:col-span-2 lg:col-span-1">
+                <FaMapMarkerAlt className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA] flex-shrink-0 mt-0.5" />
+                <span className="text-gray-600 dark:text-gray-300 text-sm font-medium text-center sm:text-left">
+                  {t('footer.contact.address')}
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Links Section - Mobile Optimized Grid */}
