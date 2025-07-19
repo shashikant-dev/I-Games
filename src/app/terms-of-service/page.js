@@ -44,7 +44,6 @@ export default function TermsOfService() {
               {t('legal.termsOfService.serviceUse.description')}
             </p>
             <ul className="list-disc pl-6 mb-6 space-y-2">
-              <li>{t('legal.termsOfService.serviceUse.items.eligibility')}</li>
               <li>{t('legal.termsOfService.serviceUse.items.account')}</li>
               <li>{t('legal.termsOfService.serviceUse.items.accurate')}</li>
               <li>{t('legal.termsOfService.serviceUse.items.security')}</li>
