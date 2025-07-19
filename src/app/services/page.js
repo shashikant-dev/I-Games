@@ -345,7 +345,7 @@ export default function Services() {
                <div className="relative group overflow-hidden rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                  <div className="relative h-20 sm:h-24 lg:h-32">
                    <Image
-                     src="/assets/images/technology-infrastructure.jpg"
+                     src="/assets/images/development-api.webp"
                      alt="Advanced technology and API development infrastructure"
                      fill
                      className="object-cover group-hover:scale-110 transition-transform duration-500"
