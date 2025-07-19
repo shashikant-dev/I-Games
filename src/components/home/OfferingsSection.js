@@ -5,6 +5,7 @@ import { IoGameController } from 'react-icons/io5';
 import { MdSports } from 'react-icons/md';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useMemo } from 'react';
+import Image from 'next/image';
 
 export default function OfferingsSection() {
   const { t } = useLanguage();
@@ -103,8 +104,34 @@ export default function OfferingsSection() {
           </div>
         </section>
 
-        {/* Offerings Grid */}
-        <section aria-label="Service offerings">
+        {/* Enhanced Offerings Grid with Background */}
+        <section aria-label="Service offerings" className="relative">
+          {/* Enhanced Background Image Section */}
+          <div className="relative mb-12 sm:mb-16">
+                         <div className="relative h-40 sm:h-56 lg:h-72 rounded-2xl overflow-hidden">
+               <Image
+                 src="/assets/images/gaming-development-team.jpg"
+                 alt="Professional gaming technology team developing innovative solutions"
+                 fill
+                 className="object-cover"
+                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+                 loading="lazy"
+               />
+               <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-indigo-900/85 to-purple-900/90" />
+               <div className="absolute inset-0 flex items-center justify-center">
+                 <div className="text-center text-white px-4">
+                   <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-3 sm:mb-4">
+                     Comprehensive Gaming Solutions
+                   </h3>
+                   <p className="text-sm sm:text-base lg:text-lg opacity-90 max-w-3xl leading-relaxed">
+                     From concept to deployment, we deliver cutting-edge gaming and sports betting platforms powered by innovation and expertise
+                   </p>
+                 </div>
+               </div>
+             </div>
+
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {offerings.map((offering, index) => {
               const IconComponent = offering.icon;

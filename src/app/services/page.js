@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
 import {
   FaCode,
@@ -271,6 +272,103 @@ export default function Services() {
       {/* Featured Services - Mobile First */}
       <section className="py-8 sm:py-12 lg:py-16 bg-theme-bg-secondary">
         <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6">
+          {/* Enhanced Services Showcase Banner */}
+          <div className="relative mb-8 sm:mb-12 lg:mb-16">
+                                      {/* Main Hero Image */}
+             <div className="relative h-48 sm:h-64 lg:h-80 rounded-2xl overflow-hidden mb-4 sm:mb-6">
+               <Image
+                 src="/assets/images/premium-casino-environment.jpg"
+                 alt="Professional casino and gaming environment - Premium gaming solutions"
+                 fill
+                 className="object-cover"
+                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+                 priority
+               />
+               <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-purple-900/85 to-blue-900/90" />
+               <div className="absolute inset-0 flex items-center justify-center">
+                 <div className="text-center text-white px-4">
+                   <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold mb-3 sm:mb-4">
+                     Enterprise Gaming Solutions
+                   </h2>
+                   <p className="text-sm sm:text-base lg:text-lg opacity-90 max-w-4xl leading-relaxed">
+                     Powering the future of gaming and sports betting with cutting-edge technology and professional-grade platforms
+                   </p>
+                 </div>
+               </div>
+             </div>
+
+             {/* Service Categories Grid */}
+             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
+               {/* Fantasy Sports */}
+               <div className="relative group overflow-hidden rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                 <div className="relative h-20 sm:h-24 lg:h-32">
+                   <Image
+                     src="/assets/images/fantasy-sports-platform.jpg"
+                     alt="Fantasy football platform showcasing user engagement"
+                     fill
+                     className="object-cover group-hover:scale-110 transition-transform duration-500"
+                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                   <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 right-1 sm:right-2">
+                     <h3 className="text-white font-bold text-xs sm:text-sm">Fantasy Sports</h3>
+                   </div>
+                 </div>
+               </div>
+
+               {/* Casino Solutions */}
+               <div className="relative group overflow-hidden rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                 <div className="relative h-20 sm:h-24 lg:h-32">
+                   <Image
+                     src="/assets/images/casino-roulette-players.jpg"
+                     alt="Professional roulette table with players - Live casino experience"
+                     fill
+                     className="object-cover group-hover:scale-110 transition-transform duration-500"
+                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                   <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 right-1 sm:right-2">
+                     <h3 className="text-white font-bold text-xs sm:text-sm">Live Casino</h3>
+                   </div>
+                 </div>
+               </div>
+
+               {/* Mobile Gaming */}
+               <div className="relative group overflow-hidden rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                 <div className="relative h-20 sm:h-24 lg:h-32">
+                   <Image
+                     src="/assets/images/mobile-gaming-interface.jpg"
+                     alt="Mobile gaming interface and user experience design"
+                     fill
+                     className="object-cover group-hover:scale-110 transition-transform duration-500"
+                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                   <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 right-1 sm:right-2">
+                     <h3 className="text-white font-bold text-xs sm:text-sm">Mobile Gaming</h3>
+                   </div>
+                 </div>
+               </div>
+
+               {/* API Solutions */}
+               <div className="relative group overflow-hidden rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                 <div className="relative h-20 sm:h-24 lg:h-32">
+                   <Image
+                     src="/assets/images/technology-infrastructure.jpg"
+                     alt="Advanced technology and API development infrastructure"
+                     fill
+                     className="object-cover group-hover:scale-110 transition-transform duration-500"
+                     sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                   />
+                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                   <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 right-1 sm:right-2">
+                     <h3 className="text-white font-bold text-xs sm:text-sm">API Solutions</h3>
+                   </div>
+                 </div>
+               </div>
+             </div>
+          </div>
+
           <div className="text-center mb-6 sm:mb-8 lg:mb-12">
             <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-theme-text-primary mb-2 sm:mb-4">
               {t('servicesPage.featured.title')}

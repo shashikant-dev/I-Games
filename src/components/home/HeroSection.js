@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
+import ImageCarousel from '@/components/ui/ImageCarousel';
 
 // Optimized icon imports - only import what's needed
 import {
@@ -42,7 +43,6 @@ import { AiFillApi } from 'react-icons/ai';
 export default function HeroSection() {
   const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   // Update selectedCategory when language changes
   useEffect(() => {
@@ -96,44 +96,65 @@ export default function HeroSection() {
     { id: 33, name: t('services.horse'), icon: GiHorseHead, category: t('hero.categories.sport') },
   ], [t]);
 
-  // Optimized carousel slides with proper images
+  // Enhanced carousel slides with gaming interface images
   const carouselSlides = useMemo(() => [
     {
       id: 1,
-      alt: 'Sports API Solutions - Comprehensive sports data integration',
-      title: 'Sports API Solutions',
-      description: 'Comprehensive sports data integration for your platform'
+      image: '/assets/images/fantasy-sports-platform.jpg',
+      title: 'Fantasy Sports Development',
+      description: 'Build engaging fantasy platforms with real-time scoring, player analytics, and exciting competitions',
+      badge: 'Fantasy Sports',
+      features: ['Real-time Scoring', 'Live Competitions'],
+      alt: 'Fantasy sports platform interface showing player statistics and live scoring'
     },
     {
       id: 2,
-      alt: 'Skilled Betting Platform Development - Advanced betting solutions',
-      title: 'Betting Platform Development',
-      description: 'Advanced betting solutions with real-time data'
+      image: '/assets/images/sports-betting-platform.jpg',
+      title: 'Sports Betting Platforms',
+      description: 'Advanced betting solutions with live odds, secure transactions, and comprehensive market coverage',
+      badge: 'Sports Betting',
+      features: ['Live Odds', 'Secure Payments', 'Global Markets'],
+      alt: 'Sports betting platform with live odds and comprehensive betting markets'
     },
     {
       id: 3,
-      alt: 'Fantasy Sports Apps - Engaging fantasy gaming platforms',
-      title: 'Fantasy Sports Apps',
-      description: 'Engaging fantasy gaming platforms for all sports'
+      image: '/assets/images/live-casino-roulette-table.jpg',
+      title: 'Live Casino Solutions',
+      description: 'Premium casino gaming experience with professional dealers, HD streaming, and interactive gameplay',
+      badge: 'Live Casino',
+      features: ['HD Streaming', 'Interactive Gaming'],
+      alt: 'Live casino roulette table with professional dealer and HD streaming interface'
     },
     {
       id: 4,
-      alt: 'Casino Game Development - Premium casino gaming experience',
-      title: 'Casino Game Development',
-      description: 'Premium casino gaming experience with live features'
+      image: '/assets/images/casino-roulette-players.jpg',
+      title: 'Online Casino Development',
+      description: 'Complete casino platforms with extensive game libraries, secure banking, and real money gaming',
+      badge: 'Online Casino',
+      features: ['Game Library', 'Secure Banking', 'Real Money Gaming'],
+      alt: 'Online casino platform interface displaying various casino games and options'
+    },
+    {
+      id: 5,
+      image: '/assets/images/mobile-gaming-interface.jpg',
+      title: 'Mobile Gaming Solutions',
+      description: 'Responsive gaming applications optimized for mobile devices with seamless cross-platform compatibility',
+      badge: 'Mobile Gaming',
+      features: ['Cross-platform', 'Responsive Design'],
+      alt: 'Mobile gaming interface showing responsive design across different devices'
+    },
+    {
+      id: 6,
+      image: '/assets/images/technology-infrastructure.jpg',
+      title: 'Gaming Platform Infrastructure',
+      description: 'Robust gaming infrastructure with scalable architecture, real-time data processing, and worldwide deployment',
+      badge: 'Platform Tech',
+      features: ['Scalable Architecture', 'Real-time Processing', 'Global Deployment'],
+      alt: 'Gaming platform infrastructure interface showing system architecture and performance metrics'
     }
   ], []);
 
-  // Optimized auto-slide with useCallback to prevent recreation
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
-  }, [carouselSlides.length]);
 
-  // Auto-slide functionality - optimized
-  useEffect(() => {
-    const timer = setInterval(nextSlide, 5000); // Increased to 5s for better UX
-    return () => clearInterval(timer);
-  }, [nextSlide]);
 
   // Memoize filtered services to prevent recalculation
   const filteredServices = useMemo(() => {
@@ -141,14 +162,6 @@ export default function HeroSection() {
       ? services
       : services.filter(service => service.category === selectedCategory);
   }, [selectedCategory, services, t]);
-
-  // Handle keyboard navigation for carousel
-  const handleKeyDown = useCallback((event, slideIndex) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      setCurrentSlide(slideIndex);
-    }
-  }, []);
 
   // Handle keyboard navigation for category filters
   const handleCategoryKeyDown = useCallback((event, category) => {
@@ -178,7 +191,7 @@ export default function HeroSection() {
 
       <div className="relative pt-16 pb-8 lg:pt-20 lg:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Carousel Section */}
+          {/* Enhanced Carousel Section with Images */}
           <header className="text-center mb-8">
             <div
               className="relative"
@@ -186,52 +199,16 @@ export default function HeroSection() {
               aria-label="Service showcase carousel"
               aria-live="polite"
             >
-              <div className="mt-2 sm:mt-0 relative h-48 sm:h-64 overflow-hidden rounded-2xl shadow-lg">
-                {carouselSlides.map((slide, index) => {
-                  const gradients = [
-                    'from-blue-600 to-blue-700',
-                    'from-red-600 to-red-700',
-                    'from-green-600 to-green-700',
-                    'from-amber-600 to-amber-700'
-                  ];
-
-                  return (
-                    <div
-                      key={slide.id}
-                      className={`absolute inset-0 transition-transform duration-500 ease-in-out ${
-                        index === currentSlide ? 'translate-x-0' :
-                        index < currentSlide ? '-translate-x-full' : 'translate-x-full'
-                      }`}
-                      aria-hidden={index !== currentSlide}
-                    >
-                      <div className={`w-full h-full bg-gradient-to-r ${gradients[index]} relative flex items-center justify-center`}>
-                        <div className="text-center text-white px-4">
-                          <h2 className="text-xl sm:text-2xl font-bold mb-2">{slide.title}</h2>
-                          <p className="text-sm sm:text-base opacity-90">{slide.description}</p>
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
+              <div className="mt-2 sm:mt-0">
+                <ImageCarousel
+                  images={carouselSlides}
+                  autoPlay={true}
+                  interval={6000}
+                  height="h-48 sm:h-64 lg:h-80"
+                  showIndicators={true}
+                  showNavigation={true}
+                />
               </div>
-
-              {/* Navigation Dots - Enhanced for accessibility */}
-              <nav className="flex justify-center mt-6 space-x-3" aria-label="Carousel navigation">
-                {carouselSlides.map((slide, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentSlide(index)}
-                    onKeyDown={(e) => handleKeyDown(e, index)}
-                    className={`w-4 h-4 rounded-full transition-all duration-300 border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                      index === currentSlide
-                        ? 'bg-[#3B82F6] border-[#3B82F6] shadow-lg scale-110'
-                        : 'bg-white/80 border-gray-300 hover:bg-white hover:border-[#3B82F6] shadow-md hover:scale-105'
-                    }`}
-                    aria-label={`Go to slide ${index + 1}: ${slide.title}`}
-                    aria-pressed={index === currentSlide}
-                  />
-                ))}
-              </nav>
             </div>
           </header>
 
@@ -295,6 +272,69 @@ export default function HeroSection() {
           <div className="sr-only" aria-live="polite" aria-atomic="true">
             {filteredServices.length} services available in {selectedCategory} category
           </div>
+
+          {/* Gaming Interface Showcase Cards */}
+          <section className="mt-12 sm:mt-16" aria-label="Live gaming interfaces showcase">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white text-center mb-6 sm:mb-8">
+              Live Gaming Interfaces
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+              {/* Poker Interface Card */}
+              <div className="relative group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                <div className="relative h-48 sm:h-56">
+                  <Image
+                    src="/assets/images/sports-betting-platform.jpg"
+                    alt="Live poker interface with royal flush cards display"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h4 className="text-white font-bold text-sm sm:text-base mb-1">Live Poker Tables</h4>
+                    <p className="text-white/80 text-xs sm:text-sm">Real-time card gaming experience</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Sports Betting Interface Card */}
+              <div className="relative group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                <div className="relative h-48 sm:h-56">
+                  <Image
+                    src="/assets/images/mobile-gaming-interface.jpg"
+                    alt="Sports betting interface with live statistics and odds"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h4 className="text-white font-bold text-sm sm:text-base mb-1">Sports Analytics</h4>
+                    <p className="text-white/80 text-xs sm:text-sm">Live statistics and betting odds</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Multi-player Gaming Card */}
+              <div className="relative group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                <div className="relative h-48 sm:h-56">
+                  <Image
+                    src="/assets/images/original-demo-3.jpg"
+                    alt="Multi-player gaming interface with player avatars and chip counts"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h4 className="text-white font-bold text-sm sm:text-base mb-1">Multi-Player Gaming</h4>
+                    <p className="text-white/80 text-xs sm:text-sm">Social gaming with live players</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </section>

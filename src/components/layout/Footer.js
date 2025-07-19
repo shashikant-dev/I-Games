@@ -19,6 +19,7 @@ import {
   IoDesktop
 } from 'react-icons/io5';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { CONTACT_INFO, QUICK_CONTACT } from '@/constants/contacts';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -52,12 +53,12 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { name: 'Facebook', href: 'https://www.facebook.com/igames.cloud', icon: <FaFacebookF />, color: 'hover:text-blue-600 dark:hover:text-blue-400' },
-    { name: 'Twitter', href: 'https://x.com/igamescloud', icon: <FaTwitter />, color: 'hover:text-blue-400 dark:hover:text-blue-300' },
-    { name: 'LinkedIn', href: 'https://www.linkedin.com/company/igamescloud', icon: <FaLinkedinIn />, color: 'hover:text-blue-700 dark:hover:text-blue-500' },
-    { name: 'Instagram', href: 'https://www.instagram.com/igames.cloud', icon: <FaInstagram />, color: 'hover:text-pink-600 dark:hover:text-pink-400' },
-    { name: 'Telegram', href: 'https://t.me/igamescloud', icon: <FaTelegramPlane />, color: 'hover:text-blue-500 dark:hover:text-blue-300' },
-    { name: 'WhatsApp', href: 'https://wa.me/919326000000', icon: <FaWhatsapp />, color: 'hover:text-green-500 dark:hover:text-green-400' }
+          { name: 'Facebook', href: CONTACT_INFO.links.facebook, icon: <FaFacebookF />, color: 'hover:text-blue-600 dark:hover:text-blue-400' },
+          { name: 'Twitter', href: CONTACT_INFO.links.twitter, icon: <FaTwitter />, color: 'hover:text-blue-400 dark:hover:text-blue-300' },
+      { name: 'LinkedIn', href: CONTACT_INFO.links.linkedin, icon: <FaLinkedinIn />, color: 'hover:text-blue-700 dark:hover:text-blue-500' },
+          { name: 'Instagram', href: CONTACT_INFO.links.instagram, icon: <FaInstagram />, color: 'hover:text-pink-600 dark:hover:text-pink-400' },
+          { name: 'Telegram', href: QUICK_CONTACT.telegramLink, icon: <FaTelegramPlane />, color: 'hover:text-blue-500 dark:hover:text-blue-300' },
+      { name: 'WhatsApp', href: QUICK_CONTACT.whatsappLink, icon: <FaWhatsapp />, color: 'hover:text-green-500 dark:hover:text-green-400' }
   ];
 
   return (

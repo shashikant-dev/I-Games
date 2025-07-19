@@ -24,6 +24,7 @@ import {
   HiGlobeAlt,
   HiCpuChip
 } from 'react-icons/hi2';
+import { CONTACT_INFO, QUICK_CONTACT } from '@/constants/contacts';
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -71,31 +72,31 @@ export default function Contact() {
       icon: <FaEnvelope className="w-6 h-6" />,
       title: t('contact.page.info.email.title'),
       subtitle: t('contact.page.info.email.subtitle'),
-      value: t('footer.contact.email'),
-      link: `mailto:${t('footer.contact.email')}`,
+      value: CONTACT_INFO.email.primary,
+      link: QUICK_CONTACT.emailLink,
       gradient: 'from-blue-500 to-blue-600'
     },
     {
       icon: <FaPhone className="w-6 h-6" />,
       title: t('contact.page.info.phone.title'),
       subtitle: t('contact.page.info.phone.subtitle'),
-      value: t('footer.contact.phone'),
-      link: `tel:${t('footer.contact.phone')}`,
+      value: CONTACT_INFO.phone.primary,
+      link: QUICK_CONTACT.phoneLink,
       gradient: 'from-green-500 to-green-600'
     },
     {
       icon: <FaWhatsapp className="w-6 h-6" />,
       title: t('contact.page.info.whatsapp.title'),
       subtitle: t('contact.page.info.whatsapp.subtitle'),
-      value: '+91 93260 00000',
-      link: 'https://wa.me/919326000000',
+      value: CONTACT_INFO.social.whatsapp.displayText,
+      link: QUICK_CONTACT.whatsappMessage,
       gradient: 'from-green-400 to-green-500'
     },
     {
       icon: <FaMapMarkerAlt className="w-6 h-6" />,
       title: t('contact.page.info.address.title'),
       subtitle: t('contact.page.info.address.subtitle'),
-      value: t('footer.contact.address'),
+      value: CONTACT_INFO.address.full,
       link: '#',
       gradient: 'from-purple-500 to-purple-600'
     }
@@ -380,7 +381,7 @@ export default function Contact() {
                 {/* Quick Action Buttons */}
                 <div className="grid grid-cols-2 gap-4 mt-8">
                   <Link
-                    href="https://wa.me/919326000000"
+                    href={QUICK_CONTACT.whatsappMessage}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center px-4 py-3 bg-gradient-to-r from-green-400 to-green-500 text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300"
@@ -389,7 +390,7 @@ export default function Contact() {
                     WhatsApp
                   </Link>
                   <Link
-                    href="https://t.me/igamescloud"
+                    href={QUICK_CONTACT.telegramLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center px-4 py-3 bg-gradient-to-r from-blue-400 to-blue-500 text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300"
