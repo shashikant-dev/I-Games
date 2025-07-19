@@ -110,7 +110,10 @@ export default function Contact() {
     'Fantasy Sports App',
     'Technical Consulting',
     'White Label Solutions',
-    '24/7 Support & Maintenance'
+    '24/7 Support & Maintenance',
+    'Customized Solutions',
+    'Game Development & Distribution',
+    'Other'
   ];
 
   const helpServices = [
