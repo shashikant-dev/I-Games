@@ -86,7 +86,7 @@ const ImageCarousel = ({
                  src={slide.image}
                  alt={slide.alt || slide.title}
                  fill
-                 className="object-cover blur-[1px]"
+                 className="object-cover"
                  priority={index === 0}
                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
                />
@@ -94,39 +94,53 @@ const ImageCarousel = ({
                {/* Enhanced overlay for better text readability */}
                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/30" />
 
-              {/* Content overlay */}
-              <div className="absolute inset-0 flex items-center justify-center p-6 sm:p-8">
-                <div className="text-center text-white max-w-4xl">
-                  {slide.badge && (
-                    <div className="inline-flex items-center px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white/90 text-xs sm:text-sm font-medium mb-3 sm:mb-4">
-                      {slide.badge}
-                    </div>
-                  )}
+                             {/* Content overlay */}
+               <div className="absolute inset-0 flex items-center justify-center p-4 sm:p-6 lg:p-8">
+                 <div className="text-center text-white w-full max-w-4xl mx-auto">
+                   {slide.badge && (
+                     <div
+                       className="inline-flex items-center px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white text-xs sm:text-sm font-medium mb-2 sm:mb-3"
+                       style={{ textShadow: '0 2px 6px rgba(0, 0, 0, 0.8)' }}
+                     >
+                       {slide.badge}
+                     </div>
+                   )}
 
-                                     <h2 className="text-xl sm:text-2xl lg:text-4xl font-bold mb-3 sm:mb-4 text-shadow-lg">
+                   <h2
+                     className="text-lg sm:text-xl lg:text-3xl xl:text-4xl font-bold mb-2 sm:mb-3 lg:mb-4 text-white px-2"
+                     style={{ textShadow: '0 2px 6px rgba(0, 0, 0, 0.8)' }}
+                   >
                      {slide.title}
                    </h2>
 
                    {slide.description && (
-                     <p className="text-sm sm:text-base lg:text-lg opacity-95 max-w-2xl mx-auto leading-relaxed text-shadow">
+                     <p
+                       className="text-xs sm:text-sm lg:text-base xl:text-lg max-w-3xl mx-auto leading-relaxed text-white px-4 mb-3 sm:mb-4"
+                       style={{
+                         textShadow: '0 2px 6px rgba(0, 0, 0, 0.8)',
+                         wordWrap: 'break-word',
+                         overflowWrap: 'break-word'
+                       }}
+                     >
                        {slide.description}
                      </p>
                    )}
 
-                  {slide.features && slide.features.length > 0 && (
-                    <div className="flex flex-wrap justify-center gap-2 mt-4 sm:mt-6">
-                      {slide.features.map((feature, featureIndex) => (
-                        <span
-                          key={featureIndex}
-                          className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-lg text-xs sm:text-sm text-white/80"
-                        >
-                          {feature}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              </div>
+                   {slide.features && slide.features.length > 0 && (
+                     <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 mt-2 sm:mt-4 px-2">
+                       {slide.features.map((feature, featureIndex) => (
+                         <span
+                           key={featureIndex}
+                           className="px-2 py-1 bg-white/20 backdrop-blur-sm rounded-lg text-xs sm:text-sm text-white whitespace-nowrap"
+                           style={{ textShadow: '0 2px 6px rgba(0, 0, 0, 0.8)' }}
+                         >
+                           {feature}
+                         </span>
+                       ))}
+                     </div>
+                   )}
+                 </div>
+               </div>
             </div>
           </div>
         ))}

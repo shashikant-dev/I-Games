@@ -127,7 +127,7 @@ export default function HeroSection() {
     },
     {
       id: 4,
-      image: '/assets/images/online-casino-platform.jpg',
+      image: '/assets/images/casino-roulette-players.jpg',
       title: 'Online Casino Development',
       description: 'Complete casino platforms with extensive game libraries, secure banking, and real money gaming',
       badge: 'Online Casino',
@@ -147,7 +147,7 @@ export default function HeroSection() {
       id: 6,
       image: '/assets/images/technology-infrastructure.jpg',
       title: 'Gaming Platform Infrastructure',
-      description: 'Robust gaming infrastructure with scalable architecture, real-time data processing, and global deployment',
+      description: 'Robust gaming infrastructure with scalable architecture, real-time data processing, and worldwide deployment',
       badge: 'Platform Tech',
       features: ['Scalable Architecture', 'Real-time Processing', 'Global Deployment'],
       alt: 'Gaming platform infrastructure interface showing system architecture and performance metrics'
