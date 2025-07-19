@@ -32,14 +32,6 @@ const FloatingContactButtons = () => {
       >
         <FaTelegramPlane className="w-7 h-7" />
       </Link>
-
-      {/* Tooltip for mobile - optional */}
-      <div className="hidden lg:block absolute right-16 top-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-        <div className="bg-gray-900 text-white text-sm px-3 py-2 rounded-lg shadow-lg whitespace-nowrap">
-          Contact us instantly
-          <div className="absolute top-1/2 -right-1 transform -translate-y-1/2 w-2 h-2 bg-gray-900 rotate-45"></div>
-        </div>
-      </div>
     </div>
   );
 };

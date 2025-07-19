@@ -27,10 +27,10 @@ const Footer = () => {
 
   const footerSections = {
     services: [
-      { name: t('footer.links.liveScoresApi'), href: '/services/live-scores' },
-      { name: t('footer.links.bettingPlatform'), href: '/services/betting-platform' },
-      { name: t('footer.links.casinoGames'), href: '/services/casino-games' },
-      { name: t('footer.links.whiteLabelSolutions'), href: '/services/white-label' }
+      { name: t('footer.links.liveScoresApi'), href: '#' },
+      { name: t('footer.links.bettingPlatform'), href: '#' },
+      { name: t('footer.links.casinoGames'), href: '#' },
+      { name: t('footer.links.whiteLabelSolutions'), href: '#' }
     ],
     company: [
       { name: t('footer.links.aboutUs'), href: '/about' },
@@ -39,16 +39,16 @@ const Footer = () => {
       { name: 'Our Services', href: '/services' }
     ],
     support: [
-      { name: t('footer.links.helpCenter'), href: '/help' },
-      { name: t('footer.links.apiDocs'), href: '/docs' },
-      { name: t('footer.links.support'), href: '/support' },
-      { name: t('footer.links.faq'), href: '/faq' }
+      { name: t('footer.links.helpCenter'), href: '#' },
+      { name: t('footer.links.apiDocs'), href: '#' },
+      { name: t('footer.links.support'), href: '#' },
+      { name: t('footer.links.faq'), href: '#' }
     ],
     legal: [
-      { name: t('footer.links.privacyPolicy'), href: '/privacy' },
-      { name: t('footer.links.termsOfService'), href: '/terms' },
-      { name: t('footer.links.security'), href: '/security' },
-      { name: t('footer.links.compliance'), href: '/compliance' }
+      { name: t('footer.links.privacyPolicy'), href: '#' },
+      { name: t('footer.links.termsOfService'), href: '#' },
+      { name: t('footer.links.security'), href: '#' },
+      { name: t('footer.links.compliance'), href: '#' }
     ]
   };
 

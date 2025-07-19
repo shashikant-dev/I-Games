@@ -255,7 +255,7 @@ export default function About() {
                   <div className="relative group overflow-hidden rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
                     <div className="relative h-24 sm:h-32 lg:h-40">
                       <Image
-                        src="/assets/images/original-demo-4.jpg"
+                        src="/assets/images/sports-betting-platform.jpeg"
                         alt="Professional sports betting platform solutions"
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"
