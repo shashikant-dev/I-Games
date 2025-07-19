@@ -5,6 +5,7 @@ import Footer from '@/components/layout/Footer';
 import ThemeProvider from '@/components/providers/ThemeProvider';
 import { LanguageProvider } from '@/contexts/LanguageContext';
 import LanguageMeta from '@/components/providers/LanguageMeta';
+import FloatingContactButtons from '@/components/ui/FloatingContactButtons';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -104,6 +105,7 @@ export default function RootLayout({ children }) {
                 {children}
               </main>
               <Footer />
+              <FloatingContactButtons />
             </div>
           </LanguageProvider>
         </ThemeProvider>
