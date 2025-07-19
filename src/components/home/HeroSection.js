@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
+import ImageCarousel from '@/components/ui/ImageCarousel';
 
 // Optimized icon imports - only import what's needed
 import {
@@ -42,7 +43,6 @@ import { AiFillApi } from 'react-icons/ai';
 export default function HeroSection() {
   const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState('');
-  const [currentSlide, setCurrentSlide] = useState(0);
 
   // Update selectedCategory when language changes
   useEffect(() => {
@@ -96,50 +96,65 @@ export default function HeroSection() {
     { id: 33, name: t('services.horse'), icon: GiHorseHead, category: t('hero.categories.sport') },
   ], [t]);
 
-  // Enhanced carousel slides with gradient backgrounds for better text visibility
+  // Enhanced carousel slides with gaming interface images
   const carouselSlides = useMemo(() => [
     {
       id: 1,
+      image: '/assets/images/fantasy-sports-platform.jpg',
       title: 'Fantasy Sports Development',
-      description: 'Build engaging fantasy platforms with real-time scoring and competitions',
-      gradient: 'from-blue-600 to-blue-700'
+      description: 'Build engaging fantasy platforms with real-time scoring, player analytics, and exciting competitions',
+      badge: 'Fantasy Sports',
+      features: ['Real-time Scoring', 'Player Analytics', 'Live Competitions'],
+      alt: 'Fantasy sports platform interface showing player statistics and live scoring'
     },
     {
       id: 2,
+      image: '/assets/images/sports-betting-platform.jpg',
       title: 'Sports Betting Platforms',
-      description: 'Advanced betting solutions with live odds and secure transactions',
-      gradient: 'from-green-600 to-green-700'
+      description: 'Advanced betting solutions with live odds, secure transactions, and comprehensive market coverage',
+      badge: 'Sports Betting',
+      features: ['Live Odds', 'Secure Payments', 'Global Markets'],
+      alt: 'Sports betting platform with live odds and comprehensive betting markets'
     },
     {
       id: 3,
+      image: '/assets/images/live-casino-roulette-table.jpg',
       title: 'Live Casino Solutions',
-      description: 'Premium casino gaming with live dealers and table games',
-      gradient: 'from-red-600 to-red-700'
+      description: 'Premium casino gaming experience with professional dealers, HD streaming, and interactive gameplay',
+      badge: 'Live Casino',
+      features: ['HD Streaming', 'Professional Dealers', 'Interactive Gaming'],
+      alt: 'Live casino roulette table with professional dealer and HD streaming interface'
     },
     {
       id: 4,
+      image: '/assets/images/online-casino-platform.jpg',
       title: 'Online Casino Development',
-      description: 'Complete casino platforms with real money gaming capabilities',
-      gradient: 'from-purple-600 to-purple-700'
+      description: 'Complete casino platforms with extensive game libraries, secure banking, and real money gaming',
+      badge: 'Online Casino',
+      features: ['Game Library', 'Secure Banking', 'Real Money Gaming'],
+      alt: 'Online casino platform interface displaying various casino games and options'
     },
     {
       id: 5,
+      image: '/assets/images/mobile-gaming-interface.jpg',
       title: 'Mobile Gaming Solutions',
-      description: 'Responsive gaming applications optimized for all mobile devices',
-      gradient: 'from-indigo-600 to-indigo-700'
+      description: 'Responsive gaming applications optimized for mobile devices with seamless cross-platform compatibility',
+      badge: 'Mobile Gaming',
+      features: ['Cross-platform', 'Responsive Design', 'Native Performance'],
+      alt: 'Mobile gaming interface showing responsive design across different devices'
+    },
+    {
+      id: 6,
+      image: '/assets/images/technology-infrastructure.jpg',
+      title: 'Gaming Platform Infrastructure',
+      description: 'Robust gaming infrastructure with scalable architecture, real-time data processing, and global deployment',
+      badge: 'Platform Tech',
+      features: ['Scalable Architecture', 'Real-time Processing', 'Global Deployment'],
+      alt: 'Gaming platform infrastructure interface showing system architecture and performance metrics'
     }
   ], []);
 
-  // Optimized auto-slide with useCallback to prevent recreation
-  const nextSlide = useCallback(() => {
-    setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
-  }, [carouselSlides.length]);
 
-  // Auto-slide functionality - optimized
-  useEffect(() => {
-    const timer = setInterval(nextSlide, 5000); // Increased to 5s for better UX
-    return () => clearInterval(timer);
-  }, [nextSlide]);
 
   // Memoize filtered services to prevent recalculation
   const filteredServices = useMemo(() => {
@@ -147,14 +162,6 @@ export default function HeroSection() {
       ? services
       : services.filter(service => service.category === selectedCategory);
   }, [selectedCategory, services, t]);
-
-  // Handle keyboard navigation for carousel
-  const handleKeyDown = useCallback((event, slideIndex) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      setCurrentSlide(slideIndex);
-    }
-  }, []);
 
   // Handle keyboard navigation for category filters
   const handleCategoryKeyDown = useCallback((event, category) => {
@@ -192,43 +199,16 @@ export default function HeroSection() {
               aria-label="Service showcase carousel"
               aria-live="polite"
             >
-                            <div className="mt-2 sm:mt-0 relative h-48 sm:h-64 lg:h-80 overflow-hidden rounded-2xl shadow-lg">
-                {carouselSlides.map((slide, index) => (
-                  <div
-                    key={slide.id}
-                    className={`absolute inset-0 transition-transform duration-500 ease-in-out ${
-                      index === currentSlide ? 'translate-x-0' :
-                      index < currentSlide ? '-translate-x-full' : 'translate-x-full'
-                    }`}
-                    aria-hidden={index !== currentSlide}
-                  >
-                    <div className={`w-full h-full bg-gradient-to-r ${slide.gradient} relative flex items-center justify-center`}>
-                      <div className="text-center text-white px-4">
-                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2">{slide.title}</h2>
-                        <p className="text-sm sm:text-base lg:text-lg opacity-90">{slide.description}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+              <div className="mt-2 sm:mt-0">
+                <ImageCarousel
+                  images={carouselSlides}
+                  autoPlay={true}
+                  interval={6000}
+                  height="h-48 sm:h-64 lg:h-80"
+                  showIndicators={true}
+                  showNavigation={true}
+                />
               </div>
-
-              {/* Navigation Dots - Enhanced for accessibility */}
-              <nav className="flex justify-center mt-6 space-x-3" aria-label="Carousel navigation">
-                {carouselSlides.map((slide, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentSlide(index)}
-                    onKeyDown={(e) => handleKeyDown(e, index)}
-                    className={`w-4 h-4 rounded-full transition-all duration-300 border-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                      index === currentSlide
-                        ? 'bg-[#3B82F6] border-[#3B82F6] shadow-lg scale-110'
-                        : 'bg-white/80 border-gray-300 hover:bg-white hover:border-[#3B82F6] shadow-md hover:scale-105'
-                    }`}
-                    aria-label={`Go to slide ${index + 1}: ${slide.title}`}
-                    aria-pressed={index === currentSlide}
-                  />
-                ))}
-              </nav>
             </div>
           </header>
 
