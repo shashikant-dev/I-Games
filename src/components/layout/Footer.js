@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import {
   FaFacebookF,
-  FaTwitter,
   FaLinkedinIn,
   FaInstagram,
   FaTelegramPlane,
@@ -12,6 +11,8 @@ import {
   FaPhone,
   FaMapMarkerAlt
 } from 'react-icons/fa';
+import { BsTwitterX } from "react-icons/bs";
+
 import {
   IoGameController,
   IoStatsChart,
@@ -54,7 +55,7 @@ const Footer = () => {
 
   const socialLinks = [
           { name: 'Facebook', href: CONTACT_INFO.links.facebook, icon: <FaFacebookF />, color: 'hover:text-blue-600 dark:hover:text-blue-400' },
-          { name: 'Twitter', href: CONTACT_INFO.links.twitter, icon: <FaTwitter />, color: 'hover:text-blue-400 dark:hover:text-blue-300' },
+          { name: 'Twitter', href: CONTACT_INFO.links.twitter, icon: <BsTwitterX />, color: 'hover:text-black-400 dark:hover:text-black-300' },
       { name: 'LinkedIn', href: CONTACT_INFO.links.linkedin, icon: <FaLinkedinIn />, color: 'hover:text-blue-700 dark:hover:text-blue-500' },
           { name: 'Instagram', href: CONTACT_INFO.links.instagram, icon: <FaInstagram />, color: 'hover:text-pink-600 dark:hover:text-pink-400' },
           { name: 'Telegram', href: QUICK_CONTACT.telegramLink, icon: <FaTelegramPlane />, color: 'hover:text-blue-500 dark:hover:text-blue-300' },
