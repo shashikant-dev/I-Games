@@ -469,35 +469,6 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-12 sm:py-16 lg:py-20 bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6] relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-white/10 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-1/4 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-[#FFD000]/20 rounded-full blur-3xl animate-pulse delay-1000"></div>
-        </div>
-
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
-            {t('contact.page.cta.title')}
-          </h2>
-          <p className="text-lg sm:text-xl text-blue-100 mb-8 leading-relaxed">
-            {t('contact.page.cta.description')}
-          </p>
-
-          <Link
-            href="#contact-form"
-            onClick={(e) => {
-              e.preventDefault();
-              document.querySelector('form').scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="group inline-flex items-center justify-center px-8 py-4 bg-white text-[#3B82F6] font-bold rounded-xl hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105"
-          >
-            <HiGlobeAlt className="w-5 h-5 mr-3 group-hover:rotate-12 transition-transform duration-300" />
-            {t('contact.page.cta.button')}
-            <FaArrowRight className="w-4 h-4 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
-          </Link>
-      </div>
-      </section>
     </main>
   );
 }

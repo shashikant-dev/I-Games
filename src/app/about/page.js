@@ -818,54 +818,6 @@ export default function About() {
           </div>
         </div>
       </section>
-
-      {/* Enhanced Call to Action Section - Mobile Optimized with Dark Mode Support */}
-      <section className="py-12 sm:py-16 lg:py-24 relative overflow-hidden">
-        {/* Dark mode compatible gradient background */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6] dark:from-[#1E40AF] dark:via-[#3B82F6] dark:to-[#1E40AF]"></div>
-
-        {/* Improved visual effects for both light and dark modes */}
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-white/10 dark:bg-white/5 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-1/4 w-48 h-48 sm:w-72 sm:h-72 lg:w-96 lg:h-96 bg-[#FFD000]/20 dark:bg-[#FFD000]/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-40 h-40 sm:w-60 sm:h-60 lg:w-80 lg:h-80 bg-purple-500/10 dark:bg-purple-500/5 rounded-full blur-3xl animate-pulse delay-2000"></div>
-        </div>
-
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="mb-6 sm:mb-8">
-            <div className="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 rounded-full bg-white/20 dark:bg-white/10 backdrop-blur-sm text-white text-xs sm:text-sm font-medium mb-4 sm:mb-6 border border-white/10 shadow-lg">
-              <HiSparkles className="w-3 h-3 sm:w-4 sm:h-4 mr-2 animate-pulse" />
-              Ready to Innovate?
-            </div>
-
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 sm:mb-6 leading-tight drop-shadow-md">
-              {t('about.cta.title')}
-            </h2>
-            <p className="text-lg sm:text-xl text-blue-50 dark:text-blue-100 mb-6 sm:mb-8 leading-relaxed drop-shadow-sm">
-              {t('about.cta.description')}
-            </p>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center max-w-md sm:max-w-none mx-auto">
-            <Link
-              href="/contact"
-              className="group inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-white dark:bg-white/90 text-[#3B82F6] dark:text-[#1E40AF] font-bold rounded-xl hover:bg-gray-100 dark:hover:bg-white transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105 text-sm sm:text-base"
-            >
-              <HiGlobeAlt className="w-4 h-4 sm:w-5 sm:h-5 mr-3 group-hover:rotate-12 transition-transform duration-300" />
-              {t('about.cta.button')}
-              <FaArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-3 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-
-            <Link
-              href="/services"
-              className="group inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 bg-transparent border-2 border-white text-white font-bold rounded-xl hover:bg-white/10 dark:hover:bg-white/20 hover:border-white/80 transition-all duration-300 text-sm sm:text-base shadow-lg"
-            >
-              <FaRocket className="w-4 h-4 sm:w-5 sm:h-5 mr-3 group-hover:-rotate-12 transition-transform duration-300" />
-              Explore Services
-            </Link>
-        </div>
-      </div>
-      </section>
     </main>
   );
 }

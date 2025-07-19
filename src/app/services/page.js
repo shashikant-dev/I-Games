@@ -520,41 +520,6 @@ export default function Services() {
           </div>
         </div>
       </section>
-
-      {/* Call to Action - Mobile First */}
-      <section className="py-8 sm:py-12 lg:py-16 bg-gradient-to-r from-[#3B82F6] via-[#60A5FA] to-[#3B82F6] relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-0 left-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-72 lg:h-72 bg-white/10 rounded-full blur-2xl animate-pulse"></div>
-          <div className="absolute bottom-0 right-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-72 lg:h-72 bg-[#FFD000]/20 rounded-full blur-2xl animate-pulse delay-1000"></div>
-        </div>
-
-        <div className="relative max-w-4xl mx-auto px-3 sm:px-4 lg:px-6 text-center">
-          <h2 className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-3 sm:mb-4 lg:mb-6 leading-tight">
-            {t('servicesPage.cta.title')}
-          </h2>
-          <p className="text-sm sm:text-base lg:text-lg text-blue-100 mb-6 sm:mb-8 leading-relaxed">
-            {t('servicesPage.cta.description')}
-          </p>
-
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
-            <Link
-              href="/contact"
-              className="group w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 bg-white text-[#3B82F6] font-bold rounded-lg sm:rounded-xl hover:bg-gray-100 transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105"
-            >
-              <FaRocket className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 group-hover:rotate-12 transition-transform duration-300" />
-              {t('servicesPage.cta.primaryButton')}
-            </Link>
-            <Link
-              href="/contact"
-              className="group w-full sm:w-auto inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 border-2 border-white text-white font-bold rounded-lg sm:rounded-xl hover:bg-white hover:text-[#3B82F6] transition-all duration-300 hover:scale-105"
-            >
-              <FaUsers className="w-4 h-4 sm:w-5 sm:h-5 mr-2 sm:mr-3 group-hover:rotate-12 transition-transform duration-300" />
-              {t('servicesPage.cta.secondaryButton')}
-              <FaArrowRight className="w-3 h-3 sm:w-4 sm:h-4 ml-2 sm:ml-3 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-          </div>
-        </div>
-      </section>
     </main>
   );
 }
