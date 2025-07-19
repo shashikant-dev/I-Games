@@ -104,7 +104,7 @@ export default function HeroSection() {
       title: 'Fantasy Sports Development',
       description: 'Build engaging fantasy platforms with real-time scoring, player analytics, and exciting competitions',
       badge: 'Fantasy Sports',
-      features: ['Real-time Scoring', 'Player Analytics', 'Live Competitions'],
+      features: ['Real-time Scoring', 'Live Competitions'],
       alt: 'Fantasy sports platform interface showing player statistics and live scoring'
     },
     {
@@ -122,7 +122,7 @@ export default function HeroSection() {
       title: 'Live Casino Solutions',
       description: 'Premium casino gaming experience with professional dealers, HD streaming, and interactive gameplay',
       badge: 'Live Casino',
-      features: ['HD Streaming', 'Professional Dealers', 'Interactive Gaming'],
+      features: ['HD Streaming', 'Interactive Gaming'],
       alt: 'Live casino roulette table with professional dealer and HD streaming interface'
     },
     {
@@ -140,7 +140,7 @@ export default function HeroSection() {
       title: 'Mobile Gaming Solutions',
       description: 'Responsive gaming applications optimized for mobile devices with seamless cross-platform compatibility',
       badge: 'Mobile Gaming',
-      features: ['Cross-platform', 'Responsive Design', 'Native Performance'],
+      features: ['Cross-platform', 'Responsive Design'],
       alt: 'Mobile gaming interface showing responsive design across different devices'
     },
     {

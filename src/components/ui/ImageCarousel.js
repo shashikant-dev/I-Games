@@ -169,7 +169,7 @@ const ImageCarousel = ({
 
       {/* Indicators */}
       {showIndicators && images.length > 1 && (
-        <div className="absolute bottom-4 sm:bottom-6 left-1/2 transform -translate-x-1/2">
+        <div className="absolute bottom-2 sm:bottom-6 left-1/2 transform -translate-x-1/2">
           <div className="flex space-x-2">
             {images.map((_, index) => (
               <button
