@@ -11,19 +11,19 @@ const ServicesSection = () => {
     {
       title: t('offerings.items.webApp.title'),
       description: t('offerings.items.webApp.description'),
-      icon: '/globe.svg',
+      icon: '/assets/images/globe.svg',
       alt: 'Web application development icon'
     },
     {
       title: t('offerings.items.gameApp.title'),
       description: t('offerings.items.gameApp.description'),
-      icon: '/window.svg',
+      icon: '/assets/images/window.svg',
       alt: 'Game application development icon'
     },
     {
       title: t('offerings.items.fantasyApp.title'),
       description: t('offerings.items.fantasyApp.description'),
-      icon: '/file.svg',
+      icon: '/assets/images/file.svg',
       alt: 'Fantasy application development icon'
     }
   ], [t]);
