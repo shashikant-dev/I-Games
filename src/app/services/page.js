@@ -254,14 +254,10 @@ export default function Services() {
                 <button
                   key={category.key}
                   onClick={() => setSelectedCategory(category.key)}
-                  className={`flex items-center px-3 py-2 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 ${
-                    selectedCategory === category.key
-                      ? 'bg-gradient-to-r from-[#3B82F6] to-[#60A5FA] text-white shadow-lg scale-105'
-                      : 'bg-theme-bg-secondary text-theme-text-secondary hover:bg-theme-bg-primary hover:text-theme-text-primary border border-theme-border'
-                  }`}
+                  className={`flex items-center px-3 py-2 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 bg-theme-bg-secondary text-theme-text-secondary hover:bg-theme-bg-primary hover:text-theme-text-primary border border-theme-border`}
                 >
                   {category.icon}
-                                     <span className="ml-1.5 sm:ml-2">{category.label}</span>
+                  <span className="ml-1.5 sm:ml-2">{category.label}</span>
                 </button>
               ))}
             </div>
