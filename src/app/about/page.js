@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
 import {
   FaRocket,
@@ -215,13 +216,16 @@ export default function About() {
                 <div className="absolute -inset-1 sm:-inset-2 bg-gradient-to-r from-[#3B82F6]/30 to-[#60A5FA]/30 rounded-xl sm:rounded-2xl blur-md"></div>
 
                 <div className="relative aspect-w-4 aspect-h-3 rounded-xl sm:rounded-2xl overflow-hidden shadow-xl sm:shadow-2xl">
-                  <img
-                    src="/assets/images/tech-innovation.jpg"
-                    alt="iGames.cloud Innovation Hub"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  <div className="relative w-full h-80 sm:h-96 lg:h-[28rem]">
+                    <Image
+                      src="/assets/images/technology-innovation-hub.jpg"
+                      alt="iGames.cloud Innovation Hub"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                  </div>
                 </div>
 
                 {/* Floating accent elements - Mobile Optimized */}
@@ -232,6 +236,34 @@ export default function About() {
                 <div className="absolute -bottom-3 -left-3 sm:-bottom-6 sm:-left-6 w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-r from-purple-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500">
                   <HiComputerDesktop className="w-7 h-7 sm:w-8 sm:h-8 lg:w-10 lg:h-10 text-white" />
                 </div>
+              </div>
+
+              {/* Additional Image Gallery - Mobile Optimized */}
+              <div className="grid grid-cols-2 gap-2 sm:gap-4 mt-6 sm:mt-8">
+                                 <div className="relative group overflow-hidden rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                   <div className="relative h-24 sm:h-32 lg:h-40">
+                                           <Image
+                        src="/assets/images/original-demo-3.jpg"
+                        alt="Advanced gaming technology development"
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                  </div>
+                  <div className="relative group overflow-hidden rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+                    <div className="relative h-24 sm:h-32 lg:h-40">
+                      <Image
+                        src="/assets/images/original-demo-4.jpg"
+                        alt="Professional sports betting platform solutions"
+                        fill
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1200px) 25vw, 20vw"
+                      />
+                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                   </div>
+                 </div>
               </div>
             </div>
           </div>
@@ -287,6 +319,31 @@ export default function About() {
         </div>
       </section>
 
+      {/* Live Gaming Interface Showcase */}
+      <section className="py-12 sm:py-16 lg:py-24 bg-theme-bg-primary relative">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 rounded-full bg-gradient-to-r from-purple-500/10 to-indigo-500/10 text-purple-600 dark:text-purple-400 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+              <HiSparkles className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
+              Live Gaming Interfaces
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-theme-text-primary mb-4">
+              Interactive Gaming Experiences
+            </h2>
+            <p className="text-base sm:text-lg text-theme-text-secondary max-w-3xl mx-auto">
+              Experience our cutting-edge gaming interfaces with detailed gameplay mechanics and professional-grade user experiences
+            </p>
+          </div>
+
+
+          <div className="text-center mt-8 sm:mt-12">
+            <p className="text-theme-text-secondary text-sm sm:text-base max-w-2xl mx-auto">
+              These interfaces showcase our commitment to creating immersive, user-friendly gaming experiences with professional-grade functionality and stunning visual design.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Enhanced Technology & Innovation Section - Mobile Optimized */}
       <section className="py-12 sm:py-16 lg:py-24 bg-theme-bg-secondary relative">
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.02]" />
@@ -335,6 +392,397 @@ export default function About() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Image Gallery Showcase - Mobile Optimized */}
+      <section className="py-12 sm:py-16 lg:py-24 bg-theme-bg-secondary relative overflow-hidden">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 rounded-full bg-gradient-to-r from-[#3B82F6]/10 to-[#60A5FA]/10 text-[#3B82F6] dark:text-[#60A5FA] text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+              <HiSparkles className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
+              Our Expertise
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-theme-text-primary mb-4">
+              Comprehensive Gaming Solutions
+            </h2>
+            <p className="text-base sm:text-lg text-theme-text-secondary max-w-3xl mx-auto">
+              From sports betting platforms to casino games, we deliver cutting-edge solutions across the gaming industry
+            </p>
+          </div>
+
+          {/* Main Gallery Row */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8 sm:mb-12">
+                         {/* Fantasy Sports */}
+             <div className="relative group overflow-hidden rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+               <div className="relative h-48 sm:h-56 lg:h-64">
+                 <Image
+                   src="/assets/images/fantasy-sports-development.webp"
+                   alt="Fantasy Sports App Development - Engaging user experiences"
+                   fill
+                   className="object-cover group-hover:scale-110 transition-transform duration-700"
+                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                 <div className="absolute bottom-4 left-4 right-4">
+                   <h3 className="text-white font-bold text-sm sm:text-base mb-1">Fantasy Sports</h3>
+                   <p className="text-white/80 text-xs sm:text-sm">Engaging Platforms</p>
+                 </div>
+               </div>
+             </div>
+
+             {/* Sports Betting */}
+             <div className="relative group overflow-hidden rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+               <div className="relative h-48 sm:h-56 lg:h-64">
+                 <Image
+                   src="/assets/images/sports-betting-platform.jpg"
+                   alt="Sports Betting Apps - Real-time odds and live betting"
+                   fill
+                   className="object-cover group-hover:scale-110 transition-transform duration-700"
+                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                 <div className="absolute bottom-4 left-4 right-4">
+                   <h3 className="text-white font-bold text-sm sm:text-base mb-1">Sports Betting</h3>
+                   <p className="text-white/80 text-xs sm:text-sm">Live Odds & Markets</p>
+                 </div>
+               </div>
+             </div>
+
+             {/* Casino Games */}
+             <div className="relative group overflow-hidden rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+               <div className="relative h-48 sm:h-56 lg:h-64">
+                 <Image
+                   src="/assets/images/live-casino-roulette-table.jpg"
+                   alt="Live Casino Games - Professional roulette and table games"
+                   fill
+                   className="object-cover group-hover:scale-110 transition-transform duration-700"
+                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                 <div className="absolute bottom-4 left-4 right-4">
+                   <h3 className="text-white font-bold text-sm sm:text-base mb-1">Live Casino</h3>
+                   <p className="text-white/80 text-xs sm:text-sm">Table Games & Roulette</p>
+                 </div>
+               </div>
+             </div>
+
+             {/* Online Gaming */}
+             <div className="relative group overflow-hidden rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+               <div className="relative h-48 sm:h-56 lg:h-64">
+                 <Image
+                   src="/assets/images/online-casino-games.jpg"
+                   alt="Online Real Money Casino Games - Comprehensive gaming portfolio"
+                   fill
+                   className="object-cover group-hover:scale-110 transition-transform duration-700"
+                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                 <div className="absolute bottom-4 left-4 right-4">
+                   <h3 className="text-white font-bold text-sm sm:text-base mb-1">Online Casino</h3>
+                   <p className="text-white/80 text-xs sm:text-sm">Real Money Games</p>
+                 </div>
+               </div>
+             </div>
+          </div>
+
+          {/* Secondary Gallery Row - Wide Format Images */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+                         {/* Mobile Gaming */}
+             <div className="relative group overflow-hidden rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+               <div className="relative h-32 sm:h-40 lg:h-48">
+                 <Image
+                   src="/assets/images/mobile-gaming-solutions.webp"
+                   alt="Mobile Gaming Solutions - Responsive design for all devices"
+                   fill
+                   className="object-cover group-hover:scale-110 transition-transform duration-700"
+                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-purple-900/80" />
+                 <div className="absolute inset-0 flex items-center justify-center">
+                   <div className="text-center text-white px-4">
+                     <h3 className="font-bold text-sm sm:text-base mb-1">Mobile Gaming</h3>
+                     <p className="text-white/80 text-xs sm:text-sm">Cross-Platform Solutions</p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+
+             {/* Sports Management */}
+             <div className="relative group overflow-hidden rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500">
+               <div className="relative h-32 sm:h-40 lg:h-48">
+                 <Image
+                   src="/assets/images/sports-management-platform.jpg"
+                   alt="Sports Management Platform - Comprehensive sports solutions"
+                   fill
+                   className="object-cover group-hover:scale-110 transition-transform duration-700"
+                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-blue-900/80" />
+                 <div className="absolute inset-0 flex items-center justify-center">
+                   <div className="text-center text-white px-4">
+                     <h3 className="font-bold text-sm sm:text-base mb-1">Sports Management</h3>
+                     <p className="text-white/80 text-xs sm:text-sm">Platform Solutions</p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+
+             {/* Racing & Events */}
+             <div className="relative group overflow-hidden rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 sm:col-span-2 lg:col-span-1">
+               <div className="relative h-32 sm:h-40 lg:h-48">
+                 <Image
+                   src="/assets/images/racing-championship-events.jpg"
+                   alt="Racing and Sports Events - Live event management and betting"
+                   fill
+                   className="object-cover group-hover:scale-110 transition-transform duration-700"
+                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 33vw"
+                 />
+                 <div className="absolute inset-0 bg-gradient-to-r from-red-900/80 to-orange-900/80" />
+                 <div className="absolute inset-0 flex items-center justify-center">
+                   <div className="text-center text-white px-4">
+                     <h3 className="font-bold text-sm sm:text-base mb-1">Racing & Events</h3>
+                     <p className="text-white/80 text-xs sm:text-sm">Live Event Solutions</p>
+                   </div>
+                 </div>
+               </div>
+             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comprehensive Image Gallery - Original Aspect Ratios */}
+      <section className="py-12 sm:py-16 lg:py-24 bg-theme-bg-primary relative">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12">
+            <div className="inline-flex items-center px-3 py-2 sm:px-4 sm:py-2 rounded-full bg-gradient-to-r from-purple-500/10 to-indigo-500/10 text-purple-600 dark:text-purple-400 text-xs sm:text-sm font-medium mb-4 sm:mb-6">
+              <HiSparkles className="w-3 h-3 sm:w-4 sm:h-4 mr-2" />
+              Our Portfolio
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-theme-text-primary mb-4">
+              Gaming Industry Excellence
+            </h2>
+            <p className="text-base sm:text-lg text-theme-text-secondary max-w-3xl mx-auto">
+              Showcasing our comprehensive expertise across all facets of gaming and sports betting technology
+            </p>
+          </div>
+
+          {/* Masonry-style Grid with Original Aspect Ratios */}
+          <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-4 sm:gap-6 space-y-4 sm:space-y-6">
+
+            {/* Casino Environment - Wide format */}
+            <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
+              <Image
+                src="/assets/images/premium-casino-environment.jpg"
+                alt="Premium casino gaming environment with professional atmosphere"
+                width={800}
+                height={450}
+                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white font-bold text-sm mb-1">Premium Casino Environment</h3>
+                <p className="text-white/80 text-xs">Professional Gaming Atmosphere</p>
+              </div>
+            </div>
+
+            {/* Fantasy Sports - Square format */}
+            <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
+              <Image
+                src="/assets/images/fantasy-sports-platform.jpg"
+                alt="Fantasy football engagement and user interaction platform"
+                width={600}
+                height={600}
+                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white font-bold text-sm mb-1">Fantasy Football Platform</h3>
+                <p className="text-white/80 text-xs">Engaging User Experience</p>
+              </div>
+            </div>
+
+            {/* Live Casino - Wide format */}
+            <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
+              <Image
+                src="/assets/images/live-casino-roulette-table.jpg"
+                alt="Professional live casino roulette table with active gameplay"
+                width={900}
+                height={600}
+                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white font-bold text-sm mb-1">Live Casino Experience</h3>
+                <p className="text-white/80 text-xs">Professional Table Games</p>
+              </div>
+            </div>
+
+            {/* Mobile Gaming Interface */}
+            <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
+              <Image
+                src="/assets/images/mobile-gaming-interface.jpg"
+                alt="Mobile gaming interface design and user experience"
+                width={860}
+                height={394}
+                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white font-bold text-sm mb-1">Mobile Gaming Interface</h3>
+                <p className="text-white/80 text-xs">Responsive Design</p>
+              </div>
+            </div>
+
+            {/* Technology Infrastructure */}
+            <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
+              <Image
+                src="/assets/images/technology-infrastructure.jpg"
+                alt="Advanced technology infrastructure and development environment"
+                width={800}
+                height={1200}
+                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white font-bold text-sm mb-1">Technology Infrastructure</h3>
+                <p className="text-white/80 text-xs">Advanced Development</p>
+              </div>
+            </div>
+
+            {/* Sports Betting Platform */}
+            <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
+              <Image
+                src="/assets/images/sports-betting-platform.jpg"
+                alt="Sports betting application interface with live odds"
+                width={600}
+                height={400}
+                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white font-bold text-sm mb-1">Sports Betting Platform</h3>
+                <p className="text-white/80 text-xs">Real-time Odds & Markets</p>
+              </div>
+            </div>
+
+            {/* Gaming Technology Team */}
+            <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
+              <Image
+                src="/assets/images/gaming-development-team.jpg"
+                alt="Professional gaming technology development team collaboration"
+                width={700}
+                height={466}
+                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white font-bold text-sm mb-1">Development Team</h3>
+                <p className="text-white/80 text-xs">Expert Collaboration</p>
+              </div>
+            </div>
+
+            {/* Online Casino Games */}
+            <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
+              <Image
+                src="/assets/images/online-casino-games.jpg"
+                alt="Comprehensive online casino real money gaming portfolio"
+                width={800}
+                height={533}
+                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white font-bold text-sm mb-1">Online Casino Games</h3>
+                <p className="text-white/80 text-xs">Real Money Gaming</p>
+              </div>
+            </div>
+
+            {/* Racing Events */}
+            <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
+              <Image
+                src="/assets/images/racing-championship-events.jpg"
+                alt="Professional racing event with live betting opportunities"
+                width={800}
+                height={533}
+                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white font-bold text-sm mb-1">Racing Championships</h3>
+                <p className="text-white/80 text-xs">Live Event Betting</p>
+              </div>
+            </div>
+
+            {/* Professional Gaming Platform */}
+            <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
+              <Image
+                src="/assets/images/gaming-platform-interface.png"
+                alt="Professional gaming platform interface and user experience"
+                width={800}
+                height={600}
+                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white font-bold text-sm mb-1">Gaming Platform UI</h3>
+                <p className="text-white/80 text-xs">Professional Interface</p>
+              </div>
+            </div>
+
+            {/* Sports Analytics */}
+            <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
+              <Image
+                src="/assets/images/sports-analytics-data.jpg"
+                alt="Advanced sports analytics and data visualization technology"
+                width={612}
+                height={612}
+                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white font-bold text-sm mb-1">Sports Analytics</h3>
+                <p className="text-white/80 text-xs">Data Visualization</p>
+              </div>
+            </div>
+
+            {/* Mobile Gaming Solutions */}
+            <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
+              <Image
+                src="/assets/images/mobile-gaming-solutions.webp"
+                alt="Cross-platform mobile gaming solutions and responsive design"
+                width={600}
+                height={400}
+                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <h3 className="text-white font-bold text-sm mb-1">Mobile Solutions</h3>
+                <p className="text-white/80 text-xs">Cross-Platform Gaming</p>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Additional Information */}
+          <div className="text-center mt-12 sm:mt-16">
+            <p className="text-theme-text-secondary text-sm sm:text-base max-w-2xl mx-auto">
+              Each image represents a different aspect of our comprehensive gaming and sports betting technology solutions,
+              showcasing our expertise across multiple industries and platforms.
+            </p>
           </div>
         </div>
       </section>

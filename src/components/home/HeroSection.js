@@ -96,31 +96,37 @@ export default function HeroSection() {
     { id: 33, name: t('services.horse'), icon: GiHorseHead, category: t('hero.categories.sport') },
   ], [t]);
 
-  // Optimized carousel slides with proper images
+  // Enhanced carousel slides with gradient backgrounds for better text visibility
   const carouselSlides = useMemo(() => [
     {
       id: 1,
-      alt: 'Sports API Solutions - Comprehensive sports data integration',
-      title: 'Sports API Solutions',
-      description: 'Comprehensive sports data integration for your platform'
+      title: 'Fantasy Sports Development',
+      description: 'Build engaging fantasy platforms with real-time scoring and competitions',
+      gradient: 'from-blue-600 to-blue-700'
     },
     {
       id: 2,
-      alt: 'Skilled Betting Platform Development - Advanced betting solutions',
-      title: 'Betting Platform Development',
-      description: 'Advanced betting solutions with real-time data'
+      title: 'Sports Betting Platforms',
+      description: 'Advanced betting solutions with live odds and secure transactions',
+      gradient: 'from-green-600 to-green-700'
     },
     {
       id: 3,
-      alt: 'Fantasy Sports Apps - Engaging fantasy gaming platforms',
-      title: 'Fantasy Sports Apps',
-      description: 'Engaging fantasy gaming platforms for all sports'
+      title: 'Live Casino Solutions',
+      description: 'Premium casino gaming with live dealers and table games',
+      gradient: 'from-red-600 to-red-700'
     },
     {
       id: 4,
-      alt: 'Casino Game Development - Premium casino gaming experience',
-      title: 'Casino Game Development',
-      description: 'Premium casino gaming experience with live features'
+      title: 'Online Casino Development',
+      description: 'Complete casino platforms with real money gaming capabilities',
+      gradient: 'from-purple-600 to-purple-700'
+    },
+    {
+      id: 5,
+      title: 'Mobile Gaming Solutions',
+      description: 'Responsive gaming applications optimized for all mobile devices',
+      gradient: 'from-indigo-600 to-indigo-700'
     }
   ], []);
 
@@ -178,7 +184,7 @@ export default function HeroSection() {
 
       <div className="relative pt-16 pb-8 lg:pt-20 lg:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Carousel Section */}
+          {/* Enhanced Carousel Section with Images */}
           <header className="text-center mb-8">
             <div
               className="relative"
@@ -186,33 +192,24 @@ export default function HeroSection() {
               aria-label="Service showcase carousel"
               aria-live="polite"
             >
-              <div className="mt-2 sm:mt-0 relative h-48 sm:h-64 overflow-hidden rounded-2xl shadow-lg">
-                {carouselSlides.map((slide, index) => {
-                  const gradients = [
-                    'from-blue-600 to-blue-700',
-                    'from-red-600 to-red-700',
-                    'from-green-600 to-green-700',
-                    'from-amber-600 to-amber-700'
-                  ];
-
-                  return (
-                    <div
-                      key={slide.id}
-                      className={`absolute inset-0 transition-transform duration-500 ease-in-out ${
-                        index === currentSlide ? 'translate-x-0' :
-                        index < currentSlide ? '-translate-x-full' : 'translate-x-full'
-                      }`}
-                      aria-hidden={index !== currentSlide}
-                    >
-                      <div className={`w-full h-full bg-gradient-to-r ${gradients[index]} relative flex items-center justify-center`}>
-                        <div className="text-center text-white px-4">
-                          <h2 className="text-xl sm:text-2xl font-bold mb-2">{slide.title}</h2>
-                          <p className="text-sm sm:text-base opacity-90">{slide.description}</p>
-                        </div>
+                            <div className="mt-2 sm:mt-0 relative h-48 sm:h-64 lg:h-80 overflow-hidden rounded-2xl shadow-lg">
+                {carouselSlides.map((slide, index) => (
+                  <div
+                    key={slide.id}
+                    className={`absolute inset-0 transition-transform duration-500 ease-in-out ${
+                      index === currentSlide ? 'translate-x-0' :
+                      index < currentSlide ? '-translate-x-full' : 'translate-x-full'
+                    }`}
+                    aria-hidden={index !== currentSlide}
+                  >
+                    <div className={`w-full h-full bg-gradient-to-r ${slide.gradient} relative flex items-center justify-center`}>
+                      <div className="text-center text-white px-4">
+                        <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2">{slide.title}</h2>
+                        <p className="text-sm sm:text-base lg:text-lg opacity-90">{slide.description}</p>
                       </div>
                     </div>
-                  );
-                })}
+                  </div>
+                ))}
               </div>
 
               {/* Navigation Dots - Enhanced for accessibility */}
@@ -295,6 +292,69 @@ export default function HeroSection() {
           <div className="sr-only" aria-live="polite" aria-atomic="true">
             {filteredServices.length} services available in {selectedCategory} category
           </div>
+
+          {/* Gaming Interface Showcase Cards */}
+          <section className="mt-12 sm:mt-16" aria-label="Live gaming interfaces showcase">
+            <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white text-center mb-6 sm:mb-8">
+              Live Gaming Interfaces
+            </h3>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+              {/* Poker Interface Card */}
+              <div className="relative group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                <div className="relative h-48 sm:h-56">
+                  <Image
+                    src="/assets/images/sports-betting-platform.jpg"
+                    alt="Live poker interface with royal flush cards display"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h4 className="text-white font-bold text-sm sm:text-base mb-1">Live Poker Tables</h4>
+                    <p className="text-white/80 text-xs sm:text-sm">Real-time card gaming experience</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Sports Betting Interface Card */}
+              <div className="relative group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                <div className="relative h-48 sm:h-56">
+                  <Image
+                    src="/assets/images/mobile-gaming-interface.jpg"
+                    alt="Sports betting interface with live statistics and odds"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h4 className="text-white font-bold text-sm sm:text-base mb-1">Sports Analytics</h4>
+                    <p className="text-white/80 text-xs sm:text-sm">Live statistics and betting odds</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Multi-player Gaming Card */}
+              <div className="relative group overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300">
+                <div className="relative h-48 sm:h-56">
+                  <Image
+                    src="/assets/images/original-demo-3.jpg"
+                    alt="Multi-player gaming interface with player avatars and chip counts"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <h4 className="text-white font-bold text-sm sm:text-base mb-1">Multi-Player Gaming</h4>
+                    <p className="text-white/80 text-xs sm:text-sm">Social gaming with live players</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </section>

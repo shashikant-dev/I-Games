@@ -1,4 +1,5 @@
 'use client';
+import Image from 'next/image';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useMemo } from 'react';
 import {
@@ -144,6 +145,81 @@ export default function TrustSection() {
                 </article>
               );
             })}
+          </div>
+        </section>
+
+        {/* Enhanced Visual Section with Background */}
+        <section className="mb-8 sm:mb-12" aria-label="Professional showcase">
+          <div className="relative h-32 sm:h-40 lg:h-48 rounded-2xl overflow-hidden mb-6 sm:mb-8">
+            <Image
+              src="/assets/images/gaming-platform-interface.png"
+              alt="Professional gaming platform interface and technology infrastructure"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 via-indigo-900/85 to-purple-900/90" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center text-white px-4">
+                <h3 className="text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3">
+                  Trusted by Industry Leaders
+                </h3>
+                <p className="text-sm sm:text-base lg:text-lg opacity-90 max-w-3xl">
+                  Enterprise-grade security and reliability for global gaming platforms with cutting-edge technology
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Additional Trust Indicators */}
+          <div className="grid grid-cols-3 gap-3 sm:gap-4">
+            <div className="relative group overflow-hidden rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+              <div className="relative h-16 sm:h-20 lg:h-24">
+                <Image
+                  src="/assets/images/global-gaming-partnerships.jpg"
+                  alt="Gaming industry partnerships and collaborations"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 768px) 33vw, (max-width: 1200px) 25vw, 20vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
+                <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 right-1 sm:right-2">
+                  <p className="text-white font-semibold text-xs sm:text-sm">Global Reach</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative group overflow-hidden rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+              <div className="relative h-16 sm:h-20 lg:h-24">
+                <Image
+                  src="/assets/images/gaming-innovation-tech.jpg"
+                  alt="Advanced technology and innovation in gaming"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 768px) 33vw, (max-width: 1200px) 25vw, 20vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
+                <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 right-1 sm:right-2">
+                  <p className="text-white font-semibold text-xs sm:text-sm">Innovation</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative group overflow-hidden rounded-lg sm:rounded-xl shadow-md hover:shadow-lg transition-all duration-300">
+              <div className="relative h-16 sm:h-20 lg:h-24">
+                <Image
+                  src="/assets/images/development-excellence.jpg"
+                  alt="Professional gaming platform development and deployment"
+                  fill
+                  className="object-cover group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 768px) 33vw, (max-width: 1200px) 25vw, 20vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-80" />
+                <div className="absolute bottom-1 sm:bottom-2 left-1 sm:left-2 right-1 sm:right-2">
+                  <p className="text-white font-semibold text-xs sm:text-sm">Excellence</p>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
