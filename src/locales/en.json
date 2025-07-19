@@ -6,6 +6,9 @@
     "whyUs": "Why Us?",
     "contact": "Contact Us"
   },
+    "common": {
+      "backToHome": "Back to Home"
+    },
   "hero": {
     "title": "Power Your Sports Platform with Our Complete API & Development Suite",
     "subtitle": "Into Game-Changing Sports Apps",
@@ -143,6 +146,271 @@
     "badges": {
       "licensed": "Licensed & Regulated",
       "certified": "ISO Certified"
+    },
+    "legal": {
+      "privacyPolicy": {
+        "title": "Privacy Policy",
+        "lastUpdated": "Last Updated: June 1, 2023"
+      },
+      "termsOfService": {
+        "title": "Terms of Service",
+        "lastUpdated": "Last Updated: June 1, 2023"
+      },
+      "cookiePolicy": {
+        "title": "Cookie Policy",
+        "lastUpdated": "Last Updated: June 1, 2023"
+      },
+      "disclaimer": {
+        "title": "Disclaimer",
+        "lastUpdated": "Last Updated: June 1, 2023"
+      }
+    }
+  },
+  "legal": {
+    "privacyPolicy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last Updated",
+      "date": "January 1, 2023",
+      "introduction": {
+        "title": "Introduction",
+        "description": "At iGames.cloud, we respect your privacy and are committed to protecting your personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or use our services."
+      },
+      "informationCollection": {
+        "title": "Information We Collect",
+        "description": "We may collect several types of information from and about users of our website and services, including:",
+        "items": {
+          "personal": "Personal identification information (such as name, email address, phone number)",
+          "usage": "Usage data (such as how you interact with our website and services)",
+          "technical": "Technical data (such as IP address, browser type, device information)",
+          "business": "Business information (such as company name, job title, industry)"
+        }
+      },
+      "dataUsage": {
+        "title": "How We Use Your Information",
+        "description": "We use the information we collect for various purposes, including:",
+        "items": {
+          "services": "To provide, maintain, and improve our services",
+          "communication": "To communicate with you about our services, updates, and support",
+          "improvement": "To analyze and improve our website and services",
+          "legal": "To comply with legal obligations and enforce our terms"
+        }
+      },
+      "dataProtection": {
+        "title": "Data Protection",
+        "description": "We implement appropriate technical and organizational measures to protect your personal data against unauthorized or unlawful processing, accidental loss, destruction, or damage. We limit access to your personal data to employees and third parties who have a business need to know."
+      },
+      "cookies": {
+        "title": "Cookies and Similar Technologies",
+        "description": "We use cookies and similar tracking technologies to track activity on our website and store certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent."
+      },
+      "thirdParty": {
+        "title": "Third-Party Disclosure",
+        "description": "We may share your information with third-party service providers who perform services on our behalf, such as payment processing, data analysis, email delivery, hosting services, and customer service. We may also disclose your information if required by law or to protect our rights."
+      },
+      "rights": {
+        "title": "Your Data Protection Rights",
+        "description": "Depending on your location, you may have the following rights regarding your personal data:",
+        "items": {
+          "access": "Right to access your personal data",
+          "rectification": "Right to correct inaccurate or incomplete data",
+          "erasure": "Right to request deletion of your personal data",
+          "restriction": "Right to restrict processing of your personal data",
+          "portability": "Right to receive a copy of your personal data in a structured format",
+          "objection": "Right to object to processing of your personal data"
+        }
+      },
+      "contact": {
+        "title": "Contact Us",
+        "description": "If you have any questions about this Privacy Policy or our data practices, please contact us at privacy@igames.cloud."
+      }
+    },
+    "termsOfService": {
+      "title": "Terms of Service",
+      "lastUpdated": "Last Updated",
+      "date": "January 1, 2023",
+      "introduction": {
+        "title": "Introduction",
+        "description": "These Terms of Service govern your use of the iGames.cloud website and services. By accessing or using our services, you agree to be bound by these Terms. If you disagree with any part of the Terms, you may not access our services."
+      },
+      "serviceUse": {
+        "title": "Use of Services",
+        "description": "When using our services, you agree to:",
+        "items": {
+          "eligibility": "Be at least 18 years old or have the legal capacity to enter into these Terms",
+          "account": "Maintain the security of your account and accept responsibility for all activities that occur under your account",
+          "accurate": "Provide accurate, current, and complete information when creating an account or using our services",
+          "security": "Not share your account credentials or allow others to access your account"
+        }
+      },
+      "restrictions": {
+        "title": "Prohibited Activities",
+        "description": "You agree not to engage in any of the following prohibited activities:",
+        "items": {
+          "illegal": "Use our services for any illegal purpose or in violation of any laws",
+          "harmful": "Transmit any material that is harmful, threatening, abusive, or otherwise objectionable",
+          "impersonation": "Impersonate any person or entity or falsely state your affiliation with a person or entity",
+          "infringement": "Infringe upon or violate the intellectual property rights of others",
+          "interference": "Interfere with or disrupt our services or servers or networks connected to our services"
+        }
+      },
+      "intellectualProperty": {
+        "title": "Intellectual Property",
+        "description": "The iGames.cloud website and services, including all content, features, and functionality, are owned by iGames.cloud and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws."
+      },
+      "userContent": {
+        "title": "User Content",
+        "description": "You retain ownership of any content you submit, post, or display on or through our services. By submitting content, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, modify, adapt, publish, translate, and distribute such content."
+      },
+      "termination": {
+        "title": "Termination",
+        "description": "We may terminate or suspend your account and access to our services immediately, without prior notice or liability, for any reason, including if you breach these Terms. Upon termination, your right to use our services will immediately cease."
+      },
+      "disclaimer": {
+        "title": "Disclaimer of Warranties",
+        "description": "Our services are provided on an 'as is' and 'as available' basis. We make no warranties, expressed or implied, regarding the reliability, availability, or accuracy of our services."
+      },
+      "limitation": {
+        "title": "Limitation of Liability",
+        "description": "In no event shall iGames.cloud, its directors, employees, partners, agents, suppliers, or affiliates be liable for any indirect, incidental, special, consequential, or punitive damages, including loss of profits, data, or other intangible losses."
+      },
+      "governing": {
+        "title": "Governing Law",
+        "description": "These Terms shall be governed by and construed in accordance with the laws of the jurisdiction in which iGames.cloud is established, without regard to its conflict of law provisions."
+      },
+      "changes": {
+        "title": "Changes to Terms",
+        "description": "We reserve the right to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "description": "If you have any questions about these Terms, please contact us at legal@igames.cloud."
+      }
+    },
+    "security": {
+      "title": "Security",
+      "subtitle": "Our Commitment to Protecting Your Data and Systems",
+      "overview": {
+        "title": "Security Overview",
+        "description": "At iGames.cloud, security is a top priority. We employ industry-leading practices and technologies to ensure the confidentiality, integrity, and availability of your data and our services. Our comprehensive security program is designed to protect against threats while maintaining high performance and reliability."
+      },
+      "dataProtection": {
+        "title": "Data Protection",
+        "description": "We implement multiple layers of security to protect your data:",
+        "items": {
+          "encryption": "End-to-end encryption for all data in transit and at rest",
+          "access": "Strict access controls and authentication mechanisms",
+          "monitoring": "24/7 monitoring for suspicious activities and potential breaches",
+          "compliance": "Compliance with international data protection regulations"
+        }
+      },
+      "infrastructure": {
+        "title": "Infrastructure Security",
+        "description": "Our infrastructure is built with security as a foundational element:",
+        "items": {
+          "redundancy": "Redundant systems and regular backups to prevent data loss",
+          "ddos": "Advanced DDoS protection to ensure service availability",
+          "firewall": "Next-generation firewalls and intrusion detection systems",
+          "monitoring": "Continuous infrastructure monitoring and vulnerability scanning"
+        }
+      },
+      "authentication": {
+        "title": "Authentication & Access Control",
+        "description": "We implement robust authentication mechanisms to protect accounts:",
+        "items": {
+          "mfa": "Multi-factor authentication options for all accounts",
+          "sso": "Single Sign-On (SSO) integration capabilities",
+          "passwordPolicy": "Strong password policies and secure credential management",
+          "sessionManagement": "Secure session management and automatic timeouts"
+        }
+      },
+      "development": {
+        "title": "Secure Development",
+        "description": "Security is integrated throughout our development lifecycle:",
+        "items": {
+          "sdlc": "Secure Software Development Life Cycle (SDLC) practices",
+          "codeReview": "Regular code reviews and security testing",
+          "testing": "Automated and manual security testing, including penetration testing",
+          "dependencies": "Regular scanning and updating of dependencies to address vulnerabilities"
+        }
+      },
+      "incident": {
+        "title": "Incident Response",
+        "description": "We have a comprehensive incident response plan in place:",
+        "items": {
+          "detection": "Advanced threat detection and alerting systems",
+          "response": "Dedicated security team with 24/7 response capabilities",
+          "communication": "Transparent communication protocols for security incidents",
+          "recovery": "Established recovery procedures to minimize impact"
+        }
+      },
+      "contact": {
+        "title": "Security Contact",
+        "description": "If you discover a potential security issue or have questions about our security practices, please contact our security team immediately at security@igames.cloud. We take all security concerns seriously and will respond promptly."
+      }
+    },
+    "compliance": {
+      "title": "Compliance",
+      "subtitle": "Our Commitment to Regulatory Standards and Best Practices",
+      "overview": {
+        "title": "Compliance Overview",
+        "description": "At iGames.cloud, we are committed to maintaining the highest standards of regulatory compliance and industry best practices. Our comprehensive compliance program ensures that our services meet or exceed applicable legal requirements and industry standards across all jurisdictions where we operate."
+      },
+      "regulatory": {
+        "title": "Regulatory Compliance",
+        "description": "We adhere to various regulatory frameworks, including:",
+        "items": {
+          "gdpr": "General Data Protection Regulation (GDPR) for EU data protection",
+          "ccpa": "California Consumer Privacy Act (CCPA) for California residents",
+          "hipaa": "Health Insurance Portability and Accountability Act (HIPAA) for healthcare data",
+          "pci": "Payment Card Industry Data Security Standard (PCI DSS) for payment processing",
+          "local": "Local and regional regulations specific to gaming and sports betting industries"
+        }
+      },
+      "certifications": {
+        "title": "Certifications and Standards",
+        "description": "We maintain various certifications and comply with industry standards:",
+        "items": {
+          "iso27001": "ISO 27001 for Information Security Management",
+          "soc2": "SOC 2 Type II for security, availability, and confidentiality",
+          "pcidss": "PCI DSS for secure payment processing",
+          "hipaa": "HIPAA compliance for healthcare data protection"
+        }
+      },
+      "policies": {
+        "title": "Compliance Policies",
+        "description": "Our comprehensive set of policies ensures consistent compliance:",
+        "items": {
+          "privacy": "Privacy Policy",
+          "terms": "Terms of Service",
+          "security": "Security Policy",
+          "data": "Data Retention and Deletion Policy",
+          "acceptable": "Acceptable Use Policy"
+        }
+      },
+      "dataProtection": {
+        "title": "Data Protection Compliance",
+        "description": "We implement robust data protection measures:",
+        "items": {
+          "dpo": "Designated Data Protection Officer (DPO) overseeing compliance",
+          "impact": "Data Protection Impact Assessments (DPIA) for high-risk processing",
+          "rights": "Processes to fulfill data subject rights requests",
+          "breach": "Data breach notification procedures"
+        }
+      },
+      "auditing": {
+        "title": "Compliance Auditing and Monitoring",
+        "description": "We maintain ongoing compliance through regular auditing:",
+        "items": {
+          "internal": "Regular internal compliance audits and assessments",
+          "external": "Annual third-party compliance audits",
+          "penetration": "Regular penetration testing and security assessments",
+          "vulnerability": "Continuous vulnerability scanning and remediation"
+        }
+      },
+      "contact": {
+        "title": "Compliance Contact",
+        "description": "If you have questions about our compliance program or need to report a compliance concern, please contact our compliance team at compliance@igames.cloud. We take all compliance matters seriously and will respond promptly."
+      }
     }
   },
   "about": {

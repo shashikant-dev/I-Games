@@ -45,10 +45,10 @@ const Footer = () => {
       { name: t('footer.links.faq'), href: '#' }
     ],
     legal: [
-      { name: t('footer.links.privacyPolicy'), href: '#' },
-      { name: t('footer.links.termsOfService'), href: '#' },
-      { name: t('footer.links.security'), href: '#' },
-      { name: t('footer.links.compliance'), href: '#' }
+      { name: t('footer.links.privacyPolicy'), href: '/privacy-policy' },
+      { name: t('footer.links.termsOfService'), href: '/terms-of-service' },
+      { name: t('footer.links.security'), href: '/security' },
+      { name: t('footer.links.compliance'), href: '/compliance' }
     ]
   };
 
@@ -194,6 +194,8 @@ const Footer = () => {
                   <Link
                     href={item.href}
                     className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] transition-colors block py-1"
+                    target={item.target || '_self'}
+                    rel={item.target === '_blank' ? 'noopener noreferrer' : undefined}
                   >
                     {item.name}
                   </Link>
