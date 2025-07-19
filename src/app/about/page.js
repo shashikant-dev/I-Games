@@ -591,7 +591,7 @@ export default function About() {
             {/* Fantasy Sports - Square format */}
             <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
               <Image
-                src="/assets/images/all-sportsjpg"
+                src="/assets/images/all-sports.jpg"
                 alt="Fantasy football engagement and user interaction platform"
                 width={600}
                 height={600}
@@ -625,7 +625,7 @@ export default function About() {
             {/* Mobile Gaming Interface */}
             <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
               <Image
-                src="/assets/images/mobile-gaming-interface.jpg"
+                src="/assets/images/sports-betting-platform.jpg"
                 alt="Mobile gaming interface design and user experience"
                 width={860}
                 height={394}
@@ -638,28 +638,10 @@ export default function About() {
                 <p className="text-white/80 text-xs">Responsive Design</p>
               </div>
             </div>
-
-            {/* Technology Infrastructure */}
-            <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
-              <Image
-                src="/assets/images/technology-infrastructure.jpg"
-                alt="Advanced technology infrastructure and development environment"
-                width={800}
-                height={1200}
-                className="w-full h-auto object-contain group-hover:scale-105 transition-transform duration-700"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h3 className="text-white font-bold text-sm mb-1">Technology Infrastructure</h3>
-                <p className="text-white/80 text-xs">Advanced Development</p>
-              </div>
-            </div>
-
             {/* Sports Betting Platform */}
             <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
               <Image
-                src="/assets/images/sports-betting-platform.jpg"
+                src="/assets/images/mobile-gaming-interface.jpg"
                 alt="Sports betting application interface with live odds"
                 width={600}
                 height={400}
@@ -685,7 +667,7 @@ export default function About() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h3 className="text-white font-bold text-sm mb-1">Development Team</h3>
+                <h3 className="text-white font-bold text-sm mb-1">Development Team Of Betting Platform</h3>
                 <p className="text-white/80 text-xs">Expert Collaboration</p>
               </div>
             </div>
@@ -719,8 +701,8 @@ export default function About() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h3 className="text-white font-bold text-sm mb-1">Racing Championships</h3>
-                <p className="text-white/80 text-xs">Live Event Betting</p>
+                <h3 className="text-white font-bold text-sm mb-1">Cricket Championships</h3>
+                <p className="text-white/80 text-xs">Cricket Event Betting</p>
               </div>
             </div>
 
@@ -736,8 +718,8 @@ export default function About() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <h3 className="text-white font-bold text-sm mb-1">Gaming Platform UI</h3>
-                <p className="text-white/80 text-xs">Professional Interface</p>
+                <h3 className="text-white font-bold text-sm mb-1">Betting Platform</h3>
+                <p className="text-white/80 text-xs">Betting Platform</p>
               </div>
             </div>
 
