@@ -591,7 +591,7 @@ export default function About() {
             {/* Fantasy Sports - Square format */}
             <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
               <Image
-                src="/assets/images/fantasy-sports-platform.jpg"
+                src="/assets/images/all-sportsjpg"
                 alt="Fantasy football engagement and user interaction platform"
                 width={600}
                 height={600}
@@ -608,7 +608,7 @@ export default function About() {
             {/* Live Casino - Wide format */}
             <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
               <Image
-                src="/assets/images/live-casino-roulette-table.jpg"
+                src="/assets/images/live-casino-roulette.jpg"
                 alt="Professional live casino roulette table with active gameplay"
                 width={900}
                 height={600}
@@ -710,7 +710,7 @@ export default function About() {
             {/* Racing Events */}
             <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
               <Image
-                src="/assets/images/racing-championship-events.jpg"
+                src="/assets/images/championship-events.webp"
                 alt="Professional racing event with live betting opportunities"
                 width={800}
                 height={533}
@@ -727,7 +727,7 @@ export default function About() {
             {/* Professional Gaming Platform */}
             <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
               <Image
-                src="/assets/images/gaming-platform-interface.png"
+                src="/assets/images/gaming-interface.jpeg"
                 alt="Professional gaming platform interface and user experience"
                 width={800}
                 height={600}
@@ -761,7 +761,7 @@ export default function About() {
             {/* Mobile Gaming Solutions */}
             <div className="relative group break-inside-avoid overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 mb-4 sm:mb-6">
               <Image
-                src="/assets/images/mobile-gaming-solutions.webp"
+                src="/assets/images/mobile-gaming.webp"
                 alt="Cross-platform mobile gaming solutions and responsive design"
                 width={600}
                 height={400}
