@@ -44,11 +44,6 @@ export default function Services() {
 
   const categories = [
     {
-      key: 'all',
-      icon: <HiGlobeAlt className="w-3 h-3 sm:w-4 sm:h-4" />,
-      label: t('servicesPage.categories.all')
-    },
-    {
       key: 'api',
       icon: <FaCode className="w-3 h-3 sm:w-4 sm:h-4" />,
       label: t('servicesPage.categories.api')
