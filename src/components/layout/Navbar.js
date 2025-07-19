@@ -113,10 +113,10 @@ const Navbar = () => {
             >
               <div className="relative h-10 w-auto">
                 <Image
-                  src="/light-mode-logo.svg"
+                  src="/assets/images/light-mode-logo.svg"
                   alt="iGames.cloud logo"
-                  width={160}
-                  height={40}
+                  width={100}
+                  height={100}
                   className="h-10 w-auto object-contain"
                   priority
                 />
