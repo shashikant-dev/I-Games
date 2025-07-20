@@ -18,17 +18,17 @@ export const CONTACT_INFO = {
   },
 
   phone: {
-    primary: "+1 (555) 123-4567",
-    support: "+1 (555) 123-4568",
-    international: "+91 932-600-0000"
+    primary: "+44 7481 991080",
+    support: "+44 7481 991080",
+    international: "+44 7481 991080"
   },
 
   // Social Media & Messaging
   social: {
     whatsapp: {
-      number: "+919326000000",
-      url: "https://wa.me/919326000000",
-      displayText: "+91 932-600-0000"
+      number: "+44 7481 991080",
+      url: "https://wa.me/447481991080",
+      displayText: "+44 7481 991080"
     },
     telegram: {
       username: "igamescloud",
