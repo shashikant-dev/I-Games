@@ -1,11 +1,6 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/layout/Navbar';
-import Footer from '@/components/layout/Footer';
-import ThemeProvider from '@/components/providers/ThemeProvider';
-import { LanguageProvider } from '@/contexts/LanguageContext';
-import LanguageMeta from '@/components/providers/LanguageMeta';
-import FloatingContactButtons from '@/components/ui/FloatingContactButtons';
+import ConditionalLayout from '@/components/layout/ConditionalLayout';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -88,27 +83,12 @@ export default function RootLayout({ children }) {
         <link rel="manifest" href="/manifest.json" />
       </head>
       <body
-        className={`${inter.className} antialiased bg-theme-bg-primary text-theme-text-primary`}
+        className={`${inter.className} antialiased`}
         suppressHydrationWarning
       >
-        <ThemeProvider>
-          <LanguageProvider>
-            <LanguageMeta />
-            <div className="min-h-screen flex flex-col">
-              <Navbar />
-              <main
-                id="main-content"
-                className="flex-1"
-                role="main"
-                tabIndex="-1"
-              >
-                {children}
-              </main>
-              <Footer />
-              <FloatingContactButtons />
-            </div>
-          </LanguageProvider>
-        </ThemeProvider>
+        <ConditionalLayout>
+          {children}
+        </ConditionalLayout>
       </body>
     </html>
   );
