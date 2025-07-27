@@ -51,7 +51,6 @@ export default function NewsletterSubscribersTable({ subscribers, loading, pagin
               <tr key={subscriber._id} className="hover:bg-gray-50">
                 <td className="px-6 py-4 whitespace-nowrap">
                   <div>
-                    <div className="text-sm font-medium text-gray-900">{subscriber.name || 'No name'}</div>
                     <div className="text-sm text-gray-500">{subscriber.email}</div>
                   </div>
                 </td>

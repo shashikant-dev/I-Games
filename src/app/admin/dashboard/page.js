@@ -110,7 +110,7 @@ export default function AdminDashboard() {
       subtitle: `${stats.emailStats.totalSent} sent`,
       icon: PaperAirplaneIcon,
       color: 'bg-purple-500',
-      href: '/admin/bulk-email'
+      href: '#'
     },
     {
       title: 'Contact Info',

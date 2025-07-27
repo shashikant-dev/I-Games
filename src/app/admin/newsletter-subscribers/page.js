@@ -345,19 +345,6 @@ function AddSubscriberModal({ onClose, onAdd }) {
               placeholder="subscriber@example.com"
             />
           </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-700">
-              Name (Optional)
-            </label>
-            <input
-              type="text"
-              className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              placeholder="Subscriber Name"
-            />
-          </div>
         </div>
 
         <div className="mt-6 flex justify-end space-x-3">

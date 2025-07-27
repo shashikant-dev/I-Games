@@ -30,7 +30,7 @@ export default function NewsletterSubscribersFilters({ filters, onFilterChange, 
     { value: 'emailsSent', label: 'Emails Sent Count' }
   ];
 
-  const hasActiveFilters = filters.search || filters.isActive || filters.source || 
+  const hasActiveFilters = filters.search || filters.isActive || filters.source ||
                            filters.dateFrom || filters.dateTo;
 
   return (
@@ -63,7 +63,7 @@ export default function NewsletterSubscribersFilters({ filters, onFilterChange, 
             </div>
             <input
               type="text"
-              placeholder="Search by email or name..."
+              placeholder="Search by email"
               className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               value={filters.search}
               onChange={(e) => handleInputChange('search', e.target.value)}
@@ -168,4 +168,4 @@ export default function NewsletterSubscribersFilters({ filters, onFilterChange, 
       </div>
     </div>
   );
-} 
+}
