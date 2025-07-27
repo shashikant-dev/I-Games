@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google';
 import './globals.css';
 import ConditionalLayout from '@/components/layout/ConditionalLayout';
+import { ContactInfoProvider } from '@/contexts/ContactInfoContext';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -86,9 +87,11 @@ export default function RootLayout({ children }) {
         className={`${inter.className} antialiased`}
         suppressHydrationWarning
       >
-        <ConditionalLayout>
-          {children}
-        </ConditionalLayout>
+        <ContactInfoProvider>
+          <ConditionalLayout>
+            {children}
+          </ConditionalLayout>
+        </ContactInfoProvider>
       </body>
     </html>
   );

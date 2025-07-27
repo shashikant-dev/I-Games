@@ -12,7 +12,8 @@ import {
   FaPhone,
   FaMapMarkerAlt,
   FaCheckCircle,
-  FaExclamationCircle
+  FaExclamationCircle,
+  FaYoutube
 } from 'react-icons/fa';
 import { BsTwitterX } from "react-icons/bs";
 
@@ -23,11 +24,13 @@ import {
   IoDesktop
 } from 'react-icons/io5';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useContactInfo } from '@/contexts/ContactInfoContext';
 import { CONTACT_INFO, QUICK_CONTACT } from '@/constants/contacts';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t } = useLanguage();
+  const { quickContact } = useContactInfo();
 
   // Newsletter subscription state
   const [newsletterEmail, setNewsletterEmail] = useState('');
@@ -105,14 +108,18 @@ const Footer = () => {
     ]
   };
 
-  const socialLinks = [
-          { name: 'Facebook', href: CONTACT_INFO.links.facebook, icon: <FaFacebookF />, color: 'hover:text-blue-600 dark:hover:text-blue-400' },
-          { name: 'Twitter', href: CONTACT_INFO.links.twitter, icon: <BsTwitterX />, color: 'hover:text-black-400 dark:hover:text-black-300' },
-      { name: 'LinkedIn', href: CONTACT_INFO.links.linkedin, icon: <FaLinkedinIn />, color: 'hover:text-blue-700 dark:hover:text-blue-500' },
-          { name: 'Instagram', href: CONTACT_INFO.links.instagram, icon: <FaInstagram />, color: 'hover:text-pink-600 dark:hover:text-pink-400' },
-          { name: 'Telegram', href: QUICK_CONTACT.telegramLink, icon: <FaTelegramPlane />, color: 'hover:text-blue-500 dark:hover:text-blue-300' },
-      { name: 'WhatsApp', href: QUICK_CONTACT.whatsappLink, icon: <FaWhatsapp />, color: 'hover:text-green-500 dark:hover:text-green-400' }
-  ];
+                   const allSocialLinks = [
+             { name: 'Facebook', href: quickContact.socialMedia.facebook, icon: <FaFacebookF />, color: 'hover:text-blue-600 dark:hover:text-blue-400' },
+             { name: 'Twitter', href: quickContact.socialMedia.twitter, icon: <BsTwitterX />, color: 'hover:text-black-400 dark:hover:text-black-300' },
+         { name: 'LinkedIn', href: quickContact.socialMedia.linkedin, icon: <FaLinkedinIn />, color: 'hover:text-blue-700 dark:hover:text-blue-500' },
+             { name: 'Instagram', href: quickContact.socialMedia.instagram, icon: <FaInstagram />, color: 'hover:text-pink-600 dark:hover:text-pink-400' },
+             { name: 'YouTube', href: quickContact.socialMedia.youtube, icon: <FaYoutube />, color: 'hover:text-red-600 dark:hover:text-red-400' },
+             { name: 'Telegram', href: quickContact.telegramLink, icon: <FaTelegramPlane />, color: 'hover:text-blue-500 dark:hover:text-blue-300' },
+         { name: 'WhatsApp', href: quickContact.whatsappLink, icon: <FaWhatsapp />, color: 'hover:text-green-500 dark:hover:text-green-400' }
+          ];
+
+          // Filter out social links with empty URLs
+          const socialLinks = allSocialLinks.filter(link => link.href && link.href.trim() !== '');
 
   return (
     <footer className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
@@ -184,25 +191,25 @@ const Footer = () => {
               <div className="flex items-center justify-center sm:justify-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg">
                 <FaEnvelope className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA] flex-shrink-0" />
                 <Link
-                  href={`mailto:${t('footer.contact.email')}`}
+                  href={quickContact.emailLink}
                   className="text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] text-sm font-medium"
                 >
-                  {t('footer.contact.email')}
+                  {quickContact.displayEmail}
                 </Link>
               </div>
               <div className="flex items-center justify-center sm:justify-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg">
                 <FaPhone className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA] flex-shrink-0" />
                 <Link
-                  href={`tel:${t('footer.contact.phone')}`}
+                  href={quickContact.phoneLink}
                   className="text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] text-sm font-medium"
                 >
-                  {t('footer.contact.phone')}
+                  {quickContact.displayPhone}
                 </Link>
               </div>
               <div className="flex items-start justify-center sm:justify-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg sm:col-span-2 lg:col-span-1">
                 <FaMapMarkerAlt className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA] flex-shrink-0 mt-0.5" />
                 <span className="text-gray-600 dark:text-gray-300 text-sm font-medium text-center sm:text-left">
-                  {t('footer.contact.address')}
+                  {quickContact.displayAddress}
                 </span>
               </div>
             </div>

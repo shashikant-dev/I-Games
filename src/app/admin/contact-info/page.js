@@ -261,7 +261,62 @@ export default function ContactInfoPage() {
           </div>
         </div>
 
-
+        {/* Social Media Links */}
+        <div className="bg-white shadow rounded-lg p-6">
+          <h3 className="text-lg font-medium text-gray-900 mb-4">Social Media Links</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Facebook URL</label>
+              <input
+                type="url"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                value={contactInfo?.socialMedia?.facebook || ''}
+                onChange={(e) => handleInputChange('socialMedia.facebook', e.target.value)}
+                placeholder="https://facebook.com/yourpage"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Twitter URL</label>
+              <input
+                type="url"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                value={contactInfo?.socialMedia?.twitter || ''}
+                onChange={(e) => handleInputChange('socialMedia.twitter', e.target.value)}
+                placeholder="https://twitter.com/yourhandle"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">LinkedIn URL</label>
+              <input
+                type="url"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                value={contactInfo?.socialMedia?.linkedin || ''}
+                onChange={(e) => handleInputChange('socialMedia.linkedin', e.target.value)}
+                placeholder="https://linkedin.com/company/yourcompany"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Instagram URL</label>
+              <input
+                type="url"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                value={contactInfo?.socialMedia?.instagram || ''}
+                onChange={(e) => handleInputChange('socialMedia.instagram', e.target.value)}
+                placeholder="https://instagram.com/yourhandle"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">YouTube URL</label>
+              <input
+                type="url"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                value={contactInfo?.socialMedia?.youtube || ''}
+                onChange={(e) => handleInputChange('socialMedia.youtube', e.target.value)}
+                placeholder="https://youtube.com/@yourchannel"
+              />
+            </div>
+          </div>
+        </div>
 
         {/* Submit Button */}
         <div className="flex justify-end">

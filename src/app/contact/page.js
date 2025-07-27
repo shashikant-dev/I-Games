@@ -1,7 +1,8 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useContactInfo } from '@/contexts/ContactInfoContext';
 import {
   FaEnvelope,
   FaPhone,
@@ -28,6 +29,7 @@ import { CONTACT_INFO, QUICK_CONTACT } from '@/constants/contacts';
 
 export default function Contact() {
   const { t } = useLanguage();
+  const { contactInfo, quickContact, loading: contactInfoLoading } = useContactInfo();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -38,33 +40,6 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
-  const [dynamicContactInfo, setDynamicContactInfo] = useState(null);
-  const [contactInfoLoading, setContactInfoLoading] = useState(true);
-
-  // Fetch contact information on component mount
-  useEffect(() => {
-    const fetchContactInfo = async () => {
-      try {
-        const response = await fetch('/api/contact-info');
-        if (response.ok) {
-          const data = await response.json();
-          setDynamicContactInfo(data.data);
-        } else {
-          console.error('Failed to fetch contact info');
-          // Fallback to static info if API fails
-          setDynamicContactInfo(null);
-        }
-      } catch (error) {
-        console.error('Error fetching contact info:', error);
-        // Fallback to static info if API fails
-        setDynamicContactInfo(null);
-      } finally {
-        setContactInfoLoading(false);
-      }
-    };
-
-    fetchContactInfo();
-  }, []);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -113,46 +88,36 @@ export default function Contact() {
     }
   };
 
-  // Use dynamic contact info if available, otherwise fallback to static info
-  const activeContactInfo = dynamicContactInfo || {
-    companyName: CONTACT_INFO.company.name,
-    email: CONTACT_INFO.email,
-    phone: CONTACT_INFO.phone,
-    address: CONTACT_INFO.address
-  };
-
-  const contactInfo = [
+  const contactInfoItems = [
     {
       icon: <FaEnvelope className="w-6 h-6" />,
       title: t('contact.page.info.email.title'),
       subtitle: t('contact.page.info.email.subtitle'),
-      value: activeContactInfo.email?.primary || CONTACT_INFO.email.primary,
-      link: `mailto:${activeContactInfo.email?.primary || CONTACT_INFO.email.primary}`,
+      value: quickContact.displayEmail,
+      link: quickContact.emailLink,
       gradient: 'from-blue-500 to-blue-600'
     },
     {
       icon: <FaPhone className="w-6 h-6" />,
       title: t('contact.page.info.phone.title'),
       subtitle: t('contact.page.info.phone.subtitle'),
-      value: activeContactInfo.phone?.primary || CONTACT_INFO.phone.primary,
-      link: `tel:${activeContactInfo.phone?.primary || CONTACT_INFO.phone.primary}`,
+      value: quickContact.displayPhone,
+      link: quickContact.phoneLink,
       gradient: 'from-green-500 to-green-600'
     },
     {
       icon: <FaWhatsapp className="w-6 h-6" />,
       title: t('contact.page.info.whatsapp.title'),
       subtitle: t('contact.page.info.whatsapp.subtitle'),
-      value: activeContactInfo.phone?.whatsapp || CONTACT_INFO.social.whatsapp.displayText,
-      link: `https://wa.me/${(activeContactInfo.phone?.whatsapp || CONTACT_INFO.social.whatsapp.number).replace(/[^0-9]/g, '')}`,
+      value: quickContact.displayWhatsApp,
+      link: quickContact.whatsappMessage,
       gradient: 'from-green-400 to-green-500'
     },
     {
       icon: <FaMapMarkerAlt className="w-6 h-6" />,
       title: t('contact.page.info.address.title'),
       subtitle: t('contact.page.info.address.subtitle'),
-      value: activeContactInfo.address ?
-        `${activeContactInfo.address.street}, ${activeContactInfo.address.city}, ${activeContactInfo.address.state} ${activeContactInfo.address.zipCode}, ${activeContactInfo.address.country}` :
-        CONTACT_INFO.address.full,
+      value: quickContact.displayAddress,
       link: '#',
       gradient: 'from-purple-500 to-purple-600'
     }
@@ -415,7 +380,7 @@ export default function Contact() {
                 </h2>
 
                 <div className="space-y-6">
-                  {contactInfo.map((info, index) => (
+                  {contactInfoItems.map((info, index) => (
                     <div key={index} className="group">
                       <div className="relative">
                         <div className={`absolute -inset-1 bg-gradient-to-r ${info.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur transition-all duration-300`} />
@@ -448,7 +413,7 @@ export default function Contact() {
                 {/* Quick Action Buttons */}
                 <div className="grid grid-cols-2 gap-4 mt-8">
                   <Link
-                    href={QUICK_CONTACT.whatsappMessage}
+                    href={quickContact.whatsappMessage}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center px-4 py-3 bg-gradient-to-r from-green-400 to-green-500 text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300"
@@ -457,7 +422,7 @@ export default function Contact() {
                     WhatsApp
                   </Link>
                   <Link
-                    href={QUICK_CONTACT.telegramLink}
+                    href={quickContact.telegramLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center px-4 py-3 bg-gradient-to-r from-blue-400 to-blue-500 text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300"
