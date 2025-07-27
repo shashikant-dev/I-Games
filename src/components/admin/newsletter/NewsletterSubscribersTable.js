@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { EyeIcon, PencilIcon, TrashIcon, CheckCircleIcon, XCircleIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/outline';
 
 export default function NewsletterSubscribersTable({ subscribers, loading, pagination, onPageChange, onUpdateSubscriber, onDeleteSubscriber }) {
-  const [selectedSubscriber, setSelectedSubscriber] = useState(null);
   const [editingSubscriber, setEditingSubscriber] = useState(null);
 
   const formatDate = (dateString) => {
@@ -70,9 +69,6 @@ export default function NewsletterSubscribersTable({ subscribers, loading, pagin
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatDate(subscriber.createdAt)}</td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                   <div className="flex space-x-2">
-                    <button onClick={() => setSelectedSubscriber(subscriber)} className="text-blue-600 hover:text-blue-900" title="View details">
-                      <EyeIcon className="h-4 w-4" />
-                    </button>
                     <button onClick={() => setEditingSubscriber(subscriber)} className="text-indigo-600 hover:text-indigo-900" title="Edit">
                       <PencilIcon className="h-4 w-4" />
                     </button>
@@ -103,35 +99,7 @@ export default function NewsletterSubscribersTable({ subscribers, loading, pagin
           </div>
         </div>
       )}
-
-      {selectedSubscriber && (<SubscriberViewModal subscriber={selectedSubscriber} onClose={() => setSelectedSubscriber(null)} />)}
       {editingSubscriber && (<SubscriberEditModal subscriber={editingSubscriber} onClose={() => setEditingSubscriber(null)} onSave={onUpdateSubscriber} />)}
-    </div>
-  );
-}
-
-function SubscriberViewModal({ subscriber, onClose }) {
-  return (
-    <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
-      <div className="relative top-20 mx-auto p-5 border w-11/12 max-w-2xl shadow-lg rounded-md bg-white">
-        <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-medium text-gray-900">Subscriber Details</h3>
-          <button onClick={onClose} className="text-gray-400 hover:text-gray-600">
-            <span className="sr-only">Close</span>
-            <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        <div className="space-y-4">
-          <div className="grid grid-cols-2 gap-4">
-            <div><label className="block text-sm font-medium text-gray-700">Email</label><p className="mt-1 text-sm text-gray-900">{subscriber.email}</p></div>
-            <div><label className="block text-sm font-medium text-gray-700">Name</label><p className="mt-1 text-sm text-gray-900">{subscriber.name || 'Not provided'}</p></div>
-            <div><label className="block text-sm font-medium text-gray-700">Status</label><span className={`inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full ${subscriber.isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>{subscriber.isActive ? 'Active' : 'Inactive'}</span></div>
-            <div><label className="block text-sm font-medium text-gray-700">Source</label><p className="mt-1 text-sm text-gray-900 capitalize">{subscriber.source}</p></div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }
@@ -168,10 +136,6 @@ function SubscriberEditModal({ subscriber, onClose, onSave }) {
             </button>
           </div>
           <div className="space-y-4">
-            <div>
-              <label className="block text-sm font-medium text-gray-700">Name</label>
-              <input type="text" className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} placeholder="Subscriber name" />
-            </div>
             <div>
               <label className="block text-sm font-medium text-gray-700">Status</label>
               <select className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500" value={formData.isActive} onChange={(e) => setFormData({ ...formData, isActive: e.target.value === 'true' })}>
