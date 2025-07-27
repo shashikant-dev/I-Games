@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import {
@@ -38,6 +38,33 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
+  const [dynamicContactInfo, setDynamicContactInfo] = useState(null);
+  const [contactInfoLoading, setContactInfoLoading] = useState(true);
+
+  // Fetch contact information on component mount
+  useEffect(() => {
+    const fetchContactInfo = async () => {
+      try {
+        const response = await fetch('/api/contact-info');
+        if (response.ok) {
+          const data = await response.json();
+          setDynamicContactInfo(data.data);
+        } else {
+          console.error('Failed to fetch contact info');
+          // Fallback to static info if API fails
+          setDynamicContactInfo(null);
+        }
+      } catch (error) {
+        console.error('Error fetching contact info:', error);
+        // Fallback to static info if API fails
+        setDynamicContactInfo(null);
+      } finally {
+        setContactInfoLoading(false);
+      }
+    };
+
+    fetchContactInfo();
+  }, []);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -49,22 +76,49 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('');
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        service: '',
-        message: ''
+    try {
+      const response = await fetch('/api/contact/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
 
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+        console.error('Contact form submission error:', data.error);
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      console.error('Network error:', error);
+    } finally {
+      setIsSubmitting(false);
+      // Clear status after 5 seconds
       setTimeout(() => setSubmitStatus(''), 5000);
-    }, 2000);
+    }
+  };
+
+  // Use dynamic contact info if available, otherwise fallback to static info
+  const activeContactInfo = dynamicContactInfo || {
+    companyName: CONTACT_INFO.company.name,
+    email: CONTACT_INFO.email,
+    phone: CONTACT_INFO.phone,
+    address: CONTACT_INFO.address
   };
 
   const contactInfo = [
@@ -72,31 +126,33 @@ export default function Contact() {
       icon: <FaEnvelope className="w-6 h-6" />,
       title: t('contact.page.info.email.title'),
       subtitle: t('contact.page.info.email.subtitle'),
-      value: CONTACT_INFO.email.primary,
-      link: QUICK_CONTACT.emailLink,
+      value: activeContactInfo.email?.primary || CONTACT_INFO.email.primary,
+      link: `mailto:${activeContactInfo.email?.primary || CONTACT_INFO.email.primary}`,
       gradient: 'from-blue-500 to-blue-600'
     },
     {
       icon: <FaPhone className="w-6 h-6" />,
       title: t('contact.page.info.phone.title'),
       subtitle: t('contact.page.info.phone.subtitle'),
-      value: CONTACT_INFO.phone.primary,
-      link: QUICK_CONTACT.phoneLink,
+      value: activeContactInfo.phone?.primary || CONTACT_INFO.phone.primary,
+      link: `tel:${activeContactInfo.phone?.primary || CONTACT_INFO.phone.primary}`,
       gradient: 'from-green-500 to-green-600'
     },
     {
       icon: <FaWhatsapp className="w-6 h-6" />,
       title: t('contact.page.info.whatsapp.title'),
       subtitle: t('contact.page.info.whatsapp.subtitle'),
-      value: CONTACT_INFO.social.whatsapp.displayText,
-      link: QUICK_CONTACT.whatsappMessage,
+      value: activeContactInfo.phone?.whatsapp || CONTACT_INFO.social.whatsapp.displayText,
+      link: `https://wa.me/${(activeContactInfo.phone?.whatsapp || CONTACT_INFO.social.whatsapp.number).replace(/[^0-9]/g, '')}`,
       gradient: 'from-green-400 to-green-500'
     },
     {
       icon: <FaMapMarkerAlt className="w-6 h-6" />,
       title: t('contact.page.info.address.title'),
       subtitle: t('contact.page.info.address.subtitle'),
-      value: CONTACT_INFO.address.full,
+      value: activeContactInfo.address ?
+        `${activeContactInfo.address.street}, ${activeContactInfo.address.city}, ${activeContactInfo.address.state} ${activeContactInfo.address.zipCode}, ${activeContactInfo.address.country}` :
+        CONTACT_INFO.address.full,
       link: '#',
       gradient: 'from-purple-500 to-purple-600'
     }
@@ -336,6 +392,14 @@ export default function Contact() {
                     <div className="p-4 bg-green-100 dark:bg-green-900/20 border border-green-300 dark:border-green-700 rounded-lg">
                       <p className="text-green-700 dark:text-green-300 text-sm font-medium">
                         {t('contact.page.form.success')}
+                      </p>
+                    </div>
+                  )}
+
+                  {submitStatus === 'error' && (
+                    <div className="p-4 bg-red-100 dark:bg-red-900/20 border border-red-300 dark:border-red-700 rounded-lg">
+                      <p className="text-red-700 dark:text-red-300 text-sm font-medium">
+                        There was an error submitting your message. Please try again.
                       </p>
                     </div>
                   )}

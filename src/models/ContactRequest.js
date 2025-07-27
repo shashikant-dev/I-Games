@@ -22,10 +22,16 @@ const ContactRequestSchema = new mongoose.Schema({
     required: false,
     trim: true
   },
+  service: {
+    type: String,
+    required: false,
+    trim: true
+  },
   subject: {
     type: String,
-    required: true,
-    trim: true
+    required: false,
+    trim: true,
+    default: 'Contact Request'
   },
   message: {
     type: String,
@@ -64,4 +70,4 @@ ContactRequestSchema.index({ name: 'text', email: 'text', phone: 'text', company
 ContactRequestSchema.index({ createdAt: -1 });
 ContactRequestSchema.index({ status: 1 });
 
-export default mongoose.models.ContactRequest || mongoose.model('ContactRequest', ContactRequestSchema); 
+export default mongoose.models.ContactRequest || mongoose.model('ContactRequest', ContactRequestSchema);
