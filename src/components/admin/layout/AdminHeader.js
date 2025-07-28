@@ -108,8 +108,7 @@ export default function AdminHeader({ onSidebarToggle }) {
       </div>
 
       {/* Right section - Notifications and user menu */}
-      <div className="ml-4 flex items-center md:ml-6 space-x-4">
-        {/* Notifications */}
+      {/* <div className="ml-4 flex items-center md:ml-6 space-x-4">
         <button
           type="button"
           className="bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
@@ -118,7 +117,6 @@ export default function AdminHeader({ onSidebarToggle }) {
           <BellIcon className="h-6 w-6" />
         </button>
 
-        {/* User info */}
         <div className="flex items-center space-x-3">
           <div className="hidden md:block text-right">
             <div className="text-sm font-medium text-gray-900">
@@ -140,7 +138,7 @@ export default function AdminHeader({ onSidebarToggle }) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

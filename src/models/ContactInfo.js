@@ -77,7 +77,8 @@ const ContactInfoSchema = new mongoose.Schema({
     twitter: String,
     linkedin: String,
     instagram: String,
-    youtube: String
+    youtube: String,
+    telegram: String
   },
   businessHours: {
     monday: { open: String, close: String, isClosed: { type: Boolean, default: false } },
@@ -96,4 +97,4 @@ const ContactInfoSchema = new mongoose.Schema({
   timestamps: true
 });
 
-export default mongoose.models.ContactInfo || mongoose.model('ContactInfo', ContactInfoSchema); 
+export default mongoose.models.ContactInfo || mongoose.model('ContactInfo', ContactInfoSchema);

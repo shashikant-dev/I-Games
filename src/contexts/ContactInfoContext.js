@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useRef } from 'react';
 import { CONTACT_INFO } from '@/constants/contacts';
 
 const ContactInfoContext = createContext();
@@ -9,11 +9,17 @@ export function ContactInfoProvider({ children }) {
   const [contactInfo, setContactInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const initialFetchDone = useRef(false);
 
   const fetchContactInfo = async () => {
+    // Skip if initial fetch is already done
+    if (initialFetchDone.current) return;
+
     try {
       setLoading(true);
-      const response = await fetch('/api/contact-info');
+      const response = await fetch('/api/contact-info', {
+        next: { revalidate: 3600 } // Cache for 1 hour
+      });
 
       if (response.ok) {
         const data = await response.json();
@@ -34,6 +40,7 @@ export function ContactInfoProvider({ children }) {
       });
     } finally {
       setLoading(false);
+      initialFetchDone.current = true;
     }
   };
 
@@ -59,7 +66,8 @@ export function ContactInfoProvider({ children }) {
           twitter: CONTACT_INFO.links.twitter,
           linkedin: CONTACT_INFO.links.linkedin,
           instagram: CONTACT_INFO.links.instagram,
-          youtube: CONTACT_INFO.links.youtube
+          youtube: CONTACT_INFO.links.youtube,
+          telegram: CONTACT_INFO.social.telegram.url
         }
       };
     }
@@ -71,7 +79,7 @@ export function ContactInfoProvider({ children }) {
       phoneLink: `tel:${contactInfo.phone?.primary || CONTACT_INFO.phone.primary}`,
       whatsappLink: `https://wa.me/${whatsappNumber}`,
       whatsappMessage: `https://wa.me/${whatsappNumber}?text=Hello! I'm interested in your gaming solutions.`,
-      telegramLink: CONTACT_INFO.social.telegram.url, // Keep static for now
+      telegramLink: contactInfo.socialMedia?.telegram || CONTACT_INFO.social.telegram.url,
       displayPhone: contactInfo.phone?.primary || CONTACT_INFO.phone.primary,
       displayWhatsApp: contactInfo.phone?.whatsapp || CONTACT_INFO.social.whatsapp.displayText,
       displayEmail: contactInfo.email?.primary || CONTACT_INFO.email.primary,
@@ -83,7 +91,8 @@ export function ContactInfoProvider({ children }) {
         twitter: contactInfo.socialMedia?.twitter || CONTACT_INFO.links.twitter,
         linkedin: contactInfo.socialMedia?.linkedin || CONTACT_INFO.links.linkedin,
         instagram: contactInfo.socialMedia?.instagram || CONTACT_INFO.links.instagram,
-        youtube: contactInfo.socialMedia?.youtube || CONTACT_INFO.links.youtube
+        youtube: contactInfo.socialMedia?.youtube || CONTACT_INFO.links.youtube,
+        telegram: contactInfo.socialMedia?.telegram || CONTACT_INFO.social.telegram.url
       }
     };
   };

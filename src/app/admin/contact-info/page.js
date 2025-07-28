@@ -315,6 +315,16 @@ export default function ContactInfoPage() {
                 placeholder="https://youtube.com/@yourchannel"
               />
             </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700">Telegram URL</label>
+              <input
+                type="url"
+                className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                value={contactInfo?.socialMedia?.telegram || ''}
+                onChange={(e) => handleInputChange('socialMedia.telegram', e.target.value)}
+                placeholder="https://t.me/yourchannel"
+              />
+            </div>
           </div>
         </div>
 

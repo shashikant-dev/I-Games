@@ -114,7 +114,7 @@ const Footer = () => {
          { name: 'LinkedIn', href: quickContact.socialMedia.linkedin, icon: <FaLinkedinIn />, color: 'hover:text-blue-700 dark:hover:text-blue-500' },
              { name: 'Instagram', href: quickContact.socialMedia.instagram, icon: <FaInstagram />, color: 'hover:text-pink-600 dark:hover:text-pink-400' },
              { name: 'YouTube', href: quickContact.socialMedia.youtube, icon: <FaYoutube />, color: 'hover:text-red-600 dark:hover:text-red-400' },
-             { name: 'Telegram', href: quickContact.telegramLink, icon: <FaTelegramPlane />, color: 'hover:text-blue-500 dark:hover:text-blue-300' },
+             { name: 'Telegram', href: quickContact.socialMedia.telegram, icon: <FaTelegramPlane />, color: 'hover:text-blue-500 dark:hover:text-blue-300' },
          { name: 'WhatsApp', href: quickContact.whatsappLink, icon: <FaWhatsapp />, color: 'hover:text-green-500 dark:hover:text-green-400' }
           ];
 

@@ -6,12 +6,12 @@ import { NextResponse } from 'next/server';
 export async function GET(request) {
   try {
     await connectDB();
-    
+
     // Authenticate admin
     await authenticateAdmin(request);
-    
+
     const contactInfo = await ContactInfo.findOne({ type: 'main' }).lean();
-    
+
     if (!contactInfo) {
       // Return default structure if no contact info exists
       return NextResponse.json({
@@ -41,7 +41,8 @@ export async function GET(request) {
             twitter: '',
             linkedin: '',
             instagram: '',
-            youtube: ''
+            youtube: '',
+            telegram: ''
           },
           businessHours: {
             monday: { open: '09:00', close: '18:00', isClosed: false },
@@ -56,22 +57,22 @@ export async function GET(request) {
         }
       });
     }
-    
+
     return NextResponse.json({
       success: true,
       data: contactInfo
     });
-    
+
   } catch (error) {
     console.error('Get contact info error:', error);
-    
+
     if (error.message === 'No token provided' || error.message === 'Invalid or expired token') {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }
       );
     }
-    
+
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
@@ -82,43 +83,43 @@ export async function GET(request) {
 export async function PUT(request) {
   try {
     await connectDB();
-    
+
     // Authenticate admin
     await authenticateAdmin(request);
-    
+
     const updateData = await request.json();
-    
+
     // Ensure type is set to 'main'
     updateData.type = 'main';
-    
+
     // Update or create contact info
     const contactInfo = await ContactInfo.findOneAndUpdate(
       { type: 'main' },
       updateData,
-      { 
-        new: true, 
-        upsert: true, 
+      {
+        new: true,
+        upsert: true,
         runValidators: true,
         setDefaultsOnInsert: true
       }
     );
-    
+
     return NextResponse.json({
       success: true,
       message: 'Contact information updated successfully',
       data: contactInfo
     });
-    
+
   } catch (error) {
     console.error('Update contact info error:', error);
-    
+
     if (error.message === 'No token provided' || error.message === 'Invalid or expired token') {
       return NextResponse.json(
         { error: 'Unauthorized' },
         { status: 401 }
       );
     }
-    
+
     if (error.name === 'ValidationError') {
       const validationErrors = Object.values(error.errors).map(err => err.message);
       return NextResponse.json(
@@ -126,10 +127,10 @@ export async function PUT(request) {
         { status: 400 }
       );
     }
-    
+
     return NextResponse.json(
       { error: 'Internal server error' },
       { status: 500 }
     );
   }
-} 
+}
