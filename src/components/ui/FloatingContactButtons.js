@@ -1,12 +1,30 @@
 'use client';
 import Link from 'next/link';
-import { FaWhatsapp, FaTelegramPlane } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+import { FaWhatsapp, FaTelegramPlane, FaChevronUp } from 'react-icons/fa';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useContactInfo } from '@/contexts/ContactInfoContext';
 
 const FloatingContactButtons = () => {
   const { t } = useLanguage();
   const { quickContact, loading } = useContactInfo();
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   if (loading) {
     return null; // Don't show buttons while loading
@@ -37,6 +55,18 @@ const FloatingContactButtons = () => {
       >
         <FaTelegramPlane className="w-7 h-7" />
       </Link>
+
+      {/* Go to Top Button */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="w-14 h-14 bg-gray-700 hover:bg-gray-800 text-white rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300"
+          aria-label="Go to top"
+          title="Go to top"
+        >
+          <FaChevronUp className="w-6 h-6" />
+        </button>
+      )}
     </div>
   );
 };
