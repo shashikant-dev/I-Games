@@ -127,7 +127,7 @@ function SubscriberEditModal({ subscriber, onClose, onSave }) {
       <div className="relative top-20 mx-auto p-5 border w-11/12 max-w-md shadow-lg rounded-md bg-white">
         <form onSubmit={handleSubmit}>
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-medium text-gray-900">Edit Subscriber</h3>
+            <h3 className="text-lg font-medium text-gray-900">Update Settings</h3>
             <button type="button" onClick={onClose} className="text-gray-400 hover:text-gray-600">
               <span className="sr-only">Close</span>
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -27,11 +27,9 @@ export default function ContactRequestsFilters({ filters, onFilterChange, onRese
     { value: 'createdAt', label: 'Date Created' },
     { value: 'name', label: 'Name' },
     { value: 'email', label: 'Email' },
-    { value: 'status', label: 'Status' },
-    { value: 'priority', label: 'Priority' }
   ];
 
-  const hasActiveFilters = filters.search || filters.status || filters.priority || 
+  const hasActiveFilters = filters.search || filters.status || filters.priority ||
                            filters.dateFrom || filters.dateTo;
 
   return (
@@ -64,7 +62,7 @@ export default function ContactRequestsFilters({ filters, onFilterChange, onRese
             </div>
             <input
               type="text"
-              placeholder="Search by name, email, phone, company, or subject..."
+              placeholder="Search by name, email, phone, company, or service..."
               className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
               value={filters.search}
               onChange={(e) => handleInputChange('search', e.target.value)}
@@ -169,4 +167,4 @@ export default function ContactRequestsFilters({ filters, onFilterChange, onRese
       </div>
     </div>
   );
-} 
+}

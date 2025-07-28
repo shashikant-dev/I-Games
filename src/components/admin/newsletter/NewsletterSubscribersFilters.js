@@ -25,9 +25,6 @@ export default function NewsletterSubscribersFilters({ filters, onFilterChange, 
     { value: 'createdAt', label: 'Subscription Date' },
     { value: 'email', label: 'Email' },
     { value: 'name', label: 'Name' },
-    { value: 'isActive', label: 'Status' },
-    { value: 'lastEmailSent', label: 'Last Email Sent' },
-    { value: 'emailsSent', label: 'Emails Sent Count' }
   ];
 
   const hasActiveFilters = filters.search || filters.isActive || filters.source ||

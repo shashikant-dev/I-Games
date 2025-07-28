@@ -1,13 +1,14 @@
 'use client';
 
 import { useState } from 'react';
-import { 
-  EyeIcon, 
-  PencilIcon, 
+import {
+  EyeIcon,
+  PencilIcon,
   TrashIcon,
   ChevronLeftIcon,
   ChevronRightIcon
 } from '@heroicons/react/24/outline';
+import { MdOutlineSettings } from "react-icons/md";
 
 const statusColors = {
   new: 'bg-blue-100 text-blue-800',
@@ -23,13 +24,13 @@ const priorityColors = {
   urgent: 'bg-red-100 text-red-800'
 };
 
-export default function ContactRequestsTable({ 
-  requests, 
-  loading, 
-  pagination, 
+export default function ContactRequestsTable({
+  requests,
+  loading,
+  pagination,
   onPageChange,
   onUpdateRequest,
-  onDeleteRequest 
+  onDeleteRequest
 }) {
   const [selectedRequest, setSelectedRequest] = useState(null);
   const [editingRequest, setEditingRequest] = useState(null);
@@ -89,7 +90,7 @@ export default function ContactRequestsTable({
                 Contact Info
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                Subject
+                Service Interested In
               </th>
               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Status
@@ -122,17 +123,17 @@ export default function ContactRequestsTable({
                 </td>
                 <td className="px-6 py-4">
                   <div className="text-sm text-gray-900 max-w-xs truncate">
-                    {request.subject}
+                    {request.service || 'Not specified'}
                   </div>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${statusColors[request.status]}`}>
-                    {request.status.replace('_', ' ')}
+                    <span className='first-letter:capitalize'> {request.status.replace('_', ' ')}</span>
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
                   <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${priorityColors[request.priority]}`}>
-                    {request.priority}
+                    <span className='first-letter:capitalize'> {request.priority}</span>
                   </span>
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -152,7 +153,7 @@ export default function ContactRequestsTable({
                       className="text-indigo-600 hover:text-indigo-900"
                       title="Edit"
                     >
-                      <PencilIcon className="h-4 w-4" />
+                      <MdOutlineSettings className="h-4 w-4" />
                     </button>
                     <button
                       onClick={() => onDeleteRequest(request._id)}
@@ -236,7 +237,7 @@ function RequestViewModal({ request, onClose }) {
             </svg>
           </button>
         </div>
-        
+
         <div className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
@@ -260,17 +261,17 @@ function RequestViewModal({ request, onClose }) {
               </div>
             )}
           </div>
-          
+
           <div>
-            <label className="block text-sm font-medium text-gray-700">Subject</label>
-            <p className="mt-1 text-sm text-gray-900">{request.subject}</p>
+            <label className="block text-sm font-medium text-gray-700">Service Interested In</label>
+            <p className="mt-1 text-sm text-gray-900">{request.service || 'Not specified'}</p>
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium text-gray-700">Message</label>
             <p className="mt-1 text-sm text-gray-900 whitespace-pre-wrap">{request.message}</p>
           </div>
-          
+
           <div className="grid grid-cols-3 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700">Status</label>
@@ -289,7 +290,7 @@ function RequestViewModal({ request, onClose }) {
               <p className="mt-1 text-sm text-gray-900 capitalize">{request.source}</p>
             </div>
           </div>
-          
+
           {request.notes && (
             <div>
               <label className="block text-sm font-medium text-gray-700">Notes</label>
@@ -323,7 +324,7 @@ function RequestEditModal({ request, onClose, onSave }) {
       <div className="relative top-20 mx-auto p-5 border w-11/12 max-w-md shadow-lg rounded-md bg-white">
         <form onSubmit={handleSubmit}>
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-medium text-gray-900">Edit Request</h3>
+            <h3 className="text-lg font-medium text-gray-900">Update Settings</h3>
             <button
               type="button"
               onClick={onClose}
@@ -335,7 +336,7 @@ function RequestEditModal({ request, onClose, onSave }) {
               </svg>
             </button>
           </div>
-          
+
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700">Status</label>
@@ -350,7 +351,7 @@ function RequestEditModal({ request, onClose, onSave }) {
                 <option value="closed">Closed</option>
               </select>
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700">Priority</label>
               <select
@@ -364,7 +365,7 @@ function RequestEditModal({ request, onClose, onSave }) {
                 <option value="urgent">Urgent</option>
               </select>
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-700">Notes</label>
               <textarea
@@ -376,7 +377,7 @@ function RequestEditModal({ request, onClose, onSave }) {
               />
             </div>
           </div>
-          
+
           <div className="mt-6 flex justify-end space-x-3">
             <button
               type="button"
@@ -396,4 +397,4 @@ function RequestEditModal({ request, onClose, onSave }) {
       </div>
     </div>
   );
-} 
+}
