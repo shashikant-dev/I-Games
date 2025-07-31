@@ -1,3 +1,4 @@
+require('dotenv').config({ path: '.env' });
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
@@ -30,7 +31,8 @@ const Admin = mongoose.model('Admin', AdminSchema);
 async function setupAdmin() {
   try {
     // Connect to MongoDB
-    const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/igames-admin';
+    console.log(process.env.MONGODB_URI)
+    const MONGODB_URI = process.env.MONGODB_URI
 
     console.log('Connecting to MongoDB...');
     await mongoose.connect(MONGODB_URI);
