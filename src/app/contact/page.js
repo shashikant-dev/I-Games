@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useContactInfo } from '@/contexts/ContactInfoContext';
 import {
   FaEnvelope,
   FaPhone,
@@ -28,6 +29,7 @@ import { CONTACT_INFO, QUICK_CONTACT } from '@/constants/contacts';
 
 export default function Contact() {
   const { t } = useLanguage();
+  const { contactInfo, quickContact, loading: contactInfoLoading } = useContactInfo();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -49,54 +51,73 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus('');
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        service: '',
-        message: ''
+    try {
+      const response = await fetch('/api/contact/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
 
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          service: '',
+          message: ''
+        });
+      } else {
+        setSubmitStatus('error');
+        console.error('Contact form submission error:', data.error);
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+      console.error('Network error:', error);
+    } finally {
+      setIsSubmitting(false);
+      // Clear status after 5 seconds
       setTimeout(() => setSubmitStatus(''), 5000);
-    }, 2000);
+    }
   };
 
-  const contactInfo = [
+  const contactInfoItems = [
     {
       icon: <FaEnvelope className="w-6 h-6" />,
       title: t('contact.page.info.email.title'),
       subtitle: t('contact.page.info.email.subtitle'),
-      value: CONTACT_INFO.email.primary,
-      link: QUICK_CONTACT.emailLink,
+      value: quickContact.displayEmail,
+      link: quickContact.emailLink,
       gradient: 'from-blue-500 to-blue-600'
     },
     {
       icon: <FaPhone className="w-6 h-6" />,
       title: t('contact.page.info.phone.title'),
       subtitle: t('contact.page.info.phone.subtitle'),
-      value: CONTACT_INFO.phone.primary,
-      link: QUICK_CONTACT.phoneLink,
+      value: quickContact.displayPhone,
+      link: quickContact.phoneLink,
       gradient: 'from-green-500 to-green-600'
     },
     {
       icon: <FaWhatsapp className="w-6 h-6" />,
       title: t('contact.page.info.whatsapp.title'),
       subtitle: t('contact.page.info.whatsapp.subtitle'),
-      value: CONTACT_INFO.social.whatsapp.displayText,
-      link: QUICK_CONTACT.whatsappMessage,
+      value: quickContact.displayWhatsApp,
+      link: quickContact.whatsappMessage,
       gradient: 'from-green-400 to-green-500'
     },
     {
       icon: <FaMapMarkerAlt className="w-6 h-6" />,
       title: t('contact.page.info.address.title'),
       subtitle: t('contact.page.info.address.subtitle'),
-      value: CONTACT_INFO.address.full,
+      value: quickContact.displayAddress,
       link: '#',
       gradient: 'from-purple-500 to-purple-600'
     }
@@ -339,6 +360,14 @@ export default function Contact() {
                       </p>
                     </div>
                   )}
+
+                  {submitStatus === 'error' && (
+                    <div className="p-4 bg-red-100 dark:bg-red-900/20 border border-red-300 dark:border-red-700 rounded-lg">
+                      <p className="text-red-700 dark:text-red-300 text-sm font-medium">
+                        There was an error submitting your message. Please try again.
+                      </p>
+                    </div>
+                  )}
                 </form>
               </div>
             </div>
@@ -351,7 +380,7 @@ export default function Contact() {
                 </h2>
 
                 <div className="space-y-6">
-                  {contactInfo.map((info, index) => (
+                  {contactInfoItems.map((info, index) => (
                     <div key={index} className="group">
                       <div className="relative">
                         <div className={`absolute -inset-1 bg-gradient-to-r ${info.gradient} rounded-2xl opacity-0 group-hover:opacity-20 blur transition-all duration-300`} />
@@ -384,7 +413,7 @@ export default function Contact() {
                 {/* Quick Action Buttons */}
                 <div className="grid grid-cols-2 gap-4 mt-8">
                   <Link
-                    href={QUICK_CONTACT.whatsappMessage}
+                    href={quickContact.whatsappMessage}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center px-4 py-3 bg-gradient-to-r from-green-400 to-green-500 text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300"
@@ -393,7 +422,7 @@ export default function Contact() {
                     WhatsApp
                   </Link>
                   <Link
-                    href={QUICK_CONTACT.telegramLink}
+                    href={quickContact.telegramLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center px-4 py-3 bg-gradient-to-r from-blue-400 to-blue-500 text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300"

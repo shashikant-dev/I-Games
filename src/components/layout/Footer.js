@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import {
   FaFacebookF,
@@ -9,7 +10,10 @@ import {
   FaWhatsapp,
   FaEnvelope,
   FaPhone,
-  FaMapMarkerAlt
+  FaMapMarkerAlt,
+  FaCheckCircle,
+  FaExclamationCircle,
+  FaYoutube
 } from 'react-icons/fa';
 import { BsTwitterX } from "react-icons/bs";
 
@@ -20,11 +24,62 @@ import {
   IoDesktop
 } from 'react-icons/io5';
 import { useLanguage } from '@/contexts/LanguageContext';
+import { useContactInfo } from '@/contexts/ContactInfoContext';
 import { CONTACT_INFO, QUICK_CONTACT } from '@/constants/contacts';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t } = useLanguage();
+  const { quickContact } = useContactInfo();
+
+  // Newsletter subscription state
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterStatus, setNewsletterStatus] = useState(''); // 'loading', 'success', 'error'
+  const [newsletterMessage, setNewsletterMessage] = useState('');
+
+  // Newsletter subscription handler
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+
+    if (!newsletterEmail.trim()) {
+      setNewsletterStatus('error');
+      setNewsletterMessage('Please enter your email address');
+      return;
+    }
+
+    setNewsletterStatus('loading');
+    setNewsletterMessage('');
+
+    try {
+      const response = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: newsletterEmail.trim() }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setNewsletterStatus('success');
+        setNewsletterMessage('Thank you for subscribing!');
+        setNewsletterEmail('');
+      } else {
+        setNewsletterStatus('error');
+        setNewsletterMessage(data.error || 'Subscription failed. Please try again.');
+      }
+    } catch (error) {
+      setNewsletterStatus('error');
+      setNewsletterMessage('Network error. Please try again.');
+    }
+
+    // Clear message after 5 seconds
+    setTimeout(() => {
+      setNewsletterStatus('');
+      setNewsletterMessage('');
+    }, 5000);
+  };
 
   const footerSections = {
     services: [
@@ -53,14 +108,18 @@ const Footer = () => {
     ]
   };
 
-  const socialLinks = [
-          { name: 'Facebook', href: CONTACT_INFO.links.facebook, icon: <FaFacebookF />, color: 'hover:text-blue-600 dark:hover:text-blue-400' },
-          { name: 'Twitter', href: CONTACT_INFO.links.twitter, icon: <BsTwitterX />, color: 'hover:text-black-400 dark:hover:text-black-300' },
-      { name: 'LinkedIn', href: CONTACT_INFO.links.linkedin, icon: <FaLinkedinIn />, color: 'hover:text-blue-700 dark:hover:text-blue-500' },
-          { name: 'Instagram', href: CONTACT_INFO.links.instagram, icon: <FaInstagram />, color: 'hover:text-pink-600 dark:hover:text-pink-400' },
-          { name: 'Telegram', href: QUICK_CONTACT.telegramLink, icon: <FaTelegramPlane />, color: 'hover:text-blue-500 dark:hover:text-blue-300' },
-      { name: 'WhatsApp', href: QUICK_CONTACT.whatsappLink, icon: <FaWhatsapp />, color: 'hover:text-green-500 dark:hover:text-green-400' }
-  ];
+                   const allSocialLinks = [
+             { name: 'Facebook', href: quickContact.socialMedia.facebook, icon: <FaFacebookF />, color: 'hover:text-blue-600 dark:hover:text-blue-400' },
+             { name: 'Twitter', href: quickContact.socialMedia.twitter, icon: <BsTwitterX />, color: 'hover:text-black-400 dark:hover:text-black-300' },
+         { name: 'LinkedIn', href: quickContact.socialMedia.linkedin, icon: <FaLinkedinIn />, color: 'hover:text-blue-700 dark:hover:text-blue-500' },
+             { name: 'Instagram', href: quickContact.socialMedia.instagram, icon: <FaInstagram />, color: 'hover:text-pink-600 dark:hover:text-pink-400' },
+             { name: 'YouTube', href: quickContact.socialMedia.youtube, icon: <FaYoutube />, color: 'hover:text-red-600 dark:hover:text-red-400' },
+             { name: 'Telegram', href: quickContact.socialMedia.telegram, icon: <FaTelegramPlane />, color: 'hover:text-blue-500 dark:hover:text-blue-300' },
+         { name: 'WhatsApp', href: quickContact.whatsappLink, icon: <FaWhatsapp />, color: 'hover:text-green-500 dark:hover:text-green-400' }
+          ];
+
+          // Filter out social links with empty URLs
+          const socialLinks = allSocialLinks.filter(link => link.href && link.href.trim() !== '');
 
   return (
     <footer className="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-300">
@@ -79,16 +138,48 @@ const Footer = () => {
                 Get the latest updates on our APIs and gaming solutions
               </p>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder={t('footer.social.newsletter.placeholder')}
-                className="flex-1 px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6] dark:focus:ring-[#60A5FA] focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-sm"
-              />
-              <button className="px-6 py-3 bg-[#3B82F6] dark:bg-[#60A5FA] text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors text-sm font-medium whitespace-nowrap">
-                {t('footer.social.newsletter.subscribe')}
-              </button>
-            </div>
+            <form onSubmit={handleNewsletterSubmit} className="max-w-md mx-auto">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  placeholder={t('footer.social.newsletter.placeholder')}
+                  disabled={newsletterStatus === 'loading'}
+                  className="flex-1 px-4 py-3 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6] dark:focus:ring-[#60A5FA] focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 dark:placeholder-gray-400 text-sm disabled:opacity-50"
+                />
+                <button
+                  type="submit"
+                  disabled={newsletterStatus === 'loading'}
+                  className="px-6 py-3 bg-[#3B82F6] dark:bg-[#60A5FA] text-white rounded-lg hover:bg-blue-700 dark:hover:bg-blue-500 transition-colors text-sm font-medium whitespace-nowrap disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
+                >
+                  {newsletterStatus === 'loading' ? (
+                    <>
+                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                      Subscribing...
+                    </>
+                  ) : (
+                    t('footer.social.newsletter.subscribe')
+                  )}
+                </button>
+              </div>
+
+              {/* Status Message */}
+              {newsletterMessage && (
+                <div className={`mt-3 p-3 rounded-lg text-sm flex items-center gap-2 ${
+                  newsletterStatus === 'success'
+                    ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 border border-green-200 dark:border-green-800'
+                    : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-300 border border-red-200 dark:border-red-800'
+                }`}>
+                  {newsletterStatus === 'success' ? (
+                    <FaCheckCircle className="w-4 h-4" />
+                  ) : (
+                    <FaExclamationCircle className="w-4 h-4" />
+                  )}
+                  {newsletterMessage}
+                </div>
+              )}
+            </form>
           </div>
 
           {/* Contact Information - Mobile Optimized */}
@@ -100,25 +191,25 @@ const Footer = () => {
               <div className="flex items-center justify-center sm:justify-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg">
                 <FaEnvelope className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA] flex-shrink-0" />
                 <Link
-                  href={`mailto:${t('footer.contact.email')}`}
+                  href={quickContact.emailLink}
                   className="text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] text-sm font-medium"
                 >
-                  {t('footer.contact.email')}
+                  {quickContact.displayEmail}
                 </Link>
               </div>
               <div className="flex items-center justify-center sm:justify-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg">
                 <FaPhone className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA] flex-shrink-0" />
                 <Link
-                  href={`tel:${t('footer.contact.phone')}`}
+                  href={quickContact.phoneLink}
                   className="text-gray-600 dark:text-gray-300 hover:text-[#3B82F6] dark:hover:text-[#60A5FA] text-sm font-medium"
                 >
-                  {t('footer.contact.phone')}
+                  {quickContact.displayPhone}
                 </Link>
               </div>
               <div className="flex items-start justify-center sm:justify-start space-x-3 p-3 bg-white dark:bg-gray-800 rounded-lg sm:col-span-2 lg:col-span-1">
                 <FaMapMarkerAlt className="w-4 h-4 text-[#3B82F6] dark:text-[#60A5FA] flex-shrink-0 mt-0.5" />
                 <span className="text-gray-600 dark:text-gray-300 text-sm font-medium text-center sm:text-left">
-                  {t('footer.contact.address')}
+                  {quickContact.displayAddress}
                 </span>
               </div>
             </div>
