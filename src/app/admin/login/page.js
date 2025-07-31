@@ -185,7 +185,7 @@ export default function AdminLoginPage() {
           </form>
 
           {/* Demo Credentials */}
-          <div className="mt-6 pt-6 border-t border-gray-200">
+          {/* <div className="mt-6 pt-6 border-t border-gray-200">
             <div className="text-center">
               <p className="text-xs text-gray-500 mb-2">Demo Credentials:</p>
               <div className="bg-gray-50 rounded-md p-3 text-xs text-gray-700">
@@ -196,7 +196,7 @@ export default function AdminLoginPage() {
                 Please change the default password after first login
               </p>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
 
