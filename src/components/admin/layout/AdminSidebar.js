@@ -14,7 +14,8 @@ import {
   Cog6ToothIcon,
   ArrowRightOnRectangleIcon,
   XMarkIcon,
-  ChevronRightIcon
+  ChevronRightIcon,
+  DocumentTextIcon
 } from '@heroicons/react/24/outline';
 
 const navigation = [
@@ -22,6 +23,7 @@ const navigation = [
   { name: 'Contact Requests', href: '/admin/contact-requests', icon: ChatBubbleBottomCenterTextIcon },
   { name: 'Newsletter Subscribers', href: '/admin/newsletter-subscribers', icon: UserGroupIcon },
   { name: 'Update Contact Info', href: '/admin/contact-info', icon: PhoneIcon },
+  { name: 'Blog Management', href: '/admin/blog', icon: DocumentTextIcon },
   // { name: 'Bulk Email', href: '/admin/bulk-email', icon: PaperAirplaneIcon },
   { name: 'Settings', href: '/admin/settings', icon: Cog6ToothIcon },
 ];

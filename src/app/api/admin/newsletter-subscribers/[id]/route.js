@@ -1,11 +1,11 @@
-import connectDB from '@/lib/mongodb';
+import connectToDatabase from '@/lib/mongodb';
 import NewsletterSubscriber from '@/models/NewsletterSubscriber';
 import { authenticateAdmin } from '@/lib/auth';
 import { NextResponse } from 'next/server';
 
 export async function GET(request, { params }) {
   try {
-    await connectDB();
+    await connectToDatabase();
     
     // Authenticate admin
     await authenticateAdmin(request);
@@ -45,7 +45,7 @@ export async function GET(request, { params }) {
 
 export async function PUT(request, { params }) {
   try {
-    await connectDB();
+    await connectToDatabase();
     
     // Authenticate admin
     await authenticateAdmin(request);
@@ -101,7 +101,7 @@ export async function PUT(request, { params }) {
 
 export async function DELETE(request, { params }) {
   try {
-    await connectDB();
+    await connectToDatabase();
     
     // Authenticate admin
     await authenticateAdmin(request);

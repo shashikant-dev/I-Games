@@ -1,11 +1,11 @@
-import connectDB from '@/lib/mongodb';
+import connectToDatabase from '@/lib/mongodb';
 import Admin from '@/models/Admin';
 import { NextResponse } from 'next/server';
 import crypto from 'crypto';
 
 export async function POST(request) {
   try {
-    await connectDB();
+    await connectToDatabase();
     
     const { token, newPassword } = await request.json();
     
