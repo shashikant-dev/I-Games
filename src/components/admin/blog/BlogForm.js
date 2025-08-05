@@ -1,7 +1,20 @@
-import { useState } from 'react';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+'use client';
+
+import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
+
+// Dynamically import CKEditor with SSR disabled
+const CKEditor = dynamic(
+  () => import('@ckeditor/ckeditor5-react').then(mod => mod.CKEditor),
+  { ssr: false }
+);
+
+// Dynamically import the editor build
+const ClassicEditor = dynamic(
+  () => import('@ckeditor/ckeditor5-build-classic'),
+  { ssr: false }
+);
 
 export default function BlogForm({ blog, onSubmit, isSubmitting }) {
   const [formData, setFormData] = useState({
@@ -14,22 +27,26 @@ export default function BlogForm({ blog, onSubmit, isSubmitting }) {
   });
   const [imagePreview, setImagePreview] = useState(blog?.bannerImage || '');
   const [error, setError] = useState(null);
+  const [editorLoaded, setEditorLoaded] = useState(false);
+
+  useEffect(() => {
+    setEditorLoaded(true);
+  }, []);
 
   const generateSlug = (title) => {
     return title
-      .toLowerCase() // Convert to lowercase
-      .trim() // Remove leading and trailing spaces
-      .replace(/[^\w\s-]/g, '') // Remove special characters except spaces and hyphens
-      .replace(/\s+/g, '-') // Replace spaces with hyphens
-      .replace(/-+/g, '-') // Replace multiple consecutive hyphens with single hyphen
-      .replace(/^-+|-+$/g, ''); // Remove hyphens from start and end
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-+|-+$/g, '');
   };
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
 
     if (name === 'title') {
-      // Always auto-generate slug when title changes
       const newSlug = generateSlug(value);
       setFormData(prev => ({
         ...prev,
@@ -74,6 +91,11 @@ export default function BlogForm({ blog, onSubmit, isSubmitting }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
+  };
+
+  const handleCancel = () => {
+    // Use router instead of window.history
+    window.location.href = '/admin/blog';
   };
 
   return (
@@ -161,44 +183,46 @@ export default function BlogForm({ blog, onSubmit, isSubmitting }) {
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
           Content
         </label>
-        <CKEditor
-          editor={ClassicEditor}
-          data={formData.content}
-          onChange={(event, editor) => {
-            const data = editor.getData();
-            setFormData(prev => ({ ...prev, content: data }));
-          }}
-          config={{
-            toolbar: {
-              items: [
-                'heading',
-                '|',
-                'bold',
-                'italic',
-                'underline',
-                'strikethrough',
-                '|',
-                'link',
-                'bulletedList',
-                'numberedList',
-                '|',
-                'alignment',
-                'indent',
-                'outdent',
-                '|',
-                'blockQuote',
-                'insertTable',
-                '|',
-                'undo',
-                'redo'
-              ]
-            },
-            table: {
-              contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
-            },
-            height: '500px'
-          }}
-        />
+        {editorLoaded && (
+          <CKEditor
+            editor={ClassicEditor}
+            data={formData.content}
+            onChange={(event, editor) => {
+              const data = editor.getData();
+              setFormData(prev => ({ ...prev, content: data }));
+            }}
+            config={{
+              toolbar: {
+                items: [
+                  'heading',
+                  '|',
+                  'bold',
+                  'italic',
+                  'underline',
+                  'strikethrough',
+                  '|',
+                  'link',
+                  'bulletedList',
+                  'numberedList',
+                  '|',
+                  'alignment',
+                  'indent',
+                  'outdent',
+                  '|',
+                  'blockQuote',
+                  'insertTable',
+                  '|',
+                  'undo',
+                  'redo'
+                ]
+              },
+              table: {
+                contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
+              },
+              height: '500px'
+            }}
+          />
+        )}
       </div>
 
       <div className="flex items-center">
@@ -218,7 +242,7 @@ export default function BlogForm({ blog, onSubmit, isSubmitting }) {
       <div className="flex justify-end gap-4">
         <button
           type="button"
-          onClick={() => window.history.back()}
+          onClick={handleCancel}
           className="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:bg-gray-700 dark:text-gray-200 dark:border-gray-600 dark:hover:bg-gray-600"
         >
           Cancel
