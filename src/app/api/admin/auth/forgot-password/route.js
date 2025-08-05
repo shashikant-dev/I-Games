@@ -1,11 +1,11 @@
-import connectDB from '@/lib/mongodb';
+import connectToDatabase from '@/lib/mongodb';
 import Admin from '@/models/Admin';
 import { sendEmail, generatePasswordResetEmail } from '@/lib/email';
 import { NextResponse } from 'next/server';
 
 export async function POST(request) {
   try {
-    await connectDB();
+    await connectToDatabase();
     
     const { email } = await request.json();
     

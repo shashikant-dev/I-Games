@@ -1,11 +1,11 @@
-import connectDB from '@/lib/mongodb';
+import connectToDatabase from '@/lib/mongodb';
 import ContactInfo from '@/models/ContactInfo';
 import { authenticateAdmin } from '@/lib/auth';
 import { NextResponse } from 'next/server';
 
 export async function GET(request) {
   try {
-    await connectDB();
+    await connectToDatabase();
 
     // Authenticate admin
     await authenticateAdmin(request);
@@ -82,7 +82,7 @@ export async function GET(request) {
 
 export async function PUT(request) {
   try {
-    await connectDB();
+    await connectToDatabase();
 
     // Authenticate admin
     await authenticateAdmin(request);

@@ -1,11 +1,11 @@
-import connectDB from '@/lib/mongodb';
+import connectToDatabase from '@/lib/mongodb';
 import NewsletterSubscriber from '@/models/NewsletterSubscriber';
 import { authenticateAdmin } from '@/lib/auth';
 import { NextResponse } from 'next/server';
 
 export async function GET(request) {
   try {
-    await connectDB();
+    await connectToDatabase();
     
     // Authenticate admin
     await authenticateAdmin(request);
@@ -112,7 +112,7 @@ export async function GET(request) {
 
 export async function POST(request) {
   try {
-    await connectDB();
+    await connectToDatabase();
     
     const { email, name, source = 'website' } = await request.json();
     

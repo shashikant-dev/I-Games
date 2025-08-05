@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { connectDB } from '@/lib/mongodb';
+import { connectToDatabase } from '@/lib/mongodb';
 import ContactRequest from '@/models/ContactRequest';
 
 export async function POST(request) {
@@ -23,7 +23,7 @@ export async function POST(request) {
       );
     }
 
-    await connectDB();
+    await connectToDatabase();
 
     // Create new contact request
     const contactRequest = new ContactRequest({

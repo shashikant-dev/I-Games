@@ -72,6 +72,15 @@ export function createAuthResponse(data, token) {
   return response;
 }
 
+export async function verifyAuth(request) {
+  try {
+    const admin = await authenticateAdmin(request);
+    return admin;
+  } catch (error) {
+    return null;
+  }
+}
+
 export function clearAuthResponse(data = { message: 'Logged out successfully' }) {
   const response = new Response(JSON.stringify(data), {
     status: 200,

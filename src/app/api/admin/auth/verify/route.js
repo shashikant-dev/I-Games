@@ -1,11 +1,11 @@
-import connectDB from '@/lib/mongodb';
+import connectToDatabase from '@/lib/mongodb';
 import Admin from '@/models/Admin';
 import { authenticateAdmin } from '@/lib/auth';
 import { NextResponse } from 'next/server';
 
 export async function POST(request) {
   try {
-    await connectDB();
+    await connectToDatabase();
     
     // Authenticate admin
     const adminAuth = await authenticateAdmin(request);

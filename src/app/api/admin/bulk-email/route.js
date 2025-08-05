@@ -1,4 +1,4 @@
-import connectDB from '@/lib/mongodb';
+import connectToDatabase from '@/lib/mongodb';
 import NewsletterSubscriber from '@/models/NewsletterSubscriber';
 import { authenticateAdmin } from '@/lib/auth';
 import { sendBulkEmail, generateBulkEmailTemplate } from '@/lib/email';
@@ -6,7 +6,7 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request) {
   try {
-    await connectDB();
+    await connectToDatabase();
     
     // Authenticate admin
     await authenticateAdmin(request);
@@ -111,7 +111,7 @@ export async function POST(request) {
 // Get email statistics
 export async function GET(request) {
   try {
-    await connectDB();
+    await connectToDatabase();
     
     // Authenticate admin
     await authenticateAdmin(request);

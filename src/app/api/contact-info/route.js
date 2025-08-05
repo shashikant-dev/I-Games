@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
-import { connectDB } from '@/lib/mongodb';
+import { connectToDatabase } from '@/lib/mongodb';
 import ContactInfo from '@/models/ContactInfo';
 
 export const revalidate = 3600; // Cache for 1 hour
 
 export async function GET() {
   try {
-    await connectDB();
+    await connectToDatabase();
 
     // Get contact information
     const contactInfo = await ContactInfo.findOne({ type: 'main' });
