@@ -34,7 +34,7 @@ export default async function BlogDetailPage({ params }) {
   const blog = await getBlog(params.slug);
 
   return (
-    <article className="container mx-auto px-4 py-12 max-w-4xl">
+    <article className="container mx-auto px-4 mt-10 py-12 max-w-4xl">
       <div className="relative w-full h-[400px] mb-8 rounded-lg overflow-hidden">
         <Image
           src={blog.bannerImage}
