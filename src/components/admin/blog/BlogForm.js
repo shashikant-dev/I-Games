@@ -1,20 +1,21 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import dynamic from 'next/dynamic';
+import { useState } from 'react';
 import Image from 'next/image';
+import dynamic from 'next/dynamic';
 
-// Dynamically import CKEditor with SSR disabled
-const CKEditor = dynamic(
-  () => import('@ckeditor/ckeditor5-react').then(mod => mod.CKEditor),
-  { ssr: false }
-);
+// Import Quill dynamically to avoid SSR issues
+const ReactQuill = dynamic(() => import('react-quill'), {
+  ssr: false,
+  loading: () => (
+    <div className="min-h-[500px] border rounded-md bg-gray-50 dark:bg-gray-700 flex items-center justify-center">
+      <div className="text-gray-500 dark:text-gray-400">Loading editor...</div>
+    </div>
+  ),
+});
 
-// Dynamically import the editor build
-const ClassicEditor = dynamic(
-  () => import('@ckeditor/ckeditor5-build-classic'),
-  { ssr: false }
-);
+// Import Quill styles
+import 'react-quill/dist/quill.snow.css';
 
 export default function BlogForm({ blog, onSubmit, isSubmitting }) {
   const [formData, setFormData] = useState({
@@ -27,11 +28,6 @@ export default function BlogForm({ blog, onSubmit, isSubmitting }) {
   });
   const [imagePreview, setImagePreview] = useState(blog?.bannerImage || '');
   const [error, setError] = useState(null);
-  const [editorLoaded, setEditorLoaded] = useState(false);
-
-  useEffect(() => {
-    setEditorLoaded(true);
-  }, []);
 
   const generateSlug = (title) => {
     return title
@@ -94,9 +90,33 @@ export default function BlogForm({ blog, onSubmit, isSubmitting }) {
   };
 
   const handleCancel = () => {
-    // Use router instead of window.history
     window.location.href = '/admin/blog';
   };
+
+  // Quill modules configuration
+  const modules = {
+    toolbar: [
+      [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+      ['bold', 'italic', 'underline', 'strike'],
+      [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+      [{ 'align': [] }],
+      ['link', 'image'],
+      ['clean'],
+      [{ 'color': [] }, { 'background': [] }],
+      ['code-block']
+    ]
+  };
+
+  // Quill formats configuration
+  const formats = [
+    'header',
+    'bold', 'italic', 'underline', 'strike',
+    'list', 'bullet',
+    'align',
+    'link', 'image',
+    'color', 'background',
+    'code-block'
+  ];
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6 max-w-4xl mx-auto p-6 bg-white dark:bg-gray-800 rounded-lg shadow">
@@ -183,46 +203,16 @@ export default function BlogForm({ blog, onSubmit, isSubmitting }) {
         <label className="block text-sm font-medium text-gray-700 dark:text-gray-200 mb-2">
           Content
         </label>
-        {editorLoaded && (
-          <CKEditor
-            editor={ClassicEditor}
-            data={formData.content}
-            onChange={(event, editor) => {
-              const data = editor.getData();
-              setFormData(prev => ({ ...prev, content: data }));
-            }}
-            config={{
-              toolbar: {
-                items: [
-                  'heading',
-                  '|',
-                  'bold',
-                  'italic',
-                  'underline',
-                  'strikethrough',
-                  '|',
-                  'link',
-                  'bulletedList',
-                  'numberedList',
-                  '|',
-                  'alignment',
-                  'indent',
-                  'outdent',
-                  '|',
-                  'blockQuote',
-                  'insertTable',
-                  '|',
-                  'undo',
-                  'redo'
-                ]
-              },
-              table: {
-                contentToolbar: ['tableColumn', 'tableRow', 'mergeTableCells']
-              },
-              height: '500px'
-            }}
+        <div className="min-h-[500px] border rounded-md overflow-hidden">
+          <ReactQuill
+            theme="snow"
+            value={formData.content}
+            onChange={(content) => setFormData(prev => ({ ...prev, content }))}
+            modules={modules}
+            formats={formats}
+            className="h-[450px] bg-white dark:bg-gray-700"
           />
-        )}
+        </div>
       </div>
 
       <div className="flex items-center">
