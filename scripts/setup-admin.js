@@ -48,8 +48,8 @@ async function setupAdmin() {
     // Create default admin user
     const adminData = {
       name: 'Super Admin',
-      email: process.env.ADMIN_EMAIL || 'admin@igames.cloud',
-      password: process.env.ADMIN_PASSWORD || 'admin123456',
+      email: process.env.ADMIN_EMAIL,
+      password: process.env.ADMIN_PASSWORD,
       role: 'super_admin'
     };
 
