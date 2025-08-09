@@ -44,29 +44,39 @@ export default function Services() {
 
   const categories = [
     {
-      key: 'api',
-      icon: <FaCode className="w-3 h-3 sm:w-4 sm:h-4" />,
-      label: t('servicesPage.categories.api')
-    },
-    {
-      key: 'development',
-      icon: <FaDesktop className="w-3 h-3 sm:w-4 sm:h-4" />,
-      label: t('servicesPage.categories.development')
+      key: 'sports',
+      icon: <FaFootballBall className="w-3 h-3 sm:w-4 sm:h-4" />,
+      label: 'Sports Solutions'
     },
     {
       key: 'casino',
       icon: <FaDice className="w-3 h-3 sm:w-4 sm:h-4" />,
-      label: t('servicesPage.categories.casino')
+      label: 'Casino Solutions'
     },
     {
-      key: 'sports',
-      icon: <FaFootballBall className="w-3 h-3 sm:w-4 sm:h-4" />,
-      label: t('servicesPage.categories.sports')
+      key: 'api',
+      icon: <FaCode className="w-3 h-3 sm:w-4 sm:h-4" />,
+      label: 'API Solutions'
     },
     {
-      key: 'consulting',
-      icon: <FaUserTie className="w-3 h-3 sm:w-4 sm:h-4" />,
-      label: t('servicesPage.categories.consulting')
+      key: 'betting',
+      icon: <FaTrophy className="w-3 h-3 sm:w-4 sm:h-4" />,
+      label: 'Betting Solutions'
+    },
+    {
+      key: 'development',
+      icon: <FaDesktop className="w-3 h-3 sm:w-4 sm:h-4" />,
+      label: 'Development Services'
+    },
+    {
+      key: 'gaming',
+      icon: <FaGamepad className="w-3 h-3 sm:w-4 sm:h-4" />,
+      label: 'Gaming Solutions'
+    },
+    {
+      key: 'streaming',
+      icon: <FaRocket className="w-3 h-3 sm:w-4 sm:h-4" />,
+      label: 'Streaming Solutions'
     }
   ];
 
@@ -138,7 +148,7 @@ export default function Services() {
       key: 'sportsbookDev',
       icon: <FaFootballBall className="w-5 h-5 sm:w-6 sm:h-6" />,
       gradient: 'from-green-500 to-green-600',
-      category: 'development'
+      category: 'betting'
     },
     // Casino Services
     {
@@ -152,6 +162,40 @@ export default function Services() {
       icon: <FaPlay className="w-5 h-5 sm:w-6 sm:h-6" />,
       gradient: 'from-red-500 to-red-600',
       category: 'casino'
+    },
+    // Sports Services
+    {
+      key: 'cricket',
+      icon: <FaFootballBall className="w-5 h-5 sm:w-6 sm:h-6" />,
+      gradient: 'from-green-500 to-green-600',
+      category: 'sports'
+    },
+    {
+      key: 'soccer',
+      icon: <FaFootballBall className="w-5 h-5 sm:w-6 sm:h-6" />,
+      gradient: 'from-blue-500 to-blue-600',
+      category: 'sports'
+    },
+    // Gaming Services
+    {
+      key: 'virtualSports',
+      icon: <FaGamepad className="w-5 h-5 sm:w-6 sm:h-6" />,
+      gradient: 'from-indigo-500 to-indigo-600',
+      category: 'gaming'
+    },
+    // Streaming Services
+    {
+      key: 'tvStreaming',
+      icon: <FaRocket className="w-5 h-5 sm:w-6 sm:h-6" />,
+      gradient: 'from-pink-500 to-pink-600',
+      category: 'streaming'
+    },
+    // More Betting Services
+    {
+      key: 'fancyBetting',
+      icon: <FaTrophy className="w-5 h-5 sm:w-6 sm:h-6" />,
+      gradient: 'from-orange-500 to-orange-600',
+      category: 'betting'
     }
   ];
 
@@ -243,19 +287,64 @@ export default function Services() {
               {t('servicesPage.hero.description')}
             </p>
 
-            {/* Service Categories Filter - Mobile Optimized */}
-            <div className="flex flex-wrap justify-center gap-2 sm:gap-3 max-w-2xl mx-auto">
+                        {/* Service Categories - Direct Links to Category Pages */}
+            <div className="flex flex-wrap justify-center gap-3 sm:gap-4 max-w-5xl mx-auto">
               {categories.map((category) => (
-                <button
+                <Link
                   key={category.key}
-                  onClick={() => setSelectedCategory(category.key)}
-                  className={`flex items-center px-3 py-2 sm:px-4 sm:py-2 rounded-lg text-xs sm:text-sm font-medium transition-all duration-300 bg-theme-bg-secondary text-theme-text-secondary hover:bg-theme-bg-primary hover:text-theme-text-primary border border-theme-border`}
+                  href={`/services/${category.key}`}
+                  className="group flex items-center px-4 py-3 sm:px-6 sm:py-4 rounded-xl text-sm sm:text-base font-medium transition-all duration-300 bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/50 hover:text-blue-600 dark:hover:text-blue-400 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 hover:shadow-lg transform hover:scale-105"
                 >
-                  {category.icon}
-                  <span className="ml-1.5 sm:ml-2">{category.label}</span>
-                </button>
+                  <span className="group-hover:scale-110 transition-transform duration-300">
+                    {category.icon}
+                  </span>
+                  <span className="ml-2 sm:ml-3">{category.label}</span>
+                  <FaArrowRight className="ml-2 w-3 h-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </Link>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Category Overview Section */}
+      <section className="py-8 sm:py-12 lg:py-16 bg-gray-50 dark:bg-gray-800">
+        <div className="max-w-6xl mx-auto px-3 sm:px-4 lg:px-6">
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-theme-text-primary mb-3 sm:mb-4">
+              Explore Our Service Categories
+            </h2>
+            <p className="text-sm sm:text-base text-theme-text-secondary max-w-2xl mx-auto">
+              Each category page contains detailed information, features, benefits, and dedicated solutions
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {categories.slice(0, 6).map((category) => (
+              <Link
+                key={category.key}
+                href={`/services/${category.key}`}
+                className="group bg-white dark:bg-gray-700 rounded-xl p-6 border border-gray-200 dark:border-gray-600 hover:shadow-xl transition-all duration-300 hover:scale-105"
+              >
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center mr-4 group-hover:bg-blue-200 dark:group-hover:bg-blue-800 transition-colors">
+                    <span className="text-blue-600 dark:text-blue-400 text-lg">
+                      {category.icon}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-semibold text-theme-text-primary group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                    {category.label}
+                  </h3>
+                </div>
+                <p className="text-sm text-theme-text-secondary mb-4">
+                  Comprehensive {category.key} solutions with detailed features, benefits, statistics, and implementation process.
+                </p>
+                <div className="flex items-center text-blue-600 dark:text-blue-400 text-sm font-medium">
+                  View Full Category Page
+                  <FaArrowRight className="ml-2 w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
+                </div>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -371,40 +460,50 @@ export default function Services() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {featuredServices.map((service, index) => (
-              <div key={service.key} className="relative group">
-                <div className={`absolute -inset-0.5 bg-gradient-to-r ${service.gradient} rounded-xl opacity-0 group-hover:opacity-20 blur transition-all duration-500`} />
-                <div className="relative bg-theme-bg-primary rounded-lg p-4 sm:p-6 border border-theme-border group-hover:scale-105 group-hover:shadow-lg transition-all duration-300">
-                  {service.popular && (
-                    <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                      Popular
-                    </div>
-                  )}
-
-                  <div className="flex items-start space-x-3 sm:space-x-4">
-                    <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${service.gradient} rounded-lg flex items-center justify-center flex-shrink-0 group-hover:rotate-6 transition-transform duration-300`}>
-                      <div className="text-white">
-                        {service.icon}
+              <Link key={service.key} href={`/services/${service.category}`} className="group block">
+                <div className="relative">
+                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${service.gradient} rounded-xl opacity-0 group-hover:opacity-20 blur transition-all duration-500`} />
+                  <div className="relative bg-theme-bg-primary rounded-lg p-4 sm:p-6 border border-theme-border group-hover:scale-105 group-hover:shadow-lg transition-all duration-300">
+                    {service.popular && (
+                      <div className="absolute -top-2 -right-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                        Popular
                       </div>
+                    )}
+                    <div className="absolute -top-2 -left-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-medium px-2 py-1 rounded-full">
+                      {service.category.charAt(0).toUpperCase() + service.category.slice(1)}
                     </div>
-                    <div className="flex-1">
-                      <h3 className="text-base sm:text-lg font-bold text-theme-text-primary mb-2">
-                        {t(`services.${service.key}`)}
-                      </h3>
-                      <p className="text-xs sm:text-sm text-theme-text-secondary leading-relaxed mb-3">
-                        {t(`servicesPage.serviceDetails.${service.key}.description`)}
-                      </p>
-                      <div className="flex flex-wrap gap-1 sm:gap-2">
-                        {t(`servicesPage.serviceDetails.${service.key}.features`).slice(0, 2).map((feature, idx) => (
-                          <span key={idx} className="inline-flex items-center px-2 py-1 bg-theme-bg-secondary text-xs text-theme-text-secondary rounded-md">
-                            <FaCheck className="w-2 h-2 sm:w-3 sm:h-3 mr-1 text-green-500" />
-                            {feature}
+
+                    <div className="flex items-start space-x-3 sm:space-x-4">
+                      <div className={`w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-r ${service.gradient} rounded-lg flex items-center justify-center flex-shrink-0 group-hover:rotate-6 transition-transform duration-300`}>
+                        <div className="text-white">
+                          {service.icon}
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="text-base sm:text-lg font-bold text-theme-text-primary mb-2 group-hover:text-blue-600 transition-colors">
+                          {t(`services.${service.key}`)}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-theme-text-secondary leading-relaxed mb-3">
+                          {t(`servicesPage.serviceDetails.${service.key}.description`)}
+                        </p>
+                        <div className="flex flex-wrap gap-1 sm:gap-2 mb-3">
+                          {t(`servicesPage.serviceDetails.${service.key}.features`).slice(0, 2).map((feature, idx) => (
+                            <span key={idx} className="inline-flex items-center px-2 py-1 bg-theme-bg-secondary text-xs text-theme-text-secondary rounded-md">
+                              <FaCheck className="w-2 h-2 sm:w-3 sm:h-3 mr-1 text-green-500" />
+                              {feature}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-xs text-blue-600 dark:text-blue-400 font-medium">
+                            View {service.category.charAt(0).toUpperCase() + service.category.slice(1)} Category →
                           </span>
-                        ))}
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -424,22 +523,30 @@ export default function Services() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {filteredServices.map((service, index) => (
-              <div key={`${service.key}-${index}`} className="relative group">
-                <div className={`absolute -inset-0.5 bg-gradient-to-r ${service.gradient} rounded-xl opacity-0 group-hover:opacity-20 blur transition-all duration-500`} />
-                <div className="relative bg-theme-bg-secondary rounded-lg p-4 sm:p-5 border border-theme-border group-hover:scale-105 group-hover:shadow-lg transition-all duration-300">
-                  <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r ${service.gradient} rounded-lg flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-6 transition-transform duration-300`}>
-                    <div className="text-white">
-                      {service.icon}
+              <Link key={`${service.key}-${index}`} href={`/services/${service.category}`} className="group block">
+                <div className="relative">
+                  <div className={`absolute -inset-0.5 bg-gradient-to-r ${service.gradient} rounded-xl opacity-0 group-hover:opacity-20 blur transition-all duration-500`} />
+                  <div className="relative bg-theme-bg-secondary rounded-lg p-4 sm:p-5 border border-theme-border group-hover:scale-105 group-hover:shadow-lg transition-all duration-300">
+                    <div className="absolute -top-2 -right-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-xs font-medium px-2 py-1 rounded-full">
+                      {service.category.charAt(0).toUpperCase() + service.category.slice(1)}
+                    </div>
+                    <div className={`w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r ${service.gradient} rounded-lg flex items-center justify-center mb-3 sm:mb-4 group-hover:rotate-6 transition-transform duration-300`}>
+                      <div className="text-white">
+                        {service.icon}
+                      </div>
+                    </div>
+                    <h3 className="text-sm sm:text-base font-bold text-theme-text-primary mb-2 group-hover:text-blue-600 transition-colors">
+                      {t(`services.${service.key}`)}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-theme-text-secondary leading-relaxed mb-3">
+                      {t(`servicesPage.serviceDetails.${service.key}.description`)}
+                    </p>
+                    <div className="flex items-center text-blue-600 dark:text-blue-400 text-xs font-medium">
+                      View {service.category.charAt(0).toUpperCase() + service.category.slice(1)} Category →
                     </div>
                   </div>
-                  <h3 className="text-sm sm:text-base font-bold text-theme-text-primary mb-2">
-                    {t(`services.${service.key}`)}
-                  </h3>
-                  <p className="text-xs sm:text-sm text-theme-text-secondary leading-relaxed">
-                    {t(`servicesPage.serviceDetails.${service.key}.description`)}
-                  </p>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>
