@@ -154,19 +154,99 @@ const CategoryBenefits = ({ category, data }) => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
 
-            {/* Floating stats card */}
+            {/* Floating stats card - Category specific */}
             <div className="absolute -bottom-8 -left-8 bg-white dark:bg-gray-900 rounded-xl shadow-xl p-6 border border-gray-200 dark:border-gray-700">
-              <div className="flex items-center space-x-4">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">500+</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Happy Clients</div>
+              {category === 'sports' && (
+                <div className="flex items-center space-x-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">50+</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Sports Covered</div>
+                  </div>
+                  <div className="w-px h-12 bg-gray-300 dark:bg-gray-600"></div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">1M+</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Events/Month</div>
+                  </div>
                 </div>
-                <div className="w-px h-12 bg-gray-300 dark:bg-gray-600"></div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">99.9%</div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">Uptime</div>
+              )}
+              {category === 'casino' && (
+                <div className="flex items-center space-x-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">500+</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Casino Games</div>
+                  </div>
+                  <div className="w-px h-12 bg-gray-300 dark:bg-gray-600"></div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">24/7</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Live Dealers</div>
+                  </div>
                 </div>
-              </div>
+              )}
+              {category === 'api' && (
+                <div className="flex items-center space-x-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">1B+</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">API Calls/Month</div>
+                  </div>
+                  <div className="w-px h-12 bg-gray-300 dark:bg-gray-600"></div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">&lt;50ms</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Avg Response</div>
+                  </div>
+                </div>
+              )}
+              {category === 'betting' && (
+                <div className="flex items-center space-x-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">10K+</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Betting Markets</div>
+                  </div>
+                  <div className="w-px h-12 bg-gray-300 dark:bg-gray-600"></div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">Real-time</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Odds Updates</div>
+                  </div>
+                </div>
+              )}
+              {category === 'development' && (
+                <div className="flex items-center space-x-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">500+</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Projects Done</div>
+                  </div>
+                  <div className="w-px h-12 bg-gray-300 dark:bg-gray-600"></div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">120+</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Developers</div>
+                  </div>
+                </div>
+              )}
+              {category === 'gaming' && (
+                <div className="flex items-center space-x-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">60fps</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Performance</div>
+                  </div>
+                  <div className="w-px h-12 bg-gray-300 dark:bg-gray-600"></div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">100K+</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Players</div>
+                  </div>
+                </div>
+              )}
+              {category === 'streaming' && (
+                <div className="flex items-center space-x-4">
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">4K</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Video Quality</div>
+                  </div>
+                  <div className="w-px h-12 bg-gray-300 dark:bg-gray-600"></div>
+                  <div className="text-center">
+                    <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">&lt;1s</div>
+                    <div className="text-sm text-gray-600 dark:text-gray-400">Latency</div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
