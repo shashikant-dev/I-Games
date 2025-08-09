@@ -63,37 +63,37 @@ export default function HeroSection() {
 
   // Memoize services to prevent recreation on each render
   const services = useMemo(() => [
-    { id: 14, name: t('services.whiteLabel'), description: t('services.whiteLabelDesc'), icon: IoDesktop, category: t('hero.categories.development') },
-    { id: 16, name: t('services.casinoAppDev'), description: t('services.casinoAppDevDesc'), icon: FaDice, category: t('hero.categories.development') },
-    { id: 19, name: t('services.liveCasino'), description: t('services.liveCasinoDesc'), icon: MdOutlineCasino, category: t('hero.categories.betting') },
-    { id: 17, name: t('services.gamblingAppDev'), description: t('services.gamblingAppDevDesc'), icon: MdDeveloperMode, category: t('hero.categories.development') },
-    { id: 6, name: t('services.casinoGamesApi'), description: t('services.casinoGamesApiDesc'), icon: GiDiceEightFacesEight, category: t('hero.categories.api') },
-    { id: 18, name: t('services.accurateSettlement'), description: t('services.accurateSettlementDesc'), icon: IoCash, category: t('hero.categories.api') },
-    { id: 1, name: t('services.liveScores'), description: t('services.liveScoresDesc'), icon: GiChart, category: t('hero.categories.api') },
-    { id: 2, name: t('services.liveOdds'), description: t('services.liveOddsDesc'), icon: IoCash, category: t('hero.categories.api') },
-    { id: 3, name: t('services.playerTeamData'), description: t('services.playerTeamDataDesc'), icon: SiDatadog, category: t('hero.categories.api') },
-    { id: 4, name: t('services.fancyBetting'), description: t('services.fancyBettingDesc'), icon: GiPokerHand, category: t('hero.categories.api') },
-    { id: 5, name: t('services.bookmakerOdds'), description: t('services.bookmakerOddsDesc'), icon: IoCash, category: t('hero.categories.api') },
-    { id: 7, name: t('services.scoreApi'), description: t('services.scoreApiDesc'), icon: MdSportsScore, category: t('hero.categories.api') },
-    { id: 8, name: t('services.tvStreaming'), description: t('services.tvStreamingDesc'), icon: GiTv, category: t('hero.categories.streaming') },
-    { id: 9, name: t('services.fantasyAppDev'), description: t('services.fantasyAppDevDesc'), icon: GiTrophy, category: t('hero.categories.development') },
-    { id: 10, name: t('services.skilledBetting'), description: t('services.skilledBettingDesc'), icon: IoDesktop, category: t('hero.categories.development') },
-    { id: 11, name: t('services.sportsCoverage'), description: t('services.sportsCoverageDesc'), icon: GiSoccerBall, category: t('hero.categories.api') },
-    { id: 12, name: t('services.virtualSports'), description: t('services.virtualSportsDesc'), icon: IoGameController, category: t('hero.categories.gaming') },
-    { id: 13, name: t('services.sportsbookDev'), description: t('services.sportsbookDevDesc'), icon: GiBasketballBall, category: t('hero.categories.development') },
-    { id: 15, name: t('services.premiumOdds'), description: t('services.premiumOddsDesc'), icon: IoCash, category: t('hero.categories.api') },
-    { id: 21, name: t('services.cricket'), description: t('services.cricketDesc'), icon: GiCricketBat, category: t('hero.categories.sport') },
-    { id: 22, name: t('services.soccer'), description: t('services.soccerDesc'), icon: GiSoccerBall, category: t('hero.categories.sport') },
-    { id: 23, name: t('services.tennis'), description: t('services.tennisDesc'), icon: GiTennisRacket, category: t('hero.categories.sport') },
-    { id: 24, name: t('services.basketball'), description: t('services.basketballDesc'), icon: GiBasketballBall, category: t('hero.categories.sport') },
-    { id: 25, name: t('services.racing'), description: t('services.racingDesc'), icon: FaRunning, category: t('hero.categories.sport') },
-    { id: 26, name: t('services.kabaddi'), description: t('services.kabaddiDesc'), icon: MdOutlineSportsKabaddi, category: t('hero.categories.sport') },
-    { id: 27, name: t('services.mma'), description: t('services.mmaDesc'), icon: MdSportsMartialArts, category: t('hero.categories.sport') },
-    { id: 28, name: t('services.nbaApi'), description: t('services.nbaApiDesc'), icon: SiNba, category: t('hero.categories.api') },
-    { id: 30, name: t('services.teenpatti'), description: t('services.teenpattiDesc'), icon: GiCardJoker, category: t('hero.categories.casino') },
-    { id: 31, name: t('services.poker'), description: t('services.pokerDesc'), icon: GiPokerHand, category: t('hero.categories.casino') },
-    { id: 32, name: t('services.greyhound'), description: t('services.greyhoundDesc'), icon: GiJumpingDog, category: t('hero.categories.sport') },
-    { id: 33, name: t('services.horse'), description: t('services.horseDesc'), icon: GiHorseHead, category: t('hero.categories.sport') },
+    { id: 14, key: 'development', name: t('services.whiteLabel'), description: t('services.whiteLabelDesc'), icon: IoDesktop, category: t('hero.categories.development') },
+    { id: 16, key: 'development', name: t('services.casinoAppDev'), description: t('services.casinoAppDevDesc'), icon: FaDice, category: t('hero.categories.development') },
+    { id: 19, key: 'betting', name: t('services.liveCasino'), description: t('services.liveCasinoDesc'), icon: MdOutlineCasino, category: t('hero.categories.betting') },
+    { id: 17, key: 'development', name: t('services.gamblingAppDev'), description: t('services.gamblingAppDevDesc'), icon: MdDeveloperMode, category: t('hero.categories.development') },
+    { id: 6, key: 'api', name: t('services.casinoGamesApi'), description: t('services.casinoGamesApiDesc'), icon: GiDiceEightFacesEight, category: t('hero.categories.api') },
+    { id: 18, key: 'api', name: t('services.accurateSettlement'), description: t('services.accurateSettlementDesc'), icon: IoCash, category: t('hero.categories.api') },
+    { id: 1, key: 'api', name: t('services.liveScores'), description: t('services.liveScoresDesc'), icon: GiChart, category: t('hero.categories.api') },
+    { id: 2, key: 'api', name: t('services.liveOdds'), description: t('services.liveOddsDesc'), icon: IoCash, category: t('hero.categories.api') },
+    { id: 3, key: 'api', name: t('services.playerTeamData'), description: t('services.playerTeamDataDesc'), icon: SiDatadog, category: t('hero.categories.api') },
+    { id: 4, key: 'api', name: t('services.fancyBetting'), description: t('services.fancyBettingDesc'), icon: GiPokerHand, category: t('hero.categories.api') },
+    { id: 5, key: 'api', name: t('services.bookmakerOdds'), description: t('services.bookmakerOddsDesc'), icon: IoCash, category: t('hero.categories.api') },
+    { id: 7, key: 'api', name: t('services.scoreApi'), description: t('services.scoreApiDesc'), icon: MdSportsScore, category: t('hero.categories.api') },
+    { id: 8, key: 'streaming', name: t('services.tvStreaming'), description: t('services.tvStreamingDesc'), icon: GiTv, category: t('hero.categories.streaming') },
+    { id: 9, key: 'development', name: t('services.fantasyAppDev'), description: t('services.fantasyAppDevDesc'), icon: GiTrophy, category: t('hero.categories.development') },
+    { id: 10, key: 'development', name: t('services.skilledBetting'), description: t('services.skilledBettingDesc'), icon: IoDesktop, category: t('hero.categories.development') },
+    { id: 11, key: 'api', name: t('services.sportsCoverage'), description: t('services.sportsCoverageDesc'), icon: GiSoccerBall, category: t('hero.categories.api') },
+    { id: 12, key: 'gaming', name: t('services.virtualSports'), description: t('services.virtualSportsDesc'), icon: IoGameController, category: t('hero.categories.gaming') },
+    { id: 13, key: 'development', name: t('services.sportsbookDev'), description: t('services.sportsbookDevDesc'), icon: GiBasketballBall, category: t('hero.categories.development') },
+    { id: 15, key: 'api', name: t('services.premiumOdds'), description: t('services.premiumOddsDesc'), icon: IoCash, category: t('hero.categories.api') },
+    { id: 21, key: 'sports', name: t('services.cricket'), description: t('services.cricketDesc'), icon: GiCricketBat, category: t('hero.categories.sport') },
+    { id: 22, key: 'sports', name: t('services.soccer'), description: t('services.soccerDesc'), icon: GiSoccerBall, category: t('hero.categories.sport') },
+    { id: 23, key: 'sports', name: t('services.tennis'), description: t('services.tennisDesc'), icon: GiTennisRacket, category: t('hero.categories.sport') },
+    { id: 24, key: 'sports', name: t('services.basketball'), description: t('services.basketballDesc'), icon: GiBasketballBall, category: t('hero.categories.sport') },
+    { id: 25, key: 'sports', name: t('services.racing'), description: t('services.racingDesc'), icon: FaRunning, category: t('hero.categories.sport') },
+    { id: 26, key: 'sports', name: t('services.kabaddi'), description: t('services.kabaddiDesc'), icon: MdOutlineSportsKabaddi, category: t('hero.categories.sport') },
+    { id: 27, key: 'sports', name: t('services.mma'), description: t('services.mmaDesc'), icon: MdSportsMartialArts, category: t('hero.categories.sport') },
+    { id: 28, key: 'api', name: t('services.nbaApi'), description: t('services.nbaApiDesc'), icon: SiNba, category: t('hero.categories.api') },
+    { id: 30, key: 'casino', name: t('services.teenpatti'), description: t('services.teenpattiDesc'), icon: GiCardJoker, category: t('hero.categories.casino') },
+    { id: 31, key: 'casino', name: t('services.poker'), description: t('services.pokerDesc'), icon: GiPokerHand, category: t('hero.categories.casino') },
+    { id: 32, key: 'sports', name: t('services.greyhound'), description: t('services.greyhoundDesc'), icon: GiJumpingDog, category: t('hero.categories.sport') },
+    { id: 33, key: 'sports', name: t('services.horse'), description: t('services.horseDesc'), icon: GiHorseHead, category: t('hero.categories.sport') },
   ], [t]);
 
   // Enhanced carousel slides with gaming interface images
@@ -246,40 +246,51 @@ export default function HeroSection() {
           >
             {filteredServices.map(service => {
               const IconComponent = service.icon;
-              return (
-                <article
-                  key={service.id}
-                  className="flex flex-col items-start p-3 sm:p-4 rounded-xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer group border border-gray-100 dark:border-gray-700 focus-within:ring-2 focus-within:ring-blue-500 hover:border-blue-200 dark:hover:border-blue-600"
-                  tabIndex="0"
-                  role="button"
-                  aria-label={`${service.name} service`}
-                >
-                  <div className="flex items-start w-full">
-                    <div
-                      className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] flex items-center justify-center mr-3 group-hover:scale-105 transition-transform duration-200 shadow-sm"
-                      aria-hidden="true"
-                    >
-                      <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h3 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white leading-tight mb-1">
-                        {service.name}
-                      </h3>
-                      {service.description && (
-                        <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2">
-                          {service.description}
-                        </p>
-                      )}
-                    </div>
-                  </div>
+              // Create a service key from the service name for mapping
+              const serviceKey = service.name.toLowerCase()
+                .replace(/\s+/g, '')
+                .replace(/&/g, '')
+                .replace(/'/g, '')
+                .replace(/-/g, '')
+                .replace(/\|/g, '');
 
-                  {/* Category badge for mobile */}
-                  <div className="mt-2 sm:mt-3 w-full">
-                    <span className="inline-block px-2 py-1 text-xs font-medium bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">
-                      {service.category}
-                    </span>
-                  </div>
-                </article>
+              return (
+                <Link
+                  key={service.id}
+                    href={'/services/' + service.key}
+                  className="group block"
+                >
+                  <article
+                    className="flex ml-2 mt-2 mb-2 flex-col items-start p-3 sm:p-4 rounded-xl bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer border border-gray-100 dark:border-gray-700 focus-within:ring-2 focus-within:ring-blue-500 hover:border-blue-200 dark:hover:border-blue-600"
+                    aria-label={`${service.name} service - Click to view category`}
+                  >
+                    <div className="flex items-start w-full">
+                      <div
+                        className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] flex items-center justify-center mr-3 group-hover:scale-105 transition-transform duration-200 shadow-sm"
+                        aria-hidden="true"
+                      >
+                        <IconComponent className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white leading-tight mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                          {service.name}
+                        </h3>
+                        {service.description && (
+                          <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed line-clamp-2">
+                            {service.description}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Category badge for mobile */}
+                    <div className="mt-2 sm:mt-3 w-full">
+                      <span className="inline-block px-2 py-1 text-xs font-medium bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full group-hover:bg-blue-100 dark:group-hover:bg-blue-800/50 transition-colors">
+                        {service.category}
+                      </span>
+                    </div>
+                  </article>
+                </Link>
               );
             })}
           </section>
