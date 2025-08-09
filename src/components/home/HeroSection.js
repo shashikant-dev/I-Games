@@ -192,7 +192,7 @@ export default function HeroSection() {
       <div className="relative pt-12 pb-8 sm:pt-16 lg:pt-20 lg:pb-12">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 xl:px-8">
           {/* Enhanced Carousel Section with Images */}
-          <header className="text-center mb-6 sm:mb-8">
+          <header className="text-center mb-6 sm:mb-8 pt-4">
             <div
               className="relative"
               role="region"

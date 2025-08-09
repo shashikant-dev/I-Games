@@ -109,7 +109,7 @@ export default function AdminLoginPage() {
                   autoComplete="email"
                   required
                   className="appearance-none block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                  placeholder="admin@igames.cloud"
+                  placeholder="youremail@example.com"
                   value={formData.email}
                   onChange={(e) => handleInputChange('email', e.target.value)}
                   disabled={isSubmitting}
