@@ -71,8 +71,8 @@
   }
 
   .mobile-menu-button {
-    @apply text-theme-text-primary p-2 rounded-md
-           hover:bg-theme-bg-secondary;
+    /* @apply text-theme-text-primary p-2 rounded-md
+           hover:bg-theme-bg-secondary; */
   }
 }
 
