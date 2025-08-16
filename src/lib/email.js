@@ -4,18 +4,31 @@ import nodemailer from 'nodemailer';
 const createTransporter = () => {
   return nodemailer.createTransport({
     host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    port: process.env.SMTP_PORT || 587,
-    secure: false, // true for 465, false for other ports
+    port: parseInt(process.env.SMTP_PORT) || 587,
+    secure: process.env.SMTP_PORT === '465', // true for 465, false for other ports
     auth: {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
+    // Fix SSL/TLS issues for production servers
+    tls: {
+      rejectUnauthorized: false, // Allow self-signed certificates
+      ciphers: 'SSLv3'
+    },
+    // Additional options for better compatibility
+    requireTLS: true,
+    connectionTimeout: 60000, // 60 seconds
+    greetingTimeout: 30000, // 30 seconds
+    socketTimeout: 60000, // 60 seconds
   });
 };
 
 export async function sendEmail({ to, subject, html, text, from }) {
   try {
     const transporter = createTransporter();
+
+    // Verify connection first
+    await transporter.verify();
 
     const mailOptions = {
       from: from || process.env.SMTP_FROM || process.env.SMTP_USER,
@@ -26,10 +39,20 @@ export async function sendEmail({ to, subject, html, text, from }) {
     };
 
     const result = await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully:', result.messageId);
     return { success: true, messageId: result.messageId };
   } catch (error) {
     console.error('Email sending error:', error);
-    return { success: false, error: error.message };
+
+    // Log detailed error information for debugging
+    if (error.code) {
+      console.error('Error code:', error.code);
+    }
+    if (error.response) {
+      console.error('SMTP response:', error.response);
+    }
+
+    return { success: false, error: error.message, code: error.code };
   }
 }
 
