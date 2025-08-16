@@ -1,15 +1,16 @@
 import { NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import ContactRequest from '@/models/ContactRequest';
+import { sendEmail, generateContactFormEmail } from '@/lib/email';
 
 export async function POST(request) {
   try {
     const { name, email, phone, company, service, message } = await request.json();
 
     // Validate required fields
-    if (!name || !email || !message) {
+    if (!name || !email) {
       return NextResponse.json(
-        { error: 'Name, email, and message are required' },
+        { error: 'Name and email are required' },
         { status: 400 }
       );
     }
@@ -40,6 +41,29 @@ export async function POST(request) {
     });
 
     await contactRequest.save();
+
+    // Send email notification to developer
+    try {
+      const formData = { name, email, phone, company, service, message };
+      const { html, subject } = generateContactFormEmail(formData);
+
+      const emailResult = await sendEmail({
+        to: 'developer.shashikant@gmail.com',
+        subject: subject,
+        html: html,
+        from: process.env.SMTP_FROM || process.env.SMTP_USER
+      });
+
+      if (!emailResult.success) {
+        console.error('Failed to send email notification:', emailResult.error);
+        // Don't fail the request if email fails, just log it
+      } else {
+        console.log('Contact form email sent successfully:', emailResult.messageId);
+      }
+    } catch (emailError) {
+      console.error('Email notification error:', emailError);
+      // Don't fail the request if email fails
+    }
 
     return NextResponse.json(
       {
