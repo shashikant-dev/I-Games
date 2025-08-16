@@ -97,23 +97,6 @@ export default function ContactInfoPage() {
         </p>
       </div>
 
-      {message && (
-        <div className={`rounded-md p-4 ${message.type === 'success' ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
-          <div className="flex">
-            {message.type === 'success' ? (
-              <CheckCircleIcon className="h-5 w-5 text-green-400" />
-            ) : (
-              <XCircleIcon className="h-5 w-5 text-red-400" />
-            )}
-            <div className="ml-3">
-              <p className={`text-sm font-medium ${message.type === 'success' ? 'text-green-800' : 'text-red-800'}`}>
-                {message.text}
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
-
       <form onSubmit={handleSubmit} className="space-y-8 pb-8">
         {/* Company Information */}
         <div className="bg-white shadow rounded-lg p-6">
@@ -327,9 +310,29 @@ export default function ContactInfoPage() {
             </div>
           </div>
         </div>
-
-        {/* Submit Button */}
         <div className="flex justify-end">
+          {message && (
+            <div className={`relative rounded-md p-4 pr-10 mr-10 ${message.type === 'success' ? 'bg-green-50 border border-green-200' : 'bg-red-50 border border-red-200'}`}>
+              <div className="flex">
+                {message.type === 'success' ? (
+                  <CheckCircleIcon className="h-5 w-5 text-green-400" />
+                ) : (
+                  <XCircleIcon className="h-5 w-5 text-red-400" />
+                )}
+                <div className="ml-3">
+                  <p className={`text-sm font-medium ${message.type === 'success' ? 'text-green-800' : 'text-red-800'}`}>
+                    {message.text}
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => setMessage(null)}
+                className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 focus:outline-none"
+              >
+                ×
+              </button>
+            </div>
+          )}
           <button
             type="submit"
             disabled={saving}
@@ -337,6 +340,7 @@ export default function ContactInfoPage() {
           >
             {saving ? 'Saving...' : 'Save Changes'}
           </button>
+
         </div>
       </form>
     </div>
