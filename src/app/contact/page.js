@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useContactInfo } from '@/contexts/ContactInfoContext';
@@ -18,7 +18,10 @@ import {
   FaHeadset,
   FaCogs,
   FaArrowRight,
-  FaTelegramPlane
+  FaTelegramPlane,
+  FaTimes,
+  FaCheckCircle,
+  FaHeart
 } from 'react-icons/fa';
 import {
   HiSparkles,
@@ -40,6 +43,7 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
+  const [showThankYouModal, setShowThankYouModal] = useState(false);
 
   const handleInputChange = (e) => {
     setFormData({
@@ -66,6 +70,7 @@ export default function Contact() {
 
       if (response.ok) {
         setSubmitStatus('success');
+        setShowThankYouModal(true);
         setFormData({
           name: '',
           email: '',
@@ -187,6 +192,121 @@ export default function Contact() {
     }
   ];
 
+  // Close modal when clicking outside
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        setShowThankYouModal(false);
+      }
+    };
+
+    if (showThankYouModal) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [showThankYouModal]);
+
+  const closeModal = () => {
+    setShowThankYouModal(false);
+  };
+
+  // Thank You Modal Component
+  const ThankYouModal = () => {
+    if (!showThankYouModal) return null;
+
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        {/* Backdrop */}
+        <div
+          className="absolute inset-0 bg-black/50 backdrop-blur-sm animate-fadeIn"
+          onClick={closeModal}
+        />
+
+        {/* Modal Content */}
+        <div className="relative bg-theme-bg-primary rounded-2xl shadow-2xl border border-theme-border max-w-md w-full mx-4 animate-slideUp">
+          {/* Close Button */}
+          <button
+            onClick={closeModal}
+            className="absolute top-4 right-4 p-2 text-theme-text-secondary hover:text-theme-text-primary transition-colors duration-200 hover:bg-theme-bg-secondary rounded-full"
+          >
+            <FaTimes className="w-5 h-5" />
+          </button>
+
+          {/* Modal Body */}
+          <div className="p-8 text-center">
+            {/* Success Icon with Animation */}
+            <div className="mb-6">
+              <div className="relative inline-flex items-center justify-center">
+                <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-ping opacity-20" />
+                <div className="relative w-20 h-20 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center animate-bounce">
+                  <FaCheckCircle className="w-10 h-10 text-white" />
+                </div>
+              </div>
+            </div>
+
+            {/* Thank You Message */}
+            <h2 className="text-2xl sm:text-3xl font-bold text-theme-text-primary mb-4">
+              Thank You!
+            </h2>
+
+            <div className="space-y-3 mb-6">
+              <p className="text-lg text-[#3B82F6] dark:text-[#60A5FA] font-semibold">
+                Your message has been sent successfully!
+              </p>
+
+              <p className="text-theme-text-secondary leading-relaxed">
+                We appreciate you reaching out to us. Our team will review your message and get back to you within 24 hours.
+              </p>
+
+              <div className="flex items-center justify-center text-sm text-theme-text-secondary mt-4">
+                <FaHeart className="w-4 h-4 text-red-500 mr-2 animate-pulse" />
+                <span>We&apos;re excited to work with you!</span>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="space-y-3">
+              <button
+                onClick={closeModal}
+                className="w-full px-6 py-3 bg-gradient-to-r from-[#3B82F6] to-[#60A5FA] text-white font-semibold rounded-xl hover:shadow-lg hover:scale-105 transition-all duration-300"
+              >
+                Continue Exploring
+              </button>
+
+              {/* <div className="flex space-x-3">
+                <Link
+                  href={quickContact.whatsappMessage}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center px-4 py-2 bg-gradient-to-r from-green-400 to-green-500 text-white font-medium rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 text-sm"
+                >
+                  <FaWhatsapp className="w-4 h-4 mr-2" />
+                  WhatsApp
+                </Link>
+                <Link
+                  href={quickContact.telegramLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center px-4 py-2 bg-gradient-to-r from-blue-400 to-blue-500 text-white font-medium rounded-lg hover:shadow-md hover:scale-105 transition-all duration-300 text-sm"
+                >
+                  <FaTelegramPlane className="w-4 h-4 mr-2" />
+                  Telegram
+                </Link>
+              </div> */}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   return (
     <main className="pt-16 min-h-screen bg-theme-bg-primary">
       {/* Hero Section */}
@@ -202,7 +322,7 @@ export default function Contact() {
         <div className="text-center">
             <div className="inline-flex items-center px-4 py-2 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-[#3B82F6]/10 to-[#60A5FA]/10 text-[#3B82F6] dark:text-[#60A5FA] text-xs sm:text-sm font-medium mb-6 sm:mb-8 border border-[#3B82F6]/20 backdrop-blur-sm">
               <HiSparkles className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-              Let's Connect
+              Let&apos;s Connect
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-theme-text-primary mb-4 sm:mb-6 leading-tight">
@@ -228,6 +348,7 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             {/* Contact Form */}
+            <div  id="contact-form" className='pt-20'>
             <div className="order-2 lg:order-1">
               <div className="bg-theme-bg-primary rounded-2xl p-6 sm:p-8 shadow-xl border border-theme-border">
                 <h2 className="text-2xl sm:text-3xl font-bold text-theme-text-primary mb-6 sm:mb-8">
@@ -238,7 +359,7 @@ export default function Contact() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-theme-text-primary mb-2">
-                        {t('contact.page.form.name')}
+                        {t('contact.page.form.name')} <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
@@ -254,7 +375,7 @@ export default function Contact() {
 
                     <div>
                       <label htmlFor="email" className="block text-sm font-medium text-theme-text-primary mb-2">
-                        {t('contact.page.form.email')}
+                        {t('contact.page.form.email')} <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="email"
@@ -272,12 +393,13 @@ export default function Contact() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="phone" className="block text-sm font-medium text-theme-text-primary mb-2">
-                        {t('contact.page.form.phone')}
+                        {t('contact.page.form.phone')} <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="tel"
                         id="phone"
                         name="phone"
+                        required
                         value={formData.phone}
                         onChange={handleInputChange}
                         className="w-full px-4 py-3 bg-theme-bg-secondary border border-theme-border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent text-theme-text-primary placeholder-theme-text-secondary transition-colors"
@@ -287,7 +409,7 @@ export default function Contact() {
 
                     <div>
                       <label htmlFor="company" className="block text-sm font-medium text-theme-text-primary mb-2">
-                        {t('contact.page.form.company')}
+                        {t('contact.page.form.company')} (Optional)
                       </label>
                       <input
                         type="text"
@@ -303,7 +425,7 @@ export default function Contact() {
 
                   <div>
                     <label htmlFor="service" className="block text-sm font-medium text-theme-text-primary mb-2">
-                      {t('contact.page.form.service')}
+                      {t('contact.page.form.service')} (Optional)
                     </label>
                     <select
                       id="service"
@@ -321,15 +443,14 @@ export default function Contact() {
 
               <div>
                     <label htmlFor="message" className="block text-sm font-medium text-theme-text-primary mb-2">
-                      {t('contact.page.form.message')}
+                      {t('contact.page.form.message')} (Optional)
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       value={formData.message}
                       onChange={handleInputChange}
-                      rows={5}
-                      required
+                      rows={3}
                       className="w-full px-4 py-3 bg-theme-bg-secondary border border-theme-border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent text-theme-text-primary placeholder-theme-text-secondary transition-colors resize-none"
                       placeholder="Tell us about your project requirements..."
                     />
@@ -353,13 +474,7 @@ export default function Contact() {
                     )}
                   </button>
 
-                  {submitStatus === 'success' && (
-                    <div className="p-4 bg-green-100 dark:bg-green-900/20 border border-green-300 dark:border-green-700 rounded-lg">
-                      <p className="text-green-700 dark:text-green-300 text-sm font-medium">
-                        {t('contact.page.form.success')}
-                      </p>
-                    </div>
-                  )}
+
 
                   {submitStatus === 'error' && (
                     <div className="p-4 bg-red-100 dark:bg-red-900/20 border border-red-300 dark:border-red-700 rounded-lg">
@@ -370,7 +485,7 @@ export default function Contact() {
                   )}
                 </form>
               </div>
-            </div>
+            </div></div>
 
             {/* Contact Information */}
             <div className="order-1 lg:order-2">
@@ -498,6 +613,8 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* Thank You Modal */}
+      <ThankYouModal />
     </main>
   );
 }
